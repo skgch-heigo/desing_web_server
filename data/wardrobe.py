@@ -10,11 +10,11 @@ class Countries(SqlAlchemyBase, SerializerMixin):
 
     id = sqlalchemy.Column(sqlalchemy.Integer,
                            primary_key=True, autoincrement=True)
-    type_ = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
+    type_ = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("Types.id"), nullable=True)
     name = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
     color = sqlalchemy.Column(sqlalchemy.String, nullable=True)
-    size = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
-    fabric = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
-    pattern = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
+    size = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("Sizes.id"), nullable=True)
+    fabric = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("Fabrics.id"), nullable=True)
+    pattern = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("Patterns.id"), nullable=True)
     picture = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     deleted = sqlalchemy.Column(sqlalchemy.Integer, nullable=True, default=0)
