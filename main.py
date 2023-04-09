@@ -32,6 +32,12 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 
+@login_manager.user_loader
+def load_user(user_id):
+    db_sess = db_session.create_session()
+    return db_sess.query(User).get(user_id)
+
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -39,15 +45,10 @@ def logout():
     return redirect("/")
 
 
-@app.route('/')
-@app.route('/index')
-def index():
-    # return render_template('base.html')
-    return "Hello!"
-
 @app.errorhandler(404)
 def not_found(_):
     return make_response(jsonify({'error': 'Not found 404'}), 404)
+
 
 def main():
     db_session.global_init("db/designer_base.db")
@@ -60,15 +61,15 @@ def main():
     app.run()
 
 
-
 @app.route("/")
+@app.route("/index")
 def index():
     db_sess = db_session.create_session()
     # if current_user.is_authenticated:
     #     jobs = db_sess.query(Jobs).filter((Jobs.user == current_user) | (Jobs.is_finished != True))
     # else:
     #     jobs = db_sess.query(Jobs).filter(Jobs.is_finished != True)
-    return render_template("index.html")
+    return render_template("index.html", title="Designer help")
 
 
 @app.errorhandler(400)
