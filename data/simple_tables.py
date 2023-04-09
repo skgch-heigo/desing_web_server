@@ -83,13 +83,3 @@ class TrouserLengths(SqlAlchemyBase, SerializerMixin):
     name = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     picture = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     deleted = sqlalchemy.Column(sqlalchemy.Integer, nullable=True, default=0)
-
-
-class Lapels(SqlAlchemyBase, SerializerMixin):
-    __tablename__ = 'Lapels'
-
-    id = sqlalchemy.Column(sqlalchemy.Integer,
-                           primary_key=True, autoincrement=True)
-    name = sqlalchemy.Column(sqlalchemy.String, nullable=True)
-    picture = sqlalchemy.Column(sqlalchemy.String, nullable=True)
-    deleted = sqlalchemy.Column(sqlalchemy.Integer, nullable=True, default=0)

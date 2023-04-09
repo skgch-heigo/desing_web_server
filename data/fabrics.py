@@ -5,8 +5,8 @@ from flask_login import UserMixin
 from sqlalchemy_serializer import SerializerMixin
 
 
-class Countries(SqlAlchemyBase, SerializerMixin):
-    __tablename__ = 'Countries'
+class Fabrics(SqlAlchemyBase, SerializerMixin):
+    __tablename__ = 'Fabrics'
 
     id = sqlalchemy.Column(sqlalchemy.Integer,
                            primary_key=True, autoincrement=True)

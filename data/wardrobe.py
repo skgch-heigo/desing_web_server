@@ -5,12 +5,13 @@ from flask_login import UserMixin
 from sqlalchemy_serializer import SerializerMixin
 
 
-class Countries(SqlAlchemyBase, SerializerMixin):
-    __tablename__ = 'Countries'
+class Wardrobe(SqlAlchemyBase, SerializerMixin):
+    __tablename__ = 'Wardrobe'
 
     id = sqlalchemy.Column(sqlalchemy.Integer,
                            primary_key=True, autoincrement=True)
     type_ = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("Types.id"), nullable=True)
+    owner = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("users.id"), nullable=True)
     name = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
     color = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     size = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("Sizes.id"), nullable=True)
