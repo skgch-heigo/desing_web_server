@@ -2,8 +2,8 @@ from flask import abort
 
 from flask import jsonify
 
-from .simple_tables import Collars
-from . import db_session
+from data.models.simple_tables import Collars
+from data.models import db_session
 
 from flask_restful import abort, Resource, reqparse
 parser = reqparse.RequestParser()

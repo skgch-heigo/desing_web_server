@@ -1,26 +1,19 @@
 import datetime
-import json
-import os
 
-from flask import Flask, url_for, render_template, redirect, request, make_response, session, jsonify
-import flask
-from flask import Flask, url_for, render_template, redirect, request, make_response, session
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, EmailField
-from wtforms.validators import DataRequired, EqualTo
+from flask import jsonify
+from flask import Flask, render_template, redirect, request, make_response
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 
-from flask_restful import reqparse, abort, Api, Resource
+from flask_restful import abort, Api
 
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash
 
-from data.user import User
-from data.simple_tables import Collars
+from data.models.user import User
 
-from data import db_session
-from data import collars_resource
+from data.models import db_session
+from data.resources import collars_resource
 
-from data.constants.tables_inf import TABLES
+from data.constants.tables_inf import TABLES, TABLES_CLASSES, FIELDS
 
 from data.forms.login_in import LoginInForm
 from data.forms.registration_form import RegisterForm
@@ -50,11 +43,6 @@ def logout():
     return redirect("/")
 
 
-@app.errorhandler(404)
-def not_found(_):
-    return make_response(jsonify({'error': 'Not found 404'}), 404)
-
-
 def main():
     db_session.global_init("db/designer_base.db")
     # app.register_blueprint(users_api.blueprint)
@@ -79,13 +67,27 @@ def index():
 
 @app.route("/show/<table>/<int:id_>")
 def element_information(table, id_):
+    db_sess = db_session.create_session()
     if table not in TABLES:
         abort(404)
+    obj = db_sess.query(TABLES_CLASSES[table]).filter(TABLES_CLASSES[table].id == id_).first()
     if table == "Wardrobe":
-        pass
+        if not current_user or not obj.owner == current_user.id:
+            abort(403)
     if table == "users":
-        pass
+        if not current_user or current_user.access != 3:
+            abort(403)
+    fields = FIELDS[table]
+    # добавить передачу в шаблон данных
     return redirect("/")
+
+
+@app.route("/info/<int:id>")
+@login_required
+def info(id_):
+    if current_user and current_user.id == id_:
+        return redirect("/show/users/" + str(id_))
+    abort(403)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -108,7 +110,7 @@ def login():
 
 
 @app.route('/register', methods=['GET', 'POST'])
-def reg():
+def register():
     form = RegisterForm()
     if form.validate_on_submit():
         ans = {"name": "", "email": "", "password": ""}
@@ -133,6 +135,16 @@ def reg():
 @app.errorhandler(400)
 def bad_request(_):
     return make_response(jsonify({'error': 'Bad Request 400'}), 400)
+
+
+@app.errorhandler(403)
+def access_denied(_):
+    return make_response(jsonify({'error': 'Access denied 403'}), 403)
+
+
+@app.errorhandler(404)
+def not_found(_):
+    return make_response(jsonify({'error': 'Not found 404'}), 404)
 
 
 @app.errorhandler(405)
