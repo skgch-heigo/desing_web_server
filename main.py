@@ -1,6 +1,8 @@
 import datetime
+import os
+import random
 
-from flask import jsonify
+from flask import jsonify, url_for
 from flask import Flask, render_template, redirect, request, make_response
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 
@@ -8,6 +10,7 @@ from flask_restful import abort, Api
 
 from werkzeug.security import generate_password_hash
 
+from data.models.additional import Countries
 from data.models.user import User
 
 from data.models import db_session
@@ -17,6 +20,8 @@ from data.constants.tables_inf import TABLES, TABLES_CLASSES, FIELDS
 
 from data.forms.login_in import LoginInForm
 from data.forms.registration_form import RegisterForm
+
+from data.maps import finder
 
 
 app = Flask(__name__)
@@ -44,6 +49,9 @@ def logout():
 
 
 def main():
+    for i in os.listdir(os.path.join('temp', "pictures")):
+        if i != "information.txt":
+            os.remove("temp/pictures/" + i)
     db_session.global_init("db/designer_base.db")
     # app.register_blueprint(users_api.blueprint)
     # app.register_blueprint(jobs_api.blueprint)
@@ -78,8 +86,19 @@ def element_information(table, id_):
         if not current_user or current_user.access != 3:
             abort(403)
     fields = FIELDS[table]
-    # добавить передачу в шаблон данных
-    return redirect("/")
+    data = {}
+    for i in fields:
+        data[i] = getattr(obj, i)
+    if table in ["Upper_body", "Lower_body", "Hats", "Boots"]:
+        country = db_sess.query(Countries).filter(Countries.id == obj.origin).first()
+        ll_span = finder.get_ll_span(country.name)
+        coords = finder.get_coords(country.name)
+        map_pic = finder.get_map(*ll_span, (str(coords[0]) + "," + str(coords[1]), "pm2bll"))
+        random_int = random.randint(0, 1000000)
+        with open(f"temp/pictures/map_picture{random_int}.png", "wb") as f:
+            f.write(map_pic)
+        data["map"] = url_for('temp', filename='pictures/map_picture{random_int}.png')
+    return render_template("elem_information", title="Информация", data=data)
 
 
 @app.route("/info/<int:id>")
@@ -105,7 +124,7 @@ def login():
             return redirect("/")
         return render_template('login_in.html',
                                message="Неправильный логин или пароль",
-                               form=form)
+                               form=form, title="Неудача")
     return render_template('login_in.html', title='Авторизация', form=form)
 
 
