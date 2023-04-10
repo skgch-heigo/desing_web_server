@@ -16,6 +16,7 @@ class User(SqlAlchemyBase, UserMixin, SerializerMixin):
     email = sqlalchemy.Column(sqlalchemy.String, unique=True, nullable=False)
     hashed_password = sqlalchemy.Column(sqlalchemy.String, nullable=False)
     access = sqlalchemy.Column(sqlalchemy.Integer, nullable=True, default=1)
+    deleted = sqlalchemy.Column(sqlalchemy.Boolean, default=0)
 
     def check_password(self, password):
         # hasher.update(bytes(password, "utf-8"))

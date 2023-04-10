@@ -20,6 +20,8 @@ from data.simple_tables import Collars
 from data import db_session
 from data import collars_resource
 
+from data.constants.tables_inf import TABLES
+
 
 app = Flask(__name__)
 api = Api(app)
@@ -70,6 +72,17 @@ def index():
     # else:
     #     jobs = db_sess.query(Jobs).filter(Jobs.is_finished != True)
     return render_template("index.html", title="Designer help")
+
+
+@app.route("/show/<table>/<int:id_>")
+def element_information(table, id_):
+    if table not in TABLES:
+        abort(404)
+    if table == "Wardrobe":
+        pass
+    if table == "users":
+        pass
+    return redirect("/")
 
 
 @app.errorhandler(400)
