@@ -40,6 +40,10 @@ SIMPLE_TABLES = ["Boots", "Brims", "Clasps", "Collars",
                  "Seasons", "Sizes", "Sleeves", "Trouser_lengths",
                  "Types", "Upper_body"]
 
+NO_PICTURE = ["Countries", "Fits", "Seasons", "Sizes", "Types"]
+
+SIMPLE = ["Brims", "Clasps", "Collars", "Heels", "Lapels", "Patterns", "Sleeves", "Trouser_lengths"]
+
 TABLES = ["Boots", "Brims", "Clasps", "Collars",
           "Countries", "Fabrics", "Fits", "Hats",
           "Heels", "Lapels", "Lower_body", "Patterns",
@@ -51,6 +55,12 @@ RELATIONS = {"brim": "Brims", "clasp": "Clasps", "collar": "Collars",
              "heel": "Heels", "lapels": "Lapels", "pattern": "Patterns",
              "season": "Seasons", "size": "Sizes", "sleeves": "Sleeves",
              "length": "Trouser_lengths", "type": "Types", "owner": "User"}
+
+TRANSLATION = {"Boots": "Обувь", "Brims": "Поля", "Clasps": "Методы крепления", "Collars": "Воротники",
+               "Countries": "Страны", "Fabrics": "Ткани", "Fits": "Посадки", "Hats": "Шляпы",
+               "Heels": "Каблуки", "Lapels": "Лацканы", "Lower_body": "Нижняя одежда", "Patterns": "Узоры",
+               "Seasons": "Сезоны", "Sizes": "Размеры", "Sleeves": "Рукава", "Trouser_lengths": "Длины штанов",
+               "Types": "Типы", "Upper_body": "Верхняя одежда", "Wardrobe": "Гардероб", "users": "Пользователи"}
 
 TABLES_CLASSES = {"Boots": Boots, "Brims": Brims, "Clasps": Clasps, "Collars": Collars,
                   "Countries": Countries, "Fabrics": Fabrics, "Fits": Fits, "Hats": Hats,
