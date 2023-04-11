@@ -14,7 +14,7 @@ from data.models.additional import Countries
 from data.models.user import User
 
 from data.models import db_session
-from data.resources import collars_resource
+from data.resources import collars_resource, brims_resource
 
 from data.constants.tables_inf import TABLES, TABLES_CLASSES, FIELDS
 
@@ -56,9 +56,11 @@ def main():
     # app.register_blueprint(users_api.blueprint)
     # app.register_blueprint(jobs_api.blueprint)
     # для списка объектов
-    api.add_resource(collars_resource.CollarsListResource, '/api/v2/collars')
+    api.add_resource(collars_resource.CollarsListResource, '/api/collars')
+    api.add_resource(brims_resource.BrimsListResource, '/api/brims')
     # для одного объекта
-    api.add_resource(collars_resource.CollarsResource, '/api/v2/collars/<int:collars_id>')
+    api.add_resource(collars_resource.CollarsResource, '/api/collars/<int:collars_id>')
+    api.add_resource(brims_resource.BrimsResource, '/api/brims/<int:brims_id>')
     app.run()
 
 
