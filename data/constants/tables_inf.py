@@ -40,6 +40,10 @@ SIMPLE_TABLES = ["Boots", "Brims", "Clasps", "Collars",
                  "Seasons", "Sizes", "Sleeves", "Trouser_lengths",
                  "Types", "Upper_body"]
 
+NO_PICTURE = ["Countries", "Fits", "Seasons", "Sizes", "Types"]
+
+SIMPLE = ["Brims", "Clasps", "Collars", "Heels", "Lapels", "Patterns", "Sleeves", "Trouser_lengths"]
+
 TABLES = ["Boots", "Brims", "Clasps", "Collars",
           "Countries", "Fabrics", "Fits", "Hats",
           "Heels", "Lapels", "Lower_body", "Patterns",

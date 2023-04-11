@@ -18,7 +18,7 @@ from data.models import db_session
 from data.models.wardrobe import Wardrobe
 from data.resources import collars_resource, brims_resource
 
-from data.constants.tables_inf import TABLES, TABLES_CLASSES, FIELDS, RELATIONS
+from data.constants.tables_inf import TABLES, TABLES_CLASSES, FIELDS, RELATIONS, NO_PICTURE, SIMPLE
 
 from data.forms.login_in import LoginInForm
 from data.forms.registration_form import RegisterForm
@@ -120,6 +120,29 @@ def info(id_):
 @app.route("/wardrobe/<sort_str>", methods=['GET', 'POST'])
 @login_required
 def wardrobe(sort_str):
+    form = FilterForm()
+    if form.validate_on_submit():
+        return redirect("/wardrobe/" + (request.form["sort_str"] if "sort_str" in request.form else ""))
+    db_sess = db_session.create_session()
+    results = db_sess.query(Wardrobe).filter((Wardrobe.owner == current_user.id) & (Wardrobe.deleted == 0)).all()
+    data = []
+    for obj in results:
+        if sort_str in db_sess.get(TABLES_CLASSES[db_sess.get(Types, obj.type_).name], obj.id):
+            fields = FIELDS["Wardrobe"]
+            data = {}
+            for i in fields:
+                data[i] = getattr(obj, i)
+            for i in fields:
+                if i in RELATIONS:
+                    data[i] = db_sess.query(TABLES_CLASSES[RELATIONS[i]]).filter(TABLES_CLASSES[RELATIONS[i]].id ==
+                                                                                 data[i]).first()
+    return render_template("wardrobe.html", data=data, title="Гардероб")
+
+
+@app.route("/additional/<type_>/<sort_str>", methods=['GET', 'POST'])
+def additional(type_, sort_str):
+    if not(type_ in NO_PICTURE or SIMPLE):
+        abort(404)
     form = FilterForm()
     if form.validate_on_submit():
         return redirect("/wardrobe/" + (request.form["sort_str"] if "sort_str" in request.form else ""))
