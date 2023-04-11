@@ -187,6 +187,35 @@ def users(sort_str):
     return render_template("users.html", data=data, title="Пользователи")
 
 
+@app.route("/clothes/<type_>/<sort_str>", methods=['GET', 'POST'])
+def clothes(type_, sort_str):
+    if type_ not in ["Boots", "Hats", "Lower_body", "Upper_body"]:
+        abort(404)
+    form = FilterForm()
+    if form.validate_on_submit():
+        return redirect(f"/clothes/{type_}/" + (request.form["sort_str"] if "sort_str" in request.form else ""))
+    table = TABLES_CLASSES[type_]
+    db_sess = db_session.create_session()
+    results = db_sess.query(table).filter((table.deleted == 0) & (table.name.like(f'%{sort_str}%'))).all()
+    data = []
+    for obj in results:
+        fields = FIELDS[type_]
+        del fields[-1]
+        data = {}
+        for i in fields:
+            data[i] = getattr(obj, i)
+            if i in RELATIONS:
+                data[i] = db_sess.query(TABLES_CLASSES[RELATIONS[i]]).filter(TABLES_CLASSES[RELATIONS[i]].id ==
+                                                                             data[i]).first()
+    if type_ == "Boots":
+        return render_template("boots.html", data=data, title="Обувь")
+    elif type_ == "Hats":
+        return render_template("hats.html", data=data, title="Шляпы")
+    elif type_ == "Upper_body":
+        return render_template("upper_body.html", data=data, title="Верхняя одежда")
+    return render_template("lower_body.html", data=data, title="Нижняя одежда")
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginInForm()
