@@ -56,6 +56,12 @@ RELATIONS = {"brim": "Brims", "clasp": "Clasps", "collar": "Collars",
              "season": "Seasons", "size": "Sizes", "sleeves": "Sleeves",
              "length": "Trouser_lengths", "type": "Types", "owner": "User"}
 
+TRANSLATION = {"Boots": "Обувь", "Brims": "Поля", "Clasps": "Методы крепления", "Collars": "Воротники",
+               "Countries": "Страны", "Fabrics": "Ткани", "Fits": "Посадки", "Hats": "Шляпы",
+               "Heels": "Каблуки", "Lapels": "Лацканы", "Lower_body": "Нижняя одежда", "Patterns": "Узоры",
+               "Seasons": "Сезоны", "Sizes": "Размеры", "Sleeves": "Рукава", "Trouser_lengths": "Длины штанов",
+               "Types": "Типы", "Upper_body": "Верхняя одежда", "Wardrobe": "Гардероб", "users": "Пользователи"}
+
 TABLES_CLASSES = {"Boots": Boots, "Brims": Brims, "Clasps": Clasps, "Collars": Collars,
                   "Countries": Countries, "Fabrics": Fabrics, "Fits": Fits, "Hats": Hats,
                   "Heels": Heels, "Lapels": Lapels, "Lower_body": LowerBody, "Patterns": Patterns,
