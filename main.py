@@ -168,7 +168,7 @@ def additional(type_, sort_str):
 
 @login_required
 @app.route("/users/<sort_str>", methods=['GET', 'POST'])
-def additional(sort_str):
+def users(sort_str):
     if current_user.access != 3:
         abort(403)
     form = FilterForm()
