@@ -12,6 +12,7 @@ from werkzeug.security import generate_password_hash
 
 from data.forms.filter_form import FilterForm
 from data.models.additional import Countries, Types
+from data.models.fabrics import Fabrics
 from data.models.user import User
 
 from data.models import db_session
@@ -129,6 +130,7 @@ def wardrobe(sort_str):
     for obj in results:
         if sort_str in db_sess.get(TABLES_CLASSES[db_sess.get(Types, obj.type_).name], obj.id):
             fields = FIELDS["Wardrobe"]
+            del fields[-1]
             data = {}
             for i in fields:
                 data[i] = getattr(obj, i)
@@ -141,7 +143,7 @@ def wardrobe(sort_str):
 
 @app.route("/additional/<type_>/<sort_str>", methods=['GET', 'POST'])
 def additional(type_, sort_str):
-    if not(type_ in NO_PICTURE or SIMPLE):
+    if not(type_ in NO_PICTURE or type_ in SIMPLE or type_ == "Fabrics"):
         abort(404)
     form = FilterForm()
     if form.validate_on_submit():
@@ -152,12 +154,37 @@ def additional(type_, sort_str):
     data = []
     for obj in results:
         fields = FIELDS[type_]
+        del fields[-1]
         data = {}
         for i in fields:
             data[i] = getattr(obj, i)
     if type_ in NO_PICTURE:
         return render_template("no_picture.html", data=data, title=TRANSLATION[type_])
-    return render_template("simple.html", data=data, title=TRANSLATION[type_])
+    elif type_ in SIMPLE:
+        return render_template("simple.html", data=data, title=TRANSLATION[type_])
+    else:
+        return render_template("fabrics.html", data=data, title=TRANSLATION[type_])
+
+
+@login_required
+@app.route("/users/<sort_str>", methods=['GET', 'POST'])
+def additional(sort_str):
+    if current_user.access != 3:
+        abort(403)
+    form = FilterForm()
+    if form.validate_on_submit():
+        return redirect(f"/users/" + (request.form["sort_str"] if "sort_str" in request.form else ""))
+    db_sess = db_session.create_session()
+    results = db_sess.query(User).filter((User.deleted == 0) & (User.name.like(f'%{sort_str}%'))).all()
+    data = []
+    for obj in results:
+        fields = FIELDS["users"]
+        del fields[-1]
+        del fields[2]
+        data = {}
+        for i in fields:
+            data[i] = getattr(obj, i)
+    return render_template("users.html", data=data, title="Пользователи")
 
 
 @app.route('/login', methods=['GET', 'POST'])
