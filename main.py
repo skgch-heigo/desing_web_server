@@ -10,13 +10,15 @@ from flask_restful import abort, Api
 
 from werkzeug.security import generate_password_hash
 
-from data.models.additional import Countries
+from data.forms.filter_form import FilterForm
+from data.models.additional import Countries, Types
 from data.models.user import User
 
 from data.models import db_session
+from data.models.wardrobe import Wardrobe
 from data.resources import collars_resource, brims_resource
 
-from data.constants.tables_inf import TABLES, TABLES_CLASSES, FIELDS
+from data.constants.tables_inf import TABLES, TABLES_CLASSES, FIELDS, RELATIONS
 
 from data.forms.login_in import LoginInForm
 from data.forms.registration_form import RegisterForm
@@ -91,6 +93,10 @@ def element_information(table, id_):
     data = {}
     for i in fields:
         data[i] = getattr(obj, i)
+    for i in fields:
+        if i in RELATIONS:
+            data[i] = db_sess.query(TABLES_CLASSES[RELATIONS[i]]).filter(TABLES_CLASSES[RELATIONS[i]].id ==
+                                                                         data[i]).first()
     if table in ["Upper_body", "Lower_body", "Hats", "Boots"]:
         country = db_sess.query(Countries).filter(Countries.id == obj.origin).first()
         ll_span = finder.get_ll_span(country.name)
@@ -109,6 +115,28 @@ def info(id_):
     if current_user and current_user.id == id_:
         return redirect("/show/users/" + str(id_))
     abort(403)
+
+
+@app.route("/wardrobe/<sort_str>", methods=['GET', 'POST'])
+@login_required
+def wardrobe(sort_str):
+    form = FilterForm()
+    if form.validate_on_submit():
+        return redirect("/wardrobe/" + (request.form["sort_str"] if "sort_str" in request.form else ""))
+    db_sess = db_session.create_session()
+    results = db_sess.query(Wardrobe).filter((Wardrobe.owner == current_user.id) & (Wardrobe.deleted == 0)).all()
+    data = []
+    for obj in results:
+        if sort_str in db_sess.get(TABLES_CLASSES[db_sess.get(Types, obj.type_).name], obj.id):
+            fields = FIELDS["Wardrobe"]
+            data = {}
+            for i in fields:
+                data[i] = getattr(obj, i)
+            for i in fields:
+                if i in RELATIONS:
+                    data[i] = db_sess.query(TABLES_CLASSES[RELATIONS[i]]).filter(TABLES_CLASSES[RELATIONS[i]].id ==
+                                                                                 data[i]).first()
+    return render_template("wardrobe.html", data=data, title="Гардероб")
 
 
 @app.route('/login', methods=['GET', 'POST'])
