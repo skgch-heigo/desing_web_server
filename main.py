@@ -17,7 +17,8 @@ from data.models.user import User
 
 from data.models import db_session
 from data.models.wardrobe import Wardrobe
-from data.resources import collars_resource, brims_resource
+from data.resources import collars_resource, brims_resource, heels_resource, clasps_resource, \
+    lapels_resource, sleeves_resource, patterns_resource, trouser_lengths_resource
 
 from data.constants.tables_inf import TABLES, TABLES_CLASSES, FIELDS, RELATIONS, NO_PICTURE, SIMPLE, TRANSLATION
 
@@ -61,9 +62,21 @@ def main():
     # для списка объектов
     api.add_resource(collars_resource.CollarsListResource, '/api/collars')
     api.add_resource(brims_resource.BrimsListResource, '/api/brims')
+    api.add_resource(clasps_resource.ClaspsListResource, '/api/clasps')
+    api.add_resource(heels_resource.HeelsListResource, '/api/heels')
+    api.add_resource(lapels_resource.LapelsListResource, '/api/lapels')
+    api.add_resource(sleeves_resource.SleevesListResource, '/api/sleeves')
+    api.add_resource(trouser_lengths_resource.TrouserLengthsListResource, '/api/trouserlengths')
+    api.add_resource(patterns_resource.PatternsListResource, '/api/patterns')
     # для одного объекта
     api.add_resource(collars_resource.CollarsResource, '/api/collars/<int:collars_id>')
     api.add_resource(brims_resource.BrimsResource, '/api/brims/<int:brims_id>')
+    api.add_resource(clasps_resource.ClaspsResource, '/api/clasps/<int:clasps_id>')
+    api.add_resource(heels_resource.HeelsResource, '/api/heels/<int:heels_id>')
+    api.add_resource(lapels_resource.LapelsResource, '/api/lapels/<int:lapels_id>')
+    api.add_resource(sleeves_resource.SleevesResource, '/api/sleeves/<int:sleeves_id>')
+    api.add_resource(trouser_lengths_resource.TrouserLengthsResource, '/api/trouserlengths/<int:trouserlengths_id>')
+    api.add_resource(patterns_resource.PatternsResource, '/api/patterns/<int:patterns_id>')
     app.run()
 
 
