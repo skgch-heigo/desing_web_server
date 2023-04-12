@@ -97,8 +97,10 @@ def element_information(table, id_):
     if table not in TABLES:
         abort(404)
     obj = db_sess.query(TABLES_CLASSES[table]).filter(TABLES_CLASSES[table].id == id_).first()
+    if not obj:
+        abort(404)
     if table == "Wardrobe":
-        if not current_user or not obj.owner == current_user.id:
+        if not current_user or not obj.owner == current_user.id and not current_user.access == 3:
             abort(403)
     if table == "users":
         if not current_user or current_user.access != 3:
@@ -227,6 +229,62 @@ def clothes(type_, sort_str):
     elif type_ == "Upper_body":
         return render_template("upper_body.html", data=data, title="Верхняя одежда")
     return render_template("lower_body.html", data=data, title="Нижняя одежда")
+
+
+@app.route("/wardrobe/<int:id_>")
+@login_required
+def wardrobe_del(id_):
+    db_sess = db_session.create_session()
+    obj = db_sess.get(Wardrobe, id_)
+    if not obj:
+        abort(404)
+    if obj.owner != current_user.id and not current_user.access == 3:
+        abort(403)
+    db_sess.delete(obj)
+    db_sess.commit()
+
+
+@app.route("/clothes/<type_>/<int:id_>")
+@login_required
+def clothes_del(type_, id_):
+    db_sess = db_session.create_session()
+    if type_ not in ["Boots", "Hats", "Lower_body", "Upper_body"]:
+        abort(404)
+    obj = db_sess.get(TABLES_CLASSES[type_], id_)
+    if not obj:
+        abort(404)
+    if not current_user.access >= 2:
+        abort(403)
+    db_sess.delete(obj)
+    db_sess.commit()
+
+
+@app.route("/additional/<type_>/<int:id_>")
+@login_required
+def additional_del(type_, id_):
+    db_sess = db_session.create_session()
+    if not(type_ in NO_PICTURE or type_ in SIMPLE or type_ == "Fabrics"):
+        abort(404)
+    obj = db_sess.get(TABLES_CLASSES[type_], id_)
+    if not obj:
+        abort(404)
+    if not current_user.access >= 2:
+        abort(403)
+    db_sess.delete(obj)
+    db_sess.commit()
+
+
+@app.route("/users/<int:id_>")
+@login_required
+def users_del(id_):
+    db_sess = db_session.create_session()
+    obj = db_sess.get(User, id_)
+    if not obj:
+        abort(404)
+    if not current_user.access == 3:
+        abort(403)
+    db_sess.delete(obj)
+    db_sess.commit()
 
 
 @app.route('/login', methods=['GET', 'POST'])
