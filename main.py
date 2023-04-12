@@ -10,7 +10,10 @@ from flask_restful import abort, Api
 
 from werkzeug.security import generate_password_hash
 
+from data.forms.NoPictureForm import NoPictureForm
+from data.forms.fabrics_form import FabricsForm
 from data.forms.filter_form import FilterForm
+from data.forms.simple_table_form import SimpleForm
 from data.models.additional import Countries, Types
 from data.models.fabrics import Fabrics
 from data.models.user import User
@@ -153,7 +156,7 @@ def wardrobe(sort_str):
                 if i in RELATIONS:
                     data[i] = db_sess.query(TABLES_CLASSES[RELATIONS[i]]).filter(TABLES_CLASSES[RELATIONS[i]].id ==
                                                                                  data[i]).first()
-    return render_template("wardrobe.html", data=data, title="Гардероб")
+    return render_template("wardrobe.html", data=data, title="Гардероб", form=form)
 
 
 @app.route("/additional/<type_>/<sort_str>", methods=['GET', 'POST'])
@@ -174,11 +177,11 @@ def additional(type_, sort_str):
         for i in fields:
             data[i] = getattr(obj, i)
     if type_ in NO_PICTURE:
-        return render_template("no_picture.html", data=data, title=TRANSLATION[type_])
+        return render_template("no_picture.html", data=data, title=TRANSLATION[type_], form=form)
     elif type_ in SIMPLE:
-        return render_template("simple.html", data=data, title=TRANSLATION[type_])
+        return render_template("simple.html", data=data, title=TRANSLATION[type_], form=form)
     else:
-        return render_template("fabrics.html", data=data, title=TRANSLATION[type_])
+        return render_template("fabrics.html", data=data, title=TRANSLATION[type_], form=form)
 
 
 @login_required
@@ -199,7 +202,7 @@ def users(sort_str):
         data = {}
         for i in fields:
             data[i] = getattr(obj, i)
-    return render_template("users.html", data=data, title="Пользователи")
+    return render_template("users.html", data=data, title="Пользователи", form=form)
 
 
 @app.route("/clothes/<type_>/<sort_str>", methods=['GET', 'POST'])
@@ -223,12 +226,72 @@ def clothes(type_, sort_str):
                 data[i] = db_sess.query(TABLES_CLASSES[RELATIONS[i]]).filter(TABLES_CLASSES[RELATIONS[i]].id ==
                                                                              data[i]).first()
     if type_ == "Boots":
-        return render_template("boots.html", data=data, title="Обувь")
+        return render_template("boots.html", data=data, title="Обувь", form=form)
     elif type_ == "Hats":
-        return render_template("hats.html", data=data, title="Шляпы")
+        return render_template("hats.html", data=data, title="Шляпы", form=form)
     elif type_ == "Upper_body":
-        return render_template("upper_body.html", data=data, title="Верхняя одежда")
-    return render_template("lower_body.html", data=data, title="Нижняя одежда")
+        return render_template("upper_body.html", data=data, title="Верхняя одежда", form=form)
+    return render_template("lower_body.html", data=data, title="Нижняя одежда", form=form)
+
+
+@app.route("/additional/add/<type_>", methods=['GET', 'POST'])
+@login_required
+def additional_add(type_):
+    if current_user.access < 2:
+        abort(403)
+    db_sess = db_session.create_session()
+    if type_ in SIMPLE:
+        form = SimpleForm()
+        if form.validate_on_submit():
+            obj = TABLES_CLASSES[type_]
+            obj.name = form.name.data
+            if not os.path.exists(os.path.join("static", type_.lower())):
+                os.mkdir(os.path.join("static", type_.lower()))
+            where = "pic_" + obj.name
+            if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + obj.name)):
+                i = 1
+                while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + obj.name + str(i))):
+                    i += 1
+                    where = "/pic_" + obj.name + str(i)
+            with open(where, "wb") as f:
+                f.write(form.picture.data)
+            obj.picture = where
+            db_sess.add(obj)
+            db_sess.commit()
+            return redirect('/additional/' + type_)
+        render_template("simple_add.html", form=form, title="Добавить " + TRANSLATION[type_])
+    elif type_ in NO_PICTURE:
+        form = NoPictureForm()
+        if form.validate_on_submit():
+            obj = TABLES_CLASSES[type_]
+            obj.name = form.name.data
+            db_sess.add(obj)
+            db_sess.commit()
+            return redirect('/additional/' + type_)
+        render_template("no_picture_add.html", form=form, title="Добавить " + TRANSLATION[type_])
+    elif type_ == "Fabrics":
+        form = FabricsForm()
+        if form.validate_on_submit():
+            obj = TABLES_CLASSES[type_]
+            obj.name = form.name.data
+            obj.warmth = form.warmth.data
+            obj.washing = form.washing.data
+            if not os.path.exists(os.path.join("static", type_.lower())):
+                os.mkdir(os.path.join("static", type_.lower()))
+            where = "pic_" + obj.name
+            if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + obj.name)):
+                i = 1
+                while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + obj.name + str(i))):
+                    i += 1
+                    where = "/pic_" + obj.name + str(i)
+            with open(where, "wb") as f:
+                f.write(form.picture.data)
+            obj.picture = where
+            db_sess.add(obj)
+            db_sess.commit()
+            return redirect('/additional/' + type_)
+        render_template("fabrics_add.html", form=form, title="Добавить " + TRANSLATION[type_])
+    abort(404)
 
 
 @app.route("/wardrobe/<int:id_>")

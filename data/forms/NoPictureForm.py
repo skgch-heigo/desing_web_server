@@ -3,9 +3,6 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Email
 from wtforms.validators import DataRequired, EqualTo
 
 
-class FabricsForm(FlaskForm):
+class NoPictureForm(FlaskForm):
     name = StringField("Название")
-    warmth = StringField("Теплота")
-    washing = StringField("Стирка")
-    picture = FileField("Изображение")
     submit = SubmitField('Сохранить')
