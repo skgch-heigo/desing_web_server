@@ -1,14 +1,9 @@
 from flask import abort
-
 from flask import jsonify
-
 from data.models.simple_tables import Brims
 from data.models import db_session
-
 from flask_restful import abort, Resource, reqparse
-parser = reqparse.RequestParser()
-parser.add_argument('name', required=True, type=str)
-parser.add_argument('picture', required=True)
+from .simple_table_parser import parser, parser2
 
 
 def abort_if_brims_not_found(brims_id):
@@ -34,6 +29,18 @@ class BrimsResource(Resource):
         session = db_session.create_session()
         brims = session.query(Brims).get(brims_id)
         session.delete(brims)
+        session.commit()
+        return jsonify({'success': 'OK'})
+
+    def put(self, brims_id):
+        abort_if_brims_not_found(brims_id)
+        args = parser2.parse_args()
+        session = db_session.create_session()
+        brims = session.query(Brims).get(brims_id)
+        if args['name']:
+            brims.name = args['name']
+        if args['picture']:
+            brims.picture = args['picture']
         session.commit()
         return jsonify({'success': 'OK'})
 

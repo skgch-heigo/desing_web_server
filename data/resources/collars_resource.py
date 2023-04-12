@@ -1,14 +1,10 @@
 from flask import abort
-
 from flask import jsonify
-
 from data.models.simple_tables import Collars
 from data.models import db_session
-
 from flask_restful import abort, Resource, reqparse
-parser = reqparse.RequestParser()
-parser.add_argument('name', required=True, type=str)
-parser.add_argument('picture', required=True)
+
+from .simple_table_parser import parser, parser2
 
 
 def abort_if_collars_not_found(collars_id):
@@ -34,6 +30,18 @@ class CollarsResource(Resource):
         session = db_session.create_session()
         collars = session.query(Collars).get(collars_id)
         session.delete(collars)
+        session.commit()
+        return jsonify({'success': 'OK'})
+
+    def put(self, collars_id):
+        abort_if_collars_not_found(collars_id)
+        args = parser2.parse_args()
+        session = db_session.create_session()
+        collars = session.query(Collars).get(collars_id)
+        if args['name']:
+            collars.name = args['name']
+        if args['picture']:
+            collars.picture = args['picture']
         session.commit()
         return jsonify({'success': 'OK'})
 
