@@ -22,7 +22,9 @@ from data.models import db_session
 from data.models.wardrobe import Wardrobe
 from data.resources import collars_resource, brims_resource, heels_resource, clasps_resource, \
     lapels_resource, sleeves_resource, patterns_resource, trouser_lengths_resource, \
-    countries_resource, fits_resource, seasons_resource, sizes_resource, types_resource
+    countries_resource, fits_resource, seasons_resource, sizes_resource, types_resource,\
+    users_resource, \
+    boots_resource, hats_resource, lower_body_resource
 
 from data.constants.tables_inf import TABLES, TABLES_CLASSES, FIELDS, RELATIONS, NO_PICTURE, SIMPLE, TRANSLATION
 
@@ -63,6 +65,7 @@ def main():
     db_session.global_init("db/designer_base.db")
     # app.register_blueprint(users_api.blueprint)
     # app.register_blueprint(jobs_api.blueprint)
+
     # для списка объектов
     api.add_resource(collars_resource.CollarsListResource, '/api/collars')
     api.add_resource(brims_resource.BrimsListResource, '/api/brims')
@@ -72,12 +75,16 @@ def main():
     api.add_resource(sleeves_resource.SleevesListResource, '/api/sleeves')
     api.add_resource(trouser_lengths_resource.TrouserLengthsListResource, '/api/trouserlengths')
     api.add_resource(patterns_resource.PatternsListResource, '/api/patterns')
-
+    api.add_resource(users_resource.UsersListResource, '/api/users')
     api.add_resource(fits_resource.FitsListResource, '/api/fits')
     api.add_resource(seasons_resource.SeasonsListResource, '/api/seasons')
     api.add_resource(countries_resource.CountriesListResource, '/api/countries')
     api.add_resource(sizes_resource.SizesListResource, '/api/sizes')
     api.add_resource(types_resource.TypesListResource, '/api/types')
+    api.add_resource(boots_resource.BootsListResource, '/api/boots')
+    api.add_resource(hats_resource.HatsListResource, '/api/hats')
+    api.add_resource(lower_body_resource.LowerBodyListResource, '/api/lower_body')
+
 
     # для одного объекта
     api.add_resource(collars_resource.CollarsResource, '/api/collars/<int:collars_id>')
@@ -88,12 +95,15 @@ def main():
     api.add_resource(sleeves_resource.SleevesResource, '/api/sleeves/<int:sleeves_id>')
     api.add_resource(trouser_lengths_resource.TrouserLengthsResource, '/api/trouserlengths/<int:trouserlengths_id>')
     api.add_resource(patterns_resource.PatternsResource, '/api/patterns/<int:patterns_id>')
-
+    api.add_resource(users_resource.UsersResource, '/api/users/<int:users_id>')
     api.add_resource(countries_resource.CountriesResource, '/api/countries/<int:countries_id>')
     api.add_resource(fits_resource.FitsResource, '/api/fits/<int:fits_id>')
     api.add_resource(seasons_resource.SeasonsResource, '/api/seasons/<int:seasons_id>')
-    api.add_resource(sizes_resource.SizesResource, '/api/sizes<int:sizes_id>')
-    api.add_resource(types_resource.TypesResource, '/api/types<int:types_id>')
+    api.add_resource(sizes_resource.SizesResource, '/api/sizes/<int:sizes_id>')
+    api.add_resource(types_resource.TypesResource, '/api/types/<int:types_id>')
+    api.add_resource(boots_resource.BootsResource, '/api/boots/<int:boots_id>')
+    api.add_resource(hats_resource.HatsResource, '/api/hats/<int:hats_id>')
+    api.add_resource(lower_body_resource.LowerBodyResource, '/api/lower_body/<int:lower_body_id>')
     app.run()
 
 
