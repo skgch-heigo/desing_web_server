@@ -105,7 +105,7 @@ def index():
     #     jobs = db_sess.query(Jobs).filter((Jobs.user == current_user) | (Jobs.is_finished != True))
     # else:
     #     jobs = db_sess.query(Jobs).filter(Jobs.is_finished != True)
-    return render_template("index.html", title="Designer help")
+    return render_template("index.html", title="Designer help", music=url_for("static", filename="music/ragtime.mp3"))
 
 
 @app.route("/show/<table>/<int:id_>")
@@ -130,6 +130,8 @@ def element_information(table, id_):
         if i in RELATIONS:
             data[i] = db_sess.query(TABLES_CLASSES[RELATIONS[i]]).filter(TABLES_CLASSES[RELATIONS[i]].id ==
                                                                          data[i]).first()
+    if "picture" in fields:
+        data["picture"] = url_for('static', filename=f'img/{obj.picture}')
     if table in ["Upper_body", "Lower_body", "Hats", "Boots"]:
         country = db_sess.query(Countries).filter(Countries.id == obj.origin).first()
         ll_span = finder.get_ll_span(country.name)
@@ -138,7 +140,7 @@ def element_information(table, id_):
         random_int = random.randint(0, 1000000)
         with open(f"temp/pictures/map_picture{random_int}.png", "wb") as f:
             f.write(map_pic)
-        data["map"] = url_for('temp', filename='pictures/map_picture{random_int}.png')
+        data["map"] = url_for('temp', filename=f'pictures/map_picture{random_int}.png')
     return render_template("elem_information", title="Информация", data=data)
 
 
@@ -257,7 +259,7 @@ def additional_add(type_):
     if type_ in SIMPLE:
         form = SimpleForm()
         if form.validate_on_submit():
-            obj = TABLES_CLASSES[type_]
+            obj = TABLES_CLASSES[type_]()
             obj.name = form.name.data
             if not os.path.exists(os.path.join("static", type_.lower())):
                 os.mkdir(os.path.join("static", type_.lower()))
@@ -277,7 +279,7 @@ def additional_add(type_):
     elif type_ in NO_PICTURE:
         form = NoPictureForm()
         if form.validate_on_submit():
-            obj = TABLES_CLASSES[type_]
+            obj = TABLES_CLASSES[type_]()
             obj.name = form.name.data
             db_sess.add(obj)
             db_sess.commit()
@@ -286,7 +288,7 @@ def additional_add(type_):
     elif type_ == "Fabrics":
         form = FabricsForm()
         if form.validate_on_submit():
-            obj = TABLES_CLASSES[type_]
+            obj = TABLES_CLASSES[type_]()
             obj.name = form.name.data
             obj.warmth = form.warmth.data
             obj.washing = form.washing.data
@@ -305,6 +307,67 @@ def additional_add(type_):
             db_sess.commit()
             return redirect('/additional/' + type_)
         render_template("fabrics_add.html", form=form, title="Добавить " + TRANSLATION[type_])
+    abort(404)
+
+
+@app.route("/additional/edit/<type_>/<int:id_>", methods=['GET', 'POST'])
+@login_required
+def additional_edit(type_, id_):
+    if current_user.access < 2:
+        abort(403)
+    db_sess = db_session.create_session()
+    old_obj = db_sess.get(TABLES_CLASSES[type_], id_)
+    if not old_obj:
+        abort(404)
+    if type_ in SIMPLE:
+        form = SimpleForm()
+        if form.validate_on_submit():
+            old_obj.name = form.name.data
+            if os.path.exists("static/img/" + old_obj.picture):
+                os.remove("static/img/" + old_obj.picture)
+            if not os.path.exists(os.path.join("static", type_.lower())):
+                os.mkdir(os.path.join("static", type_.lower()))
+            where = "pic_" + old_obj.name
+            if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + old_obj.name)):
+                i = 1
+                while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + old_obj.name + str(i))):
+                    i += 1
+                    where = "/pic_" + old_obj.name + str(i)
+            with open(where, "wb") as f:
+                f.write(form.picture.data)
+            old_obj.picture = type_.lower() + where
+            db_sess.commit()
+            return redirect('/additional/' + type_)
+        render_template("simple_add.html", form=form, title="Добавить " + TRANSLATION[type_], old_oj=old_obj)
+    elif type_ in NO_PICTURE:
+        form = NoPictureForm()
+        if form.validate_on_submit():
+            old_obj.name = form.name.data
+            db_sess.commit()
+            return redirect('/additional/' + type_)
+        render_template("no_picture_add.html", form=form, title="Добавить " + TRANSLATION[type_], old_oj=old_obj)
+    elif type_ == "Fabrics":
+        form = FabricsForm()
+        if form.validate_on_submit():
+            old_obj.name = form.name.data
+            old_obj.warmth = form.warmth.data
+            old_obj.washing = form.washing.data
+            if os.path.exists("static/img/" + old_obj.picture):
+                os.remove("static/img/" + old_obj.picture)
+            if not os.path.exists(os.path.join("static", type_.lower())):
+                os.mkdir(os.path.join("static", type_.lower()))
+            where = "pic_" + old_obj.name
+            if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + old_obj.name)):
+                i = 1
+                while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + old_obj.name + str(i))):
+                    i += 1
+                    where = "/pic_" + old_obj.name + str(i)
+            with open(where, "wb") as f:
+                f.write(form.picture.data)
+            old_obj.picture = type_.lower() + where
+            db_sess.commit()
+            return redirect('/additional/' + type_)
+        render_template("fabrics_add.html", form=form, title="Добавить " + TRANSLATION[type_], old_oj=old_obj)
     abort(404)
 
 
