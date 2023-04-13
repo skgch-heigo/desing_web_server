@@ -11,15 +11,15 @@ from flask_restful import abort, Api
 from werkzeug.security import generate_password_hash
 
 from data.forms.NoPictureForm import NoPictureForm
-from data.forms.clothes_forms import HatsForm, BootsForm, LowerBodyForm
+from data.forms.clothes_forms import HatsForm, BootsForm, LowerBodyForm, UpperBodyForm
 from data.forms.fabrics_form import FabricsForm
 from data.forms.filter_form import FilterForm
 from data.forms.simple_table_form import SimpleForm
 from data.forms.wardrobe_form import WardrobeForm
 from data.models.additional import Countries, Types, Sizes, Seasons, Fits
 from data.models.fabrics import Fabrics
-from data.models.main_tables import Hats, Boots, LowerBody
-from data.models.simple_tables import Patterns, Brims, Heels, Clasps, TrouserLengths
+from data.models.main_tables import Hats, Boots, LowerBody, UpperBody
+from data.models.simple_tables import Patterns, Brims, Heels, Clasps, TrouserLengths, Sleeves, Collars, Lapels
 from data.models.user import User
 
 from data.models import db_session
@@ -466,6 +466,8 @@ def hats_add():
         abort(403)
     db_sess = db_session.create_session()
     form = HatsForm()
+    seasons_opt = db_sess.query(Seasons).filter(Seasons.deleted == 0).all()
+    origin_opt = db_sess.query(Countries).filter(Countries.deleted == 0).all()
     brims_opt = db_sess.query(Brims).filter(Brims.deleted == 0).all()
     if form.validate_on_submit():
         obj = Hats()
@@ -492,7 +494,8 @@ def hats_add():
         db_sess.add(obj)
         db_sess.commit()
         return redirect('/clothes/hats/')
-    render_template("hats_add.html", form=form, title="Добавить Шляпы", brims=brims_opt)
+    render_template("hats_add.html", form=form, title="Добавить Шляпы", brims=brims_opt,
+                    origins=origin_opt, seasons=seasons_opt)
 
 
 @app.route("/clothes/Hats/edit/<int:id_>", methods=['GET', 'POST'])
@@ -505,6 +508,8 @@ def hats_edit(id_):
     if not old_obj:
         abort(404)
     form = HatsForm()
+    seasons_opt = db_sess.query(Seasons).filter(Seasons.deleted == 0).all()
+    origin_opt = db_sess.query(Countries).filter(Countries.deleted == 0).all()
     brims_opt = db_sess.query(Brims).filter(Brims.deleted == 0).all()
     if form.validate_on_submit():
         old_obj.name = form.name.data
@@ -532,7 +537,8 @@ def hats_edit(id_):
         old_obj.picture = "hats" + where
         db_sess.commit()
         return redirect('/clothes/hats/')
-    render_template("hats_edit.html", form=form, title="Изменить Шляпы", brims=brims_opt, old_obj=old_obj)
+    render_template("hats_edit.html", form=form, title="Изменить Шляпы", brims=brims_opt, old_obj=old_obj,
+                    origins=origin_opt, seasons=seasons_opt)
 
 
 @app.route("/clothes/Boots/add", methods=['GET', 'POST'])
@@ -542,6 +548,8 @@ def boots_add():
         abort(403)
     db_sess = db_session.create_session()
     form = BootsForm()
+    seasons_opt = db_sess.query(Seasons).filter(Seasons.deleted == 0).all()
+    origin_opt = db_sess.query(Countries).filter(Countries.deleted == 0).all()
     heel_opt = db_sess.query(Heels).filter(Heels.deleted == 0).all()
     clasp_opt = db_sess.query(Clasps).filter(Clasps.deleted == 0).all()
     if form.validate_on_submit():
@@ -570,7 +578,8 @@ def boots_add():
         db_sess.add(obj)
         db_sess.commit()
         return redirect('/clothes/boots/')
-    render_template("boots_add.html", form=form, title="Добавить Обувь", heels=heel_opt, clasps=clasp_opt)
+    render_template("boots_add.html", form=form, title="Добавить Обувь", heels=heel_opt, clasps=clasp_opt,
+                    origins=origin_opt, seasons=seasons_opt)
 
 
 @app.route("/clothes/Boots/edit/<int:id_>", methods=['GET', 'POST'])
@@ -583,6 +592,8 @@ def boots_edit(id_):
     if not old_obj:
         abort(404)
     form = BootsForm()
+    seasons_opt = db_sess.query(Seasons).filter(Seasons.deleted == 0).all()
+    origin_opt = db_sess.query(Countries).filter(Countries.deleted == 0).all()
     heel_opt = db_sess.query(Heels).filter(Heels.deleted == 0).all()
     clasp_opt = db_sess.query(Clasps).filter(Clasps.deleted == 0).all()
     if form.validate_on_submit():
@@ -613,7 +624,7 @@ def boots_edit(id_):
         db_sess.commit()
         return redirect('/clothes/boots/')
     render_template("boots_edit.html", form=form, title="Изменить Обувь", heels=heel_opt,
-                    clasps=clasp_opt, old_obj=old_obj)
+                    clasps=clasp_opt, old_obj=old_obj, origins=origin_opt, seasons=seasons_opt)
 
 
 @app.route("/clothes/Lower_body/add", methods=['GET', 'POST'])
@@ -623,6 +634,8 @@ def lower_body_add():
         abort(403)
     db_sess = db_session.create_session()
     form = LowerBodyForm()
+    seasons_opt = db_sess.query(Seasons).filter(Seasons.deleted == 0).all()
+    origin_opt = db_sess.query(Countries).filter(Countries.deleted == 0).all()
     clasp_opt = db_sess.query(Clasps).filter(Clasps.deleted == 0).all()
     fit_opt = db_sess.query(Fits).filter(Fits.deleted == 0).all()
     length_opt = db_sess.query(TrouserLengths).filter(TrouserLengths.deleted == 0).all()
@@ -655,7 +668,7 @@ def lower_body_add():
         db_sess.commit()
         return redirect('/clothes/lower_body/')
     render_template("lower_body_add.html", form=form, title="Добавить Нижнюю Одежду", clasps=clasp_opt,
-                    fits=fit_opt, lengths=length_opt)
+                    fits=fit_opt, lengths=length_opt, origins=origin_opt, seasons=seasons_opt)
 
 
 @app.route("/clothes/Lower_body/edit/<int:id_>", methods=['GET', 'POST'])
@@ -668,6 +681,8 @@ def lower_body_edit(id_):
     if not old_obj:
         abort(404)
     form = LowerBodyForm()
+    seasons_opt = db_sess.query(Seasons).filter(Seasons.deleted == 0).all()
+    origin_opt = db_sess.query(Countries).filter(Countries.deleted == 0).all()
     clasp_opt = db_sess.query(Clasps).filter(Clasps.deleted == 0).all()
     fit_opt = db_sess.query(Fits).filter(Fits.deleted == 0).all()
     length_opt = db_sess.query(TrouserLengths).filter(TrouserLengths.deleted == 0).all()
@@ -683,7 +698,7 @@ def lower_body_edit(id_):
                                                          Countries.deleted == 0).first().id
         old_obj.clasp = db_sess.query(Clasps).filter(Clasps.name == form.clasp.data, Clasps.deleted == 0).first().id
         old_obj.length = db_sess.query(TrouserLengths).filter(TrouserLengths.name == form.lengh.data,
-                                                             TrouserLengths.deleted == 0).first().id
+                                                              TrouserLengths.deleted == 0).first().id
         old_obj.fit = db_sess.query(Fits).filter(Fits.name == form.fit.data, Fits.deleted == 0).first().id
         if os.path.exists("static/img/" + old_obj.picture):
             os.remove("static/img/" + old_obj.picture)
@@ -701,7 +716,111 @@ def lower_body_edit(id_):
         db_sess.commit()
         return redirect('/clothes/lower_body/')
     render_template("lower_body_edit.html", form=form, title="Изменить Нижнюю Одежду", clasps=clasp_opt,
-                    fits=fit_opt, lengths=length_opt, old_obj=old_obj)
+                    fits=fit_opt, lengths=length_opt, old_obj=old_obj, origins=origin_opt, seasons=seasons_opt)
+
+
+@app.route("/clothes/Upper_body/add", methods=['GET', 'POST'])
+@login_required
+def upper_body_add():
+    if current_user.access < 2:
+        abort(403)
+    db_sess = db_session.create_session()
+    form = UpperBodyForm()
+    seasons_opt = db_sess.query(Seasons).filter(Seasons.deleted == 0).all()
+    origin_opt = db_sess.query(Countries).filter(Countries.deleted == 0).all()
+    clasp_opt = db_sess.query(Clasps).filter(Clasps.deleted == 0).all()
+    sleeves_opt = db_sess.query(Sleeves).filter(Sleeves.deleted == 0).all()
+    collar_opt = db_sess.query(Collars).filter(Collars.deleted == 0).all()
+    lapel_opt = db_sess.query(Lapels).filter(Lapels.deleted == 0).all()
+    if form.validate_on_submit():
+        obj = UpperBody()
+        obj.name = form.name.data
+        obj.appearance_year = int(form.appearance_year.data)
+        obj.popularity_start = int(form.popularity_start.data)
+        obj.popularity_end = int(form.popularity_end.data)
+        obj.features = form.features.data
+        obj.season = db_sess.query(Seasons).filter(Seasons.name == form.season.data, Seasons.deleted == 0).first().id
+        obj.origin = db_sess.query(Countries).filter(Countries.name == form.origin.data,
+                                                     Countries.deleted == 0).first().id
+        obj.clasp = db_sess.query(Clasps).filter(Clasps.name == form.clasp.data, Clasps.deleted == 0).first().id
+        obj.sleeves = db_sess.query(Sleeves).filter(Sleeves.name == form.sleeves.data, Sleeves.deleted == 0).first().id
+        obj.collar = db_sess.query(Collars).filter(Collars.name == form.collar.data, Collars.deleted == 0).first().id
+        obj.lapels = db_sess.query(Lapels).filter(Lapels.name == form.lapels.data, Lapels.deleted == 0).first().id
+        obj.hood = int(form.hood.data)
+        obj.fitted = int(form.fitted.data)
+        obj.pockets = int(form.pockets.data)
+        if not os.path.exists(os.path.join("static", "upper_body")):
+            os.mkdir(os.path.join("static", "upper_body"))
+        where = "pic_" + obj.name
+        if os.path.exists(os.path.join("static/img", "upper_body" + "/pic_" + obj.name)):
+            i = 1
+            while os.path.exists(os.path.join("static/img", "upper_body" + "/pic_" + obj.name + str(i))):
+                i += 1
+                where = "/pic_" + obj.name + str(i)
+        with open(where, "wb") as f:
+            f.write(form.picture.data)
+        obj.picture = "upper_body" + where
+        db_sess.add(obj)
+        db_sess.commit()
+        return redirect('/clothes/upper_body/')
+    render_template("upper_body_add.html", form=form, title="Добавить Верхнюю Одежду", clasps=clasp_opt,
+                    origins=origin_opt, seasons=seasons_opt, sleeves=sleeves_opt,
+                    collars=collar_opt, lapels=lapel_opt)
+
+
+@app.route("/clothes/Upper_body/edit/<int:id_>", methods=['GET', 'POST'])
+@login_required
+def upper_body_edit(id_):
+    db_sess = db_session.create_session()
+    if current_user.access < 2:
+        abort(403)
+    old_obj = db_sess.get(UpperBody, id_)
+    if not old_obj:
+        abort(404)
+    form = UpperBodyForm()
+    seasons_opt = db_sess.query(Seasons).filter(Seasons.deleted == 0).all()
+    origin_opt = db_sess.query(Countries).filter(Countries.deleted == 0).all()
+    clasp_opt = db_sess.query(Clasps).filter(Clasps.deleted == 0).all()
+    sleeves_opt = db_sess.query(Sleeves).filter(Sleeves.deleted == 0).all()
+    collar_opt = db_sess.query(Collars).filter(Collars.deleted == 0).all()
+    lapel_opt = db_sess.query(Lapels).filter(Lapels.deleted == 0).all()
+    if form.validate_on_submit():
+        old_obj.name = form.name.data
+        old_obj.appearance_year = int(form.appearance_year.data)
+        old_obj.popularity_start = int(form.popularity_start.data)
+        old_obj.popularity_end = int(form.popularity_end.data)
+        old_obj.features = form.features.data
+        old_obj.season = db_sess.query(Seasons).filter(Seasons.name == form.season.data,
+                                                       Seasons.deleted == 0).first().id
+        old_obj.origin = db_sess.query(Countries).filter(Countries.name == form.origin.data,
+                                                         Countries.deleted == 0).first().id
+        old_obj.clasp = db_sess.query(Clasps).filter(Clasps.name == form.clasp.data, Clasps.deleted == 0).first().id
+        old_obj.sleeves = db_sess.query(Sleeves).filter(Sleeves.name == form.sleeves.data,
+                                                        Sleeves.deleted == 0).first().id
+        old_obj.collar = db_sess.query(Collars).filter(Collars.name == form.collar.data,
+                                                       Collars.deleted == 0).first().id
+        old_obj.lapels = db_sess.query(Lapels).filter(Lapels.name == form.lapels.data, Lapels.deleted == 0).first().id
+        old_obj.hood = int(form.hood.data)
+        old_obj.fitted = int(form.fitted.data)
+        old_obj.pockets = int(form.pockets.data)
+        if os.path.exists("static/img/" + old_obj.picture):
+            os.remove("static/img/" + old_obj.picture)
+        if not os.path.exists(os.path.join("static", "upper_body")):
+            os.mkdir(os.path.join("static", "upper_body"))
+        where = "pic_" + old_obj.name
+        if os.path.exists(os.path.join("static/img", "upper_body" + "/pic_" + old_obj.name)):
+            i = 1
+            while os.path.exists(os.path.join("static/img", "upper_body" + "/pic_" + old_obj.name + str(i))):
+                i += 1
+                where = "/pic_" + old_obj.name + str(i)
+        with open(where, "wb") as f:
+            f.write(form.picture.data)
+        old_obj.picture = "upper_body" + where
+        db_sess.commit()
+        return redirect('/clothes/upper_body/')
+    render_template("upper_body_edit.html", form=form, title="Изменить Верхнюю Одежду", clasps=clasp_opt,
+                    origins=origin_opt, seasons=seasons_opt, sleeves=sleeves_opt,
+                    collars=collar_opt, lapels=lapel_opt, old_obj=old_obj)
 
 
 @app.route("/wardrobe/<int:id_>")
