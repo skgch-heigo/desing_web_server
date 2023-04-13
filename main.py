@@ -11,11 +11,15 @@ from flask_restful import abort, Api
 from werkzeug.security import generate_password_hash
 
 from data.forms.NoPictureForm import NoPictureForm
+from data.forms.clothes_forms import HatsForm
 from data.forms.fabrics_form import FabricsForm
 from data.forms.filter_form import FilterForm
 from data.forms.simple_table_form import SimpleForm
-from data.models.additional import Countries, Types
+from data.forms.wardrobe_form import WardrobeForm
+from data.models.additional import Countries, Types, Sizes, Seasons
 from data.models.fabrics import Fabrics
+from data.models.main_tables import Hats
+from data.models.simple_tables import Patterns, Brims
 from data.models.user import User
 
 from data.models import db_session
@@ -30,7 +34,6 @@ from data.forms.login_in import LoginInForm
 from data.forms.registration_form import RegisterForm
 
 from data.maps import finder
-
 
 app = Flask(__name__)
 api = Api(app)
@@ -177,7 +180,7 @@ def wardrobe(sort_str):
 
 @app.route("/additional/<type_>/<sort_str>", methods=['GET', 'POST'])
 def additional(type_, sort_str):
-    if not(type_ in NO_PICTURE or type_ in SIMPLE or type_ == "Fabrics"):
+    if not (type_ in NO_PICTURE or type_ in SIMPLE or type_ == "Fabrics"):
         abort(404)
     form = FilterForm()
     if form.validate_on_submit():
@@ -271,7 +274,7 @@ def additional_add(type_):
                     where = "/pic_" + obj.name + str(i)
             with open(where, "wb") as f:
                 f.write(form.picture.data)
-            obj.picture = where
+            obj.picture = type_.lower() + where
             db_sess.add(obj)
             db_sess.commit()
             return redirect('/additional/' + type_)
@@ -302,7 +305,7 @@ def additional_add(type_):
                     where = "/pic_" + obj.name + str(i)
             with open(where, "wb") as f:
                 f.write(form.picture.data)
-            obj.picture = where
+            obj.picture = type_.lower() + where
             db_sess.add(obj)
             db_sess.commit()
             return redirect('/additional/' + type_)
@@ -338,14 +341,14 @@ def additional_edit(type_, id_):
             old_obj.picture = type_.lower() + where
             db_sess.commit()
             return redirect('/additional/' + type_)
-        render_template("simple_add.html", form=form, title="Добавить " + TRANSLATION[type_], old_oj=old_obj)
+        render_template("simple_edit.html", form=form, title="Изменить " + TRANSLATION[type_], old_oj=old_obj)
     elif type_ in NO_PICTURE:
         form = NoPictureForm()
         if form.validate_on_submit():
             old_obj.name = form.name.data
             db_sess.commit()
             return redirect('/additional/' + type_)
-        render_template("no_picture_add.html", form=form, title="Добавить " + TRANSLATION[type_], old_oj=old_obj)
+        render_template("no_picture_edit.html", form=form, title="Изменить " + TRANSLATION[type_], old_oj=old_obj)
     elif type_ == "Fabrics":
         form = FabricsForm()
         if form.validate_on_submit():
@@ -367,8 +370,118 @@ def additional_edit(type_, id_):
             old_obj.picture = type_.lower() + where
             db_sess.commit()
             return redirect('/additional/' + type_)
-        render_template("fabrics_add.html", form=form, title="Добавить " + TRANSLATION[type_], old_oj=old_obj)
+        render_template("fabrics_edit.html", form=form, title="Изменить " + TRANSLATION[type_], old_oj=old_obj)
     abort(404)
+
+
+@app.route("/wardrobe/add/<type_>", methods=['GET', 'POST'])
+@login_required
+def wardrobe_add(type_):
+    if type_ not in TABLES:
+        abort(404)
+    table = TABLES_CLASSES[type_]
+    if current_user.access < 2:
+        abort(403)
+    db_sess = db_session.create_session()
+    form = WardrobeForm()
+    if form.validate_on_submit():
+        obj = Wardrobe()
+        obj.type_ = type_
+        obj.name = db_sess.query(table).filter(table.name == form.name.data, table.deleted == 0).first().id
+        obj.color = form.color.data
+        obj.size = db_sess.query(Sizes).filter(Sizes.name == form.size.data, Sizes.deleted == 0).first().id
+        obj.fabric = db_sess.query(Fabrics).filter(Fabrics.name == form.fabric.data,
+                                                   Fabrics.deleted == 0).first().id
+        obj.pattern = db_sess.query(Patterns).filter(Patterns.name == form.pattern.data,
+                                                     Patterns.deleted == 0).first().id
+        if not os.path.exists(os.path.join("static", "wardrobe")):
+            os.mkdir(os.path.join("static", "wardrobe"))
+        where = "pic_" + obj.name
+        if os.path.exists(os.path.join("static/img", "wardrobe" + "/pic_" + obj.name)):
+            i = 1
+            while os.path.exists(os.path.join("static/img", "wardrobe" + "/pic_" + obj.name + str(i))):
+                i += 1
+                where = "/pic_" + obj.name + str(i)
+        with open(where, "wb") as f:
+            f.write(form.picture.data)
+        obj.picture = "wardrobe" + where
+        db_sess.add(obj)
+        db_sess.commit()
+        return redirect('/wardrobe/')
+    render_template("wardrobe_add.html", form=form, title="Добавить в гардероб")
+
+
+@app.route("/wardrobe/edit/<int:id_>", methods=['GET', 'POST'])
+@login_required
+def wardrobe_edit(id_):
+    db_sess = db_session.create_session()
+    old_obj = db_sess.get(Wardrobe, id_)
+    if not old_obj:
+        abort(404)
+    if current_user.access < 2:
+        abort(403)
+    form = WardrobeForm()
+    if form.validate_on_submit():
+        table = TABLES_CLASSES[db_sess.get(Types, old_obj.type).name]
+        old_obj.name = db_sess.query(table).filter(table.name == form.name.data, table.deleted == 0).first().id
+        old_obj.color = form.color.data
+        old_obj.size = db_sess.query(Sizes).filter(Sizes.name == form.size.data, Sizes.deleted == 0).first().id
+        old_obj.fabric = db_sess.query(Fabrics).filter(Fabrics.name == form.fabric.data,
+                                                       Fabrics.deleted == 0).first().id
+        old_obj.pattern = db_sess.query(Patterns).filter(Patterns.name == form.pattern.data,
+                                                         Patterns.deleted == 0).first().id
+        if os.path.exists("static/img/" + old_obj.picture):
+            os.remove("static/img/" + old_obj.picture)
+        if not os.path.exists(os.path.join("static", "wardrobe")):
+            os.mkdir(os.path.join("static", "wardrobe"))
+        where = "pic_" + old_obj.name
+        if os.path.exists(os.path.join("static/img", "wardrobe" + "/pic_" + old_obj.name)):
+            i = 1
+            while os.path.exists(os.path.join("static/img", "wardrobe" + "/pic_" + old_obj.name + str(i))):
+                i += 1
+                where = "/pic_" + old_obj.name + str(i)
+        with open(where, "wb") as f:
+            f.write(form.picture.data)
+        old_obj.picture = "wardrobe" + where
+        db_sess.commit()
+        return redirect('/wardrobe/')
+    render_template("wardrobe_edit.html", form=form, title="Изменить в гардеробе", old_obj=old_obj)
+
+
+@app.route("/clothes/add", methods=['GET', 'POST'])
+@login_required
+def hats_add():
+    if current_user.access < 2:
+        abort(403)
+    db_sess = db_session.create_session()
+    form = HatsForm()
+    brims_opt = db_sess.query(Brims).filter(Brims.deleted == 0).all()
+    if form.validate_on_submit():
+        obj = Hats()
+        obj.name = form.name.data
+        obj.appearance_year = int(form.appearance_year.data)
+        obj.popularity_start = int(form.popularity_start.data)
+        obj.popularity_end = int(form.popularity_end.data)
+        obj.features = form.features.data
+        obj.season = db_sess.query(Seasons).filter(Seasons.name == form.season.data, Seasons.deleted == 0).first().id
+        obj.origin = db_sess.query(Countries).filter(Countries.name == form.origin.data,
+                                                     Countries.deleted == 0).first().id
+        obj.brim = db_sess.query(Brims).filter(Brims.name == form.brim.data, Brims.deleted == 0).first().id
+        if not os.path.exists(os.path.join("static", "hats")):
+            os.mkdir(os.path.join("static", "hats"))
+        where = "pic_" + obj.name
+        if os.path.exists(os.path.join("static/img", "hats" + "/pic_" + obj.name)):
+            i = 1
+            while os.path.exists(os.path.join("static/img", "hats" + "/pic_" + obj.name + str(i))):
+                i += 1
+                where = "/pic_" + obj.name + str(i)
+        with open(where, "wb") as f:
+            f.write(form.picture.data)
+        obj.picture = "hats" + where
+        db_sess.add(obj)
+        db_sess.commit()
+        return redirect('/clothes/hats/')
+    render_template("hats_add.html", form=form, title="Добавить Шляпы", brims=brims_opt)
 
 
 @app.route("/wardrobe/<int:id_>")
@@ -403,7 +516,7 @@ def clothes_del(type_, id_):
 @login_required
 def additional_del(type_, id_):
     db_sess = db_session.create_session()
-    if not(type_ in NO_PICTURE or type_ in SIMPLE or type_ == "Fabrics"):
+    if not (type_ in NO_PICTURE or type_ in SIMPLE or type_ == "Fabrics"):
         abort(404)
     obj = db_sess.get(TABLES_CLASSES[type_], id_)
     if not obj:
