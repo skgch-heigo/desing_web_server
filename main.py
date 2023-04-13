@@ -21,7 +21,8 @@ from data.models.user import User
 from data.models import db_session
 from data.models.wardrobe import Wardrobe
 from data.resources import collars_resource, brims_resource, heels_resource, clasps_resource, \
-    lapels_resource, sleeves_resource, patterns_resource, trouser_lengths_resource
+    lapels_resource, sleeves_resource, patterns_resource, trouser_lengths_resource, \
+    countries_resource, fits_resource, seasons_resource, sizes_resource, types_resource
 
 from data.constants.tables_inf import TABLES, TABLES_CLASSES, FIELDS, RELATIONS, NO_PICTURE, SIMPLE, TRANSLATION
 
@@ -71,6 +72,13 @@ def main():
     api.add_resource(sleeves_resource.SleevesListResource, '/api/sleeves')
     api.add_resource(trouser_lengths_resource.TrouserLengthsListResource, '/api/trouserlengths')
     api.add_resource(patterns_resource.PatternsListResource, '/api/patterns')
+
+    api.add_resource(fits_resource.FitsListResource, '/api/fits')
+    api.add_resource(seasons_resource.SeasonsListResource, '/api/seasons')
+    api.add_resource(countries_resource.CountriesListResource, '/api/countries')
+    api.add_resource(sizes_resource.SizesListResource, '/api/sizes')
+    api.add_resource(types_resource.TypesListResource, '/api/types')
+
     # для одного объекта
     api.add_resource(collars_resource.CollarsResource, '/api/collars/<int:collars_id>')
     api.add_resource(brims_resource.BrimsResource, '/api/brims/<int:brims_id>')
@@ -80,6 +88,12 @@ def main():
     api.add_resource(sleeves_resource.SleevesResource, '/api/sleeves/<int:sleeves_id>')
     api.add_resource(trouser_lengths_resource.TrouserLengthsResource, '/api/trouserlengths/<int:trouserlengths_id>')
     api.add_resource(patterns_resource.PatternsResource, '/api/patterns/<int:patterns_id>')
+
+    api.add_resource(countries_resource.CountriesResource, '/api/countries/<int:countries_id>')
+    api.add_resource(fits_resource.FitsResource, '/api/fits/<int:fits_id>')
+    api.add_resource(seasons_resource.SeasonsResource, '/api/seasons/<int:seasons_id>')
+    api.add_resource(sizes_resource.SizesResource, '/api/sizes<int:sizes_id>')
+    api.add_resource(types_resource.TypesResource, '/api/types<int:types_id>')
     app.run()
 
 

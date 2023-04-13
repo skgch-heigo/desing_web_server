@@ -8,3 +8,6 @@ from requests import get, post, delete, put
 #            json={'id': 1,
 #                  'name': 'long',
 #                  'picture': 'Текст'}).json())
+# print(post('http://localhost:5000/api/countries',
+#            json={'id': 8,
+#                  'name': 'Turkey'}).json())
