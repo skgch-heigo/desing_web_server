@@ -6,7 +6,7 @@
     {{ form.hidden_tag() }}
     <p>
         {{ form.name.label }}<br>
-        {{ form.name(class="btn btn-primary dropdown-toggle") }}<br>
+        {{ form.name(class="form-control") }}<br>
         {% for error in form.name.errors %}
     <div class="alert alert-danger" role="alert">
         {{ error }}
