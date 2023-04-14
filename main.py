@@ -381,7 +381,9 @@ def additional_edit(type_, id_):
                 old_obj.picture = type_.lower() + "/" + where
             db_sess.commit()
             return redirect('/additional/' + type_)
-        render_template("simple_edit.html", form=form, title="Изменить " + TRANSLATION[type_], old=old)
+        form.name.default = old["name"]
+        form.process()
+        render_template("simple_add.html", form=form, title="Изменить " + TRANSLATION[type_], old=old)
     elif type_ in NO_PICTURE:
         old = {"name": old_obj.name}
         form = NoPictureForm()
@@ -389,7 +391,9 @@ def additional_edit(type_, id_):
             old_obj.name = form.name.data
             db_sess.commit()
             return redirect('/additional/' + type_)
-        render_template("no_picture_edit.html", form=form, title="Изменить " + TRANSLATION[type_], old=old)
+        form.name.default = old["name"]
+        form.process()
+        render_template("no_picture_add.html", form=form, title="Изменить " + TRANSLATION[type_], old=old)
     elif type_ == "Fabrics":
         old = {"name": old_obj.name, "warmth": old_obj.warmth, "washing": old_obj.washing}
         form = FabricsForm()
@@ -414,7 +418,11 @@ def additional_edit(type_, id_):
                 old_obj.picture = type_.lower() + "/" + where
             db_sess.commit()
             return redirect('/additional/' + type_)
-        return render_template("fabrics_edit.html", form=form, title="Изменить " + TRANSLATION[type_], old=old)
+        form.name.default = old["name"]
+        form.warmth.default = old["warmth"]
+        form.washing.default = old["washing"]
+        form.process()
+        return render_template("fabrics_add.html", form=form, title="Изменить " + TRANSLATION[type_], old=old)
     abort(404)
 
 
@@ -750,7 +758,7 @@ def boots_edit(id_):
     form.heel.default = old["heel"]
     form.clasp.default = old["clasp"]
     form.process()
-    return render_template("boots_edit.html", form=form, title="Изменить Обувь", old=old)
+    return render_template("boots_add.html", form=form, title="Изменить Обувь", old=old)
 
 
 @app.route("/clothes/Lower_body/add", methods=['GET', 'POST'])
@@ -878,7 +886,7 @@ def lower_body_edit(id_):
     form.length.default = old["length"]
     form.clasp.default = old["clasp"]
     form.process()
-    return render_template("lower_body_edit.html", form=form, title="Изменить Нижнюю Одежду", old=old)
+    return render_template("lower_body_add.html", form=form, title="Изменить Нижнюю Одежду", old=old)
 
 
 @app.route("/clothes/Upper_body/add", methods=['GET', 'POST'])
@@ -1023,7 +1031,7 @@ def upper_body_edit(id_):
     form.hood.default = old["hood"]
     form.clasp.default = old["clasp"]
     form.process()
-    return render_template("upper_body_edit.html", form=form, title="Изменить Верхнюю Одежду", old=old)
+    return render_template("upper_body_add.html", form=form, title="Изменить Верхнюю Одежду", old=old)
 
 
 @app.route("/wardrobe/del/<int:id_>")
