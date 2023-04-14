@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Добавить в гардероб</h1>
+{{ title}}
 <form action="" method="post" novalidate>
     {{ form.hidden_tag() }}
     <p>
         {{ form.name.label }}<br>
-        {{ form.name(class="btn btn-primary dropdown-toggle", value=old.name) }}<br>
+        {{ form.name(class="btn btn-primary dropdown-toggle") }}<br>
         {% for error in form.name.errors %}
     <div class="alert alert-danger" role="alert">
         {{ error }}
@@ -15,7 +15,7 @@
     </p>
     <p>
         {{ form.color.label }}<br>
-        {{ form.color(class="form-control", value=old.color) }}<br>
+        {{ form.color(class="form-control", value=old["color"]) }}<br>
         {% for error in form.color.errors %}
     <div class="alert alert-danger" role="alert">
         {{ error }}
@@ -24,7 +24,7 @@
     </p>
     <p>
         {{ form.size.label }}<br>
-        {{ form.size(class="btn btn-primary dropdown-toggle", value=old.size) }}<br>
+        {{ form.size(class="btn btn-primary dropdown-toggle") }}<br>
         {% for error in form.size.errors %}
     <div class="alert alert-danger" role="alert">
         {{ error }}
@@ -33,7 +33,7 @@
     </p>
     <p>
         {{ form.fabric.label }}<br>
-        {{ form.fabric(class="btn btn-primary dropdown-toggle", value=fabric) }}<br>
+        {{ form.fabric(class="btn btn-primary dropdown-toggle") }}<br>
         {% for error in form.fabric.errors %}
     <div class="alert alert-danger" role="alert">
         {{ error }}
@@ -42,7 +42,7 @@
     </p>
     <p>
         {{ form.pattern.label }}<br>
-        {{ form.pattern(class="btn btn-primary dropdown-toggle", value=old.pattern) }}<br>
+        {{ form.pattern(class="btn btn-primary dropdown-toggle") }}<br>
         {% for error in form.pattern.errors %}
     <div class="alert alert-danger" role="alert">
         {{ error }}

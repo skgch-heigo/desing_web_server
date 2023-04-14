@@ -515,6 +515,11 @@ def wardrobe_edit(id_):
             old_obj.picture = "wardrobe/" + where
         db_sess.commit()
         return redirect('/wardrobe/')
+    form.name.default = old["name"]
+    form.size.default = old["size"]
+    form.fabric.default = old["fabric"]
+    form.pattern.default = old["pattern"]
+    form.process()
     return render_template("wardrobe_edit.html", form=form, title="Изменить в гардеробе", old=old)
 
 
@@ -618,7 +623,16 @@ def hats_edit(id_):
             old_obj.picture = type_.lower() + "/" + where
         db_sess.commit()
         return redirect('/clothes/hats/')
-    return render_template("hats_edit.html", form=form, title="Изменить Шляпы", old=old)
+    form.name.default = old["name"]
+    form.appearance_year.default = old["appearance_year"]
+    form.popularity_start.default = old["popularity_start"]
+    form.popularity_end.default = old["popularity_end"]
+    form.popularity_end.default = old["popularity_end"]
+    form.features.default = old["features"]
+    form.season.default = old["season"]
+    form.brim.default = old["brim"]
+    form.process()
+    return render_template("hats_add.html", form=form, title="Изменить Шляпы", old=old)
 
 
 @app.route("/clothes/Boots/add", methods=['GET', 'POST'])
@@ -726,6 +740,16 @@ def boots_edit(id_):
             old_obj.picture = type_.lower() + "/" + where
         db_sess.commit()
         return redirect('/clothes/boots/')
+    form.name.default = old["name"]
+    form.appearance_year.default = old["appearance_year"]
+    form.popularity_start.default = old["popularity_start"]
+    form.popularity_end.default = old["popularity_end"]
+    form.popularity_end.default = old["popularity_end"]
+    form.features.default = old["features"]
+    form.season.default = old["season"]
+    form.heel.default = old["heel"]
+    form.clasp.default = old["clasp"]
+    form.process()
     return render_template("boots_edit.html", form=form, title="Изменить Обувь", old=old)
 
 
@@ -843,6 +867,17 @@ def lower_body_edit(id_):
             old_obj.picture = type_.lower() + "/" + where
         db_sess.commit()
         return redirect('/clothes/lower_body/')
+    form.name.default = old["name"]
+    form.appearance_year.default = old["appearance_year"]
+    form.popularity_start.default = old["popularity_start"]
+    form.popularity_end.default = old["popularity_end"]
+    form.popularity_end.default = old["popularity_end"]
+    form.features.default = old["features"]
+    form.season.default = old["season"]
+    form.fit.default = old["fit"]
+    form.length.default = old["length"]
+    form.clasp.default = old["clasp"]
+    form.process()
     return render_template("lower_body_edit.html", form=form, title="Изменить Нижнюю Одежду", old=old)
 
 
@@ -973,10 +1008,25 @@ def upper_body_edit(id_):
             old_obj.picture = type_.lower() + "/" + where
         db_sess.commit()
         return redirect('/clothes/upper_body/')
+    form.name.default = old["name"]
+    form.appearance_year.default = old["appearance_year"]
+    form.popularity_start.default = old["popularity_start"]
+    form.popularity_end.default = old["popularity_end"]
+    form.popularity_end.default = old["popularity_end"]
+    form.features.default = old["features"]
+    form.season.default = old["season"]
+    form.sleeves.default = old["sleeves"]
+    form.collar.default = old["collar"]
+    form.lapels.default = old["collar"]
+    form.fitted.default = old["fitted"]
+    form.pockets.default = old["pockets"]
+    form.hood.default = old["hood"]
+    form.clasp.default = old["clasp"]
+    form.process()
     return render_template("upper_body_edit.html", form=form, title="Изменить Верхнюю Одежду", old=old)
 
 
-@app.route("/wardrobe/<int:id_>")
+@app.route("/wardrobe/del/<int:id_>")
 @login_required
 def wardrobe_del(id_):
     db_sess = db_session.create_session()
@@ -992,7 +1042,7 @@ def wardrobe_del(id_):
     return redirect("/wardrobe/")
 
 
-@app.route("/clothes/<type_>/<int:id_>")
+@app.route("/clothes/del/<type_>/<int:id_>")
 @login_required
 def clothes_del(type_, id_):
     db_sess = db_session.create_session()
@@ -1010,7 +1060,7 @@ def clothes_del(type_, id_):
     return redirect("/clothes/" + type_ + "/")
 
 
-@app.route("/additional/<type_>/<int:id_>")
+@app.route("/additional/del/<type_>/<int:id_>")
 @login_required
 def additional_del(type_, id_):
     db_sess = db_session.create_session()
@@ -1028,7 +1078,7 @@ def additional_del(type_, id_):
     return redirect("/additional/" + type_ + "/")
 
 
-@app.route("/users/<int:id_>")
+@app.route("/users/del/<int:id_>")
 @login_required
 def users_del(id_):
     db_sess = db_session.create_session()
