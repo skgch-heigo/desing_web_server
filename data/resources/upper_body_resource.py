@@ -73,7 +73,7 @@ class UpperBodyResource(Resource):
         return jsonify({'success': 'OK'})
 
 
-class LowerBodyListResource(Resource):
+class UpperBodyListResource(Resource):
     def get(self):
         session = db_session.create_session()
         upper_body = session.query(UpperBody).filter(UpperBody.deleted == 0)
