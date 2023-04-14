@@ -296,7 +296,7 @@ def additional_add(type_):
             db_sess.add(obj)
             db_sess.commit()
             return redirect('/additional/' + type_)
-        render_template("simple_add.html", form=form, title="Добавить " + TRANSLATION[type_])
+        return render_template("simple_add.html", form=form, title="Добавить " + TRANSLATION[type_])
     elif type_ in NO_PICTURE:
         form = NoPictureForm()
         if form.validate_on_submit():
@@ -305,7 +305,7 @@ def additional_add(type_):
             db_sess.add(obj)
             db_sess.commit()
             return redirect('/additional/' + type_)
-        render_template("no_picture_add.html", form=form, title="Добавить " + TRANSLATION[type_])
+        return render_template("no_picture_add.html", form=form, title="Добавить " + TRANSLATION[type_])
     elif type_ == "Fabrics":
         form = FabricsForm()
         if form.validate_on_submit():
