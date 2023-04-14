@@ -462,10 +462,11 @@ def wardrobe_add(type_):
             where = "pic_" + form.name.data + ".png"
             if os.path.exists(os.path.join("static/img", "wardrobe" + "/pic_" + form.name.data + ".png")):
                 i = 1
+                where = "pic_" + form.name.data + str(i) + ".png"
                 while os.path.exists(os.path.join("static/img", "wardrobe" + "/pic_" +
                                                                 form.name.data + str(i) + ".png")):
                     i += 1
-                    where = "/pic_" + form.name.data + str(i) + ".png"
+                    where = "pic_" + form.name.data + str(i) + ".png"
             f = form.picture.data
             f.save(os.path.join("static/img/wardrobe", where))
             obj.picture = "wardrobe/" + where
@@ -514,10 +515,11 @@ def wardrobe_edit(id_):
             where = "pic_" + form.name.data + ".png"
             if os.path.exists(os.path.join("static/img", "wardrobe" + "/pic_" + form.name.data + ".png")):
                 i = 1
+                where = "pic_" + form.name.data + str(i) + ".png"
                 while os.path.exists(os.path.join("static/img", "wardrobe" + "/pic_" +
                                                                 form.name.data + str(i) + ".png")):
                     i += 1
-                    where = "/pic_" + form.name.data + str(i) + ".png"
+                    where = "pic_" + form.name.data + str(i) + ".png"
             f = form.picture.data
             f.save(os.path.join("static/img/wardrobe", where))
             old_obj.picture = "wardrobe/" + where
