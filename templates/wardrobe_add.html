@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Добавить в гардероб</h1>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.name.label }}<br>
+        {{ form.name(class="btn btn-primary dropdown-toggle") }}<br>
+        {% for error in form.name.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.color.label }}<br>
+        {{ form.color(class="form-control") }}<br>
+        {% for error in form.color.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.size.label }}<br>
+        {{ form.size(class="btn btn-primary dropdown-toggle") }}<br>
+        {% for error in form.size.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.fabric.label }}<br>
+        {{ form.fabric(class="btn btn-primary dropdown-toggle") }}<br>
+        {% for error in form.fabric.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.pattern.label }}<br>
+        {{ form.pattern(class="btn btn-primary dropdown-toggle") }}<br>
+        {% for error in form.pattern.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.picture.label }}<br>
+        {{ form.picture(class="form-control") }}<br>
+        {% for error in form.picture.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+</form>
+{% endblock %}

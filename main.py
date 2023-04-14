@@ -92,7 +92,6 @@ def main():
     api.add_resource(fabrics_resource.FabricsListResource, '/api/fabrics')
     api.add_resource(wardrobe_resource.WardrobeListResource, '/api/wardrobe')
 
-
     # для одного объекта
     api.add_resource(collars_resource.CollarsResource, '/api/collars/<int:collars_id>')
     api.add_resource(brims_resource.BrimsResource, '/api/brims/<int:brims_id>')
@@ -327,7 +326,7 @@ def additional_add(type_):
             db_sess.add(obj)
             db_sess.commit()
             return redirect('/additional/' + type_)
-        render_template("fabrics_add.html", form=form, title="Добавить " + TRANSLATION[type_])
+        return render_template("fabrics_add.html", form=form, title="Добавить " + TRANSLATION[type_])
     abort(404)
 
 
@@ -388,24 +387,28 @@ def additional_edit(type_, id_):
             old_obj.picture = type_.lower() + where
             db_sess.commit()
             return redirect('/additional/' + type_)
-        render_template("fabrics_edit.html", form=form, title="Изменить " + TRANSLATION[type_], old_oj=old_obj)
+        return render_template("fabrics_edit.html", form=form, title="Изменить " + TRANSLATION[type_], old_oj=old_obj)
     abort(404)
 
 
 @app.route("/wardrobe/add/<type_>", methods=['GET', 'POST'])
-@login_required
+# @login_required
 def wardrobe_add(type_):
     if type_ not in TABLES:
         abort(404)
     table = TABLES_CLASSES[type_]
-    if current_user.access < 2:
-        abort(403)
+    # if current_user.access < 2:
+    #    abort(403)
     db_sess = db_session.create_session()
+    names_opt = [i.name for i in db_sess.query(table).filter(table.deleted == 0).all()]
+    size_opt = [i.name for i in db_sess.query(Sizes).filter(Sizes.deleted == 0).all()]
+    fabric_opt = [i.name for i in db_sess.query(Fabrics).filter(Fabrics.deleted == 0).all()]
+    pattern_opt = [i.name for i in db_sess.query(Patterns).filter(Patterns.deleted == 0).all()]
     form = WardrobeForm()
-    names_opt = db_sess.query(table).filter(table.deleted == 0).all()
-    size_opt = db_sess.query(Sizes).filter(Sizes.deleted == 0).all()
-    fabric_opt = db_sess.query(Fabrics).filter(Fabrics.deleted == 0).all()
-    pattern_opt = db_sess.query(Patterns).filter(Patterns.deleted == 0).all()
+    form.name.choices = names_opt
+    form.size.choices = size_opt
+    form.fabric.choices = fabric_opt
+    form.pattern.choices = pattern_opt
     if form.validate_on_submit():
         obj = Wardrobe()
         obj.type_ = type_
@@ -430,8 +433,7 @@ def wardrobe_add(type_):
         db_sess.add(obj)
         db_sess.commit()
         return redirect('/wardrobe/')
-    render_template("wardrobe_add.html", form=form, title="Добавить в гардероб", names=names_opt, sizes=size_opt,
-                    fabrics=fabric_opt, patterns=pattern_opt)
+    return render_template("wardrobe_add.html", form=form, title="Добавить в гардероб")
 
 
 @app.route("/wardrobe/edit/<int:id_>", methods=['GET', 'POST'])
@@ -472,9 +474,9 @@ def wardrobe_edit(id_):
         old_obj.picture = "wardrobe" + where
         db_sess.commit()
         return redirect('/wardrobe/')
-    render_template("wardrobe_edit.html", form=form, title="Изменить в гардеробе", old_obj=old_obj,
-                    names=names_opt, sizes=size_opt,
-                    fabrics=fabric_opt, patterns=pattern_opt)
+    return render_template("wardrobe_edit.html", form=form, title="Изменить в гардеробе", old_obj=old_obj,
+                           names=names_opt, sizes=size_opt,
+                           fabrics=fabric_opt, patterns=pattern_opt)
 
 
 @app.route("/clothes/Hats/add", methods=['GET', 'POST'])
@@ -512,8 +514,8 @@ def hats_add():
         db_sess.add(obj)
         db_sess.commit()
         return redirect('/clothes/hats/')
-    render_template("hats_add.html", form=form, title="Добавить Шляпы", brims=brims_opt,
-                    origins=origin_opt, seasons=seasons_opt)
+    return render_template("hats_add.html", form=form, title="Добавить Шляпы", brims=brims_opt,
+                           origins=origin_opt, seasons=seasons_opt)
 
 
 @app.route("/clothes/Hats/edit/<int:id_>", methods=['GET', 'POST'])
@@ -555,8 +557,8 @@ def hats_edit(id_):
         old_obj.picture = "hats" + where
         db_sess.commit()
         return redirect('/clothes/hats/')
-    render_template("hats_edit.html", form=form, title="Изменить Шляпы", brims=brims_opt, old_obj=old_obj,
-                    origins=origin_opt, seasons=seasons_opt)
+    return render_template("hats_edit.html", form=form, title="Изменить Шляпы", brims=brims_opt, old_obj=old_obj,
+                           origins=origin_opt, seasons=seasons_opt)
 
 
 @app.route("/clothes/Boots/add", methods=['GET', 'POST'])
@@ -596,8 +598,8 @@ def boots_add():
         db_sess.add(obj)
         db_sess.commit()
         return redirect('/clothes/boots/')
-    render_template("boots_add.html", form=form, title="Добавить Обувь", heels=heel_opt, clasps=clasp_opt,
-                    origins=origin_opt, seasons=seasons_opt)
+    return render_template("boots_add.html", form=form, title="Добавить Обувь", heels=heel_opt, clasps=clasp_opt,
+                           origins=origin_opt, seasons=seasons_opt)
 
 
 @app.route("/clothes/Boots/edit/<int:id_>", methods=['GET', 'POST'])
@@ -641,8 +643,8 @@ def boots_edit(id_):
         old_obj.picture = "boots" + where
         db_sess.commit()
         return redirect('/clothes/boots/')
-    render_template("boots_edit.html", form=form, title="Изменить Обувь", heels=heel_opt,
-                    clasps=clasp_opt, old_obj=old_obj, origins=origin_opt, seasons=seasons_opt)
+    return render_template("boots_edit.html", form=form, title="Изменить Обувь", heels=heel_opt,
+                           clasps=clasp_opt, old_obj=old_obj, origins=origin_opt, seasons=seasons_opt)
 
 
 @app.route("/clothes/Lower_body/add", methods=['GET', 'POST'])
@@ -685,8 +687,8 @@ def lower_body_add():
         db_sess.add(obj)
         db_sess.commit()
         return redirect('/clothes/lower_body/')
-    render_template("lower_body_add.html", form=form, title="Добавить Нижнюю Одежду", clasps=clasp_opt,
-                    fits=fit_opt, lengths=length_opt, origins=origin_opt, seasons=seasons_opt)
+    return render_template("lower_body_add.html", form=form, title="Добавить Нижнюю Одежду", clasps=clasp_opt,
+                           fits=fit_opt, lengths=length_opt, origins=origin_opt, seasons=seasons_opt)
 
 
 @app.route("/clothes/Lower_body/edit/<int:id_>", methods=['GET', 'POST'])
@@ -733,8 +735,8 @@ def lower_body_edit(id_):
         old_obj.picture = "lower_body" + where
         db_sess.commit()
         return redirect('/clothes/lower_body/')
-    render_template("lower_body_edit.html", form=form, title="Изменить Нижнюю Одежду", clasps=clasp_opt,
-                    fits=fit_opt, lengths=length_opt, old_obj=old_obj, origins=origin_opt, seasons=seasons_opt)
+    return render_template("lower_body_edit.html", form=form, title="Изменить Нижнюю Одежду", clasps=clasp_opt,
+                           fits=fit_opt, lengths=length_opt, old_obj=old_obj, origins=origin_opt, seasons=seasons_opt)
 
 
 @app.route("/clothes/Upper_body/add", methods=['GET', 'POST'])
@@ -781,9 +783,9 @@ def upper_body_add():
         db_sess.add(obj)
         db_sess.commit()
         return redirect('/clothes/upper_body/')
-    render_template("upper_body_add.html", form=form, title="Добавить Верхнюю Одежду", clasps=clasp_opt,
-                    origins=origin_opt, seasons=seasons_opt, sleeves=sleeves_opt,
-                    collars=collar_opt, lapels=lapel_opt)
+    return render_template("upper_body_add.html", form=form, title="Добавить Верхнюю Одежду", clasps=clasp_opt,
+                           origins=origin_opt, seasons=seasons_opt, sleeves=sleeves_opt,
+                           collars=collar_opt, lapels=lapel_opt)
 
 
 @app.route("/clothes/Upper_body/edit/<int:id_>", methods=['GET', 'POST'])
@@ -836,9 +838,9 @@ def upper_body_edit(id_):
         old_obj.picture = "upper_body" + where
         db_sess.commit()
         return redirect('/clothes/upper_body/')
-    render_template("upper_body_edit.html", form=form, title="Изменить Верхнюю Одежду", clasps=clasp_opt,
-                    origins=origin_opt, seasons=seasons_opt, sleeves=sleeves_opt,
-                    collars=collar_opt, lapels=lapel_opt, old_obj=old_obj)
+    return render_template("upper_body_edit.html", form=form, title="Изменить Верхнюю Одежду", clasps=clasp_opt,
+                           origins=origin_opt, seasons=seasons_opt, sleeves=sleeves_opt,
+                           collars=collar_opt, lapels=lapel_opt, old_obj=old_obj)
 
 
 @app.route("/wardrobe/<int:id_>")
@@ -854,6 +856,7 @@ def wardrobe_del(id_):
         os.remove("static/img/" + obj.picture)
     db_sess.delete(obj)
     db_sess.commit()
+    return redirect("/wardrobe/")
 
 
 @app.route("/clothes/<type_>/<int:id_>")
@@ -871,6 +874,7 @@ def clothes_del(type_, id_):
         os.remove("static/img/" + obj.picture)
     db_sess.delete(obj)
     db_sess.commit()
+    return redirect("/clothes/" + type_ + "/")
 
 
 @app.route("/additional/<type_>/<int:id_>")
@@ -888,6 +892,7 @@ def additional_del(type_, id_):
         os.remove("static/img/" + obj.picture)
     db_sess.delete(obj)
     db_sess.commit()
+    return redirect("/additional/" + type_ + "/")
 
 
 @app.route("/users/<int:id_>")
@@ -901,6 +906,7 @@ def users_del(id_):
         abort(403)
     db_sess.delete(obj)
     db_sess.commit()
+    return redirect("/users/")
 
 
 @app.route('/login', methods=['GET', 'POST'])
