@@ -412,7 +412,7 @@ def wardrobe_add(type_):
     form.pattern.choices = pattern_opt
     if form.validate_on_submit():
         obj = Wardrobe()
-        obj.type_ = type_
+        obj.type_ = db_sess.query(Types).filter(Types.name == type_, Types.deleted == 0).first().id
         obj.name = db_sess.query(table).filter(table.name == form.name.data, table.deleted == 0).first().id
         obj.color = form.color.data
         obj.size = db_sess.query(Sizes).filter(Sizes.name == form.size.data, Sizes.deleted == 0).first().id
@@ -421,7 +421,6 @@ def wardrobe_add(type_):
         obj.pattern = db_sess.query(Patterns).filter(Patterns.name == form.pattern.data,
                                                      Patterns.deleted == 0).first().id
         obj.owner = current_user.id
-        filename = secure_filename(form.picture.data.filename)
         if form.picture.data:
             print("!!")
             if not os.path.exists(os.path.join("static", "img/wardrobe")):
@@ -451,9 +450,10 @@ def wardrobe_edit(id_):
         abort(404)
     if current_user.access < 2:
         abort(403)
-    table = TABLES_CLASSES[db_sess.get(Types, old_obj.type).name]
+    table = TABLES_CLASSES[db_sess.get(Types, old_obj.type_).name]
     old = {"name": db_sess.get(table, old_obj.name).name, "size": db_sess.get(Sizes, old_obj.size).name,
-           "fabric": db_sess.get(Fabrics, old_obj.fabric).name, "pattern": db_sess.get(Patterns, old_obj.pattern).name}
+           "fabric": db_sess.get(Fabrics, old_obj.fabric).name, "pattern": db_sess.get(Patterns, old_obj.pattern).name,
+           "color": old_obj.color}
     names_opt = [i.name for i in db_sess.query(table).filter(table.deleted == 0).all()]
     size_opt = [i.name for i in db_sess.query(Sizes).filter(Sizes.deleted == 0).all()]
     fabric_opt = [i.name for i in db_sess.query(Fabrics).filter(Fabrics.deleted == 0).all()]
@@ -471,19 +471,22 @@ def wardrobe_edit(id_):
                                                        Fabrics.deleted == 0).first().id
         old_obj.pattern = db_sess.query(Patterns).filter(Patterns.name == form.pattern.data,
                                                          Patterns.deleted == 0).first().id
-        if os.path.exists("static/img/" + old_obj.picture):
-            os.remove("static/img/" + old_obj.picture)
-        if not os.path.exists(os.path.join("static", "wardrobe")):
-            os.mkdir(os.path.join("static", "wardrobe"))
-        where = "pic_" + form.name.data
-        if os.path.exists(os.path.join("static/img", "wardrobe" + "/pic_" + form.name.data)):
-            i = 1
-            while os.path.exists(os.path.join("static/img", "wardrobe" + "/pic_" + form.name.data + str(i))):
-                i += 1
-                where = "/pic_" + form.name.data + str(i)
-        with open(where, "wb") as f:
-            f.write(form.picture.data)
-        old_obj.picture = "wardrobe" + where
+        if form.picture.data:
+            print("!!")
+            if os.path.exists("static/img/" + old_obj.picture):
+                os.remove("static/img/" + old_obj.picture)
+            if not os.path.exists(os.path.join("static", "img/wardrobe")):
+                os.mkdir(os.path.join("static", "img/wardrobe"))
+            where = "pic_" + form.name.data + ".png"
+            if os.path.exists(os.path.join("static/img", "wardrobe" + "/pic_" + form.name.data + ".png")):
+                i = 1
+                while os.path.exists(os.path.join("static/img", "wardrobe" + "/pic_" +
+                                                                form.name.data + str(i) + ".png")):
+                    i += 1
+                    where = "/pic_" + form.name.data + str(i) + ".png"
+            f = form.picture.data
+            f.save(os.path.join("static/img/wardrobe", where))
+            old_obj.picture = "wardrobe/" + where
         db_sess.commit()
         return redirect('/wardrobe/')
     return render_template("wardrobe_edit.html", form=form, title="Изменить в гардеробе", old=old)
