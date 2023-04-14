@@ -26,9 +26,10 @@ from data.models import db_session
 from data.models.wardrobe import Wardrobe
 from data.resources import collars_resource, brims_resource, heels_resource, clasps_resource, \
     lapels_resource, sleeves_resource, patterns_resource, trouser_lengths_resource, \
-    countries_resource, fits_resource, seasons_resource, sizes_resource, types_resource,\
+    countries_resource, fits_resource, seasons_resource, sizes_resource, types_resource, \
     users_resource, \
-    boots_resource, hats_resource, lower_body_resource
+    boots_resource, hats_resource, lower_body_resource, upper_body_resource, \
+    fabrics_resource, wardrobe_resource
 
 from data.constants.tables_inf import TABLES, TABLES_CLASSES, FIELDS, RELATIONS, NO_PICTURE, SIMPLE, TRANSLATION
 
@@ -87,6 +88,9 @@ def main():
     api.add_resource(boots_resource.BootsListResource, '/api/boots')
     api.add_resource(hats_resource.HatsListResource, '/api/hats')
     api.add_resource(lower_body_resource.LowerBodyListResource, '/api/lower_body')
+    api.add_resource(upper_body_resource.UpperBodyListResource, '/api/upper_body')
+    api.add_resource(fabrics_resource.FabricsListResource, '/api/fabrics')
+    api.add_resource(wardrobe_resource.WardrobeListResource, '/api/wardrobe')
 
 
     # для одного объекта
@@ -107,6 +111,10 @@ def main():
     api.add_resource(boots_resource.BootsResource, '/api/boots/<int:boots_id>')
     api.add_resource(hats_resource.HatsResource, '/api/hats/<int:hats_id>')
     api.add_resource(lower_body_resource.LowerBodyResource, '/api/lower_body/<int:lower_body_id>')
+    api.add_resource(upper_body_resource.UpperBodyResource, '/api/upper_body/<int:upper_body_id>')
+    api.add_resource(fabrics_resource.FabricsResource, '/api/fabrics/<int:fabrics_id>')
+    api.add_resource(wardrobe_resource.WardrobeResource, '/api/wardrobe/<int:wardrobe_id>')
+
     app.run()
 
 
