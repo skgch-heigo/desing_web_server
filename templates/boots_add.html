@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.name.label }}<br>
+        {{ form.name(class="btn btn-primary dropdown-toggle") }}<br>
+        {% for error in form.name.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.season.label }}<br>
+        {{ form.season(class="btn btn-primary dropdown-toggle") }}<br>
+        {% for error in form.season.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.origin.label }}<br>
+        {{ form.origin(class="btn btn-primary dropdown-toggle") }}<br>
+        {% for error in form.origin.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.appearance_year.label }}<br>
+        {{ form.appearance_year(class="form-control") }}<br>
+        {% for error in form.appearance_year.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.popularity_start.label }}<br>
+        {{ form.popularity_start(class="form-control") }}<br>
+        {% for error in form.popularity_start.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.popularity_end.label }}<br>
+        {{ form.popularity_end(class="form-control") }}<br>
+        {% for error in form.popularity_end.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.heel.label }}<br>
+        {{ form.heel(class="btn btn-primary dropdown-toggle") }}<br>
+        {% for error in form.heel.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.clasp.label }}<br>
+        {{ form.clasp(class="btn btn-primary dropdown-toggle") }}<br>
+        {% for error in form.clasp.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.features.label }}<br>
+        {{ form.features(class="form-control") }}<br>
+        {% for error in form.features.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.picture.label }}<br>
+        {{ form.picture(class="form-control") }}<br>
+        {% for error in form.picture.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+</form>
+{% endblock %}

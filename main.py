@@ -271,10 +271,10 @@ def clothes(type_, sort_str):
 
 
 @app.route("/additional/add/<type_>", methods=['GET', 'POST'])
-@login_required
+# @login_required
 def additional_add(type_):
-    if current_user.access < 2:
-        abort(403)
+    # if current_user.access < 2:
+    #    abort(403)
     db_sess = db_session.create_session()
     if type_ in SIMPLE:
         form = SimpleForm()
@@ -480,15 +480,18 @@ def wardrobe_edit(id_):
 
 
 @app.route("/clothes/Hats/add", methods=['GET', 'POST'])
-@login_required
+# @login_required
 def hats_add():
-    if current_user.access < 2:
-        abort(403)
+    # if current_user.access < 2:
+    #     abort(403)
     db_sess = db_session.create_session()
+    seasons_opt = [i.name for i in db_sess.query(Seasons).filter(Seasons.deleted == 0).all()]
+    origin_opt = [i.name for i in db_sess.query(Countries).filter(Countries.deleted == 0).all()]
+    brims_opt = [i.name for i in db_sess.query(Brims).filter(Brims.deleted == 0).all()]
     form = HatsForm()
-    seasons_opt = db_sess.query(Seasons).filter(Seasons.deleted == 0).all()
-    origin_opt = db_sess.query(Countries).filter(Countries.deleted == 0).all()
-    brims_opt = db_sess.query(Brims).filter(Brims.deleted == 0).all()
+    form.season.choices = seasons_opt
+    form.origin.choices = origin_opt
+    form.brim.choices = brims_opt
     if form.validate_on_submit():
         obj = Hats()
         obj.name = form.name.data
@@ -562,16 +565,20 @@ def hats_edit(id_):
 
 
 @app.route("/clothes/Boots/add", methods=['GET', 'POST'])
-@login_required
+# @login_required
 def boots_add():
-    if current_user.access < 2:
-        abort(403)
+    # if current_user.access < 2:
+    #     abort(403)
     db_sess = db_session.create_session()
+    seasons_opt = [i.name for i in db_sess.query(Seasons).filter(Seasons.deleted == 0).all()]
+    origin_opt = [i.name for i in db_sess.query(Countries).filter(Countries.deleted == 0).all()]
+    heel_opt = [i.name for i in db_sess.query(Heels).filter(Heels.deleted == 0).all()]
+    clasp_opt = [i.name for i in db_sess.query(Clasps).filter(Clasps.deleted == 0).all()]
     form = BootsForm()
-    seasons_opt = db_sess.query(Seasons).filter(Seasons.deleted == 0).all()
-    origin_opt = db_sess.query(Countries).filter(Countries.deleted == 0).all()
-    heel_opt = db_sess.query(Heels).filter(Heels.deleted == 0).all()
-    clasp_opt = db_sess.query(Clasps).filter(Clasps.deleted == 0).all()
+    form.season.choices = seasons_opt
+    form.origin.choices = origin_opt
+    form.heel.choices = heel_opt
+    form.clasp.choices = clasp_opt
     if form.validate_on_submit():
         obj = Boots()
         obj.name = form.name.data
