@@ -668,17 +668,22 @@ def boots_edit(id_):
 
 
 @app.route("/clothes/Lower_body/add", methods=['GET', 'POST'])
-@login_required
+# @login_required
 def lower_body_add():
-    if current_user.access < 2:
-        abort(403)
+    # if current_user.access < 2:
+     #    abort(403)
     db_sess = db_session.create_session()
     form = LowerBodyForm()
-    seasons_opt = db_sess.query(Seasons).filter(Seasons.deleted == 0).all()
-    origin_opt = db_sess.query(Countries).filter(Countries.deleted == 0).all()
-    clasp_opt = db_sess.query(Clasps).filter(Clasps.deleted == 0).all()
-    fit_opt = db_sess.query(Fits).filter(Fits.deleted == 0).all()
-    length_opt = db_sess.query(TrouserLengths).filter(TrouserLengths.deleted == 0).all()
+    seasons_opt = [i.name for i in db_sess.query(Seasons).filter(Seasons.deleted == 0).all()]
+    origin_opt = [i.name for i in db_sess.query(Countries).filter(Countries.deleted == 0).all()]
+    clasp_opt = [i.name for i in db_sess.query(Clasps).filter(Clasps.deleted == 0).all()]
+    fit_opt = [i.name for i in db_sess.query(Fits).filter(Fits.deleted == 0).all()]
+    length_opt = [i.name for i in db_sess.query(TrouserLengths).filter(TrouserLengths.deleted == 0).all()]
+    form.season.choices = seasons_opt
+    form.origin.choices = origin_opt
+    form.clasp.choices = clasp_opt
+    form.fit.choices = fit_opt
+    form.length.choices = length_opt
     if form.validate_on_submit():
         obj = LowerBody()
         obj.name = form.name.data
@@ -760,18 +765,24 @@ def lower_body_edit(id_):
 
 
 @app.route("/clothes/Upper_body/add", methods=['GET', 'POST'])
-@login_required
+# @login_required
 def upper_body_add():
-    if current_user.access < 2:
-        abort(403)
+    # if current_user.access < 2:
+    #     abort(403)
     db_sess = db_session.create_session()
     form = UpperBodyForm()
-    seasons_opt = db_sess.query(Seasons).filter(Seasons.deleted == 0).all()
-    origin_opt = db_sess.query(Countries).filter(Countries.deleted == 0).all()
-    clasp_opt = db_sess.query(Clasps).filter(Clasps.deleted == 0).all()
-    sleeves_opt = db_sess.query(Sleeves).filter(Sleeves.deleted == 0).all()
-    collar_opt = db_sess.query(Collars).filter(Collars.deleted == 0).all()
-    lapel_opt = db_sess.query(Lapels).filter(Lapels.deleted == 0).all()
+    seasons_opt = [i.name for i in db_sess.query(Seasons).filter(Seasons.deleted == 0).all()]
+    origin_opt = [i.name for i in db_sess.query(Countries).filter(Countries.deleted == 0).all()]
+    clasp_opt = [i.name for i in db_sess.query(Clasps).filter(Clasps.deleted == 0).all()]
+    sleeves_opt = [i.name for i in db_sess.query(Sleeves).filter(Sleeves.deleted == 0).all()]
+    collar_opt = [i.name for i in db_sess.query(Collars).filter(Collars.deleted == 0).all()]
+    lapel_opt = [i.name for i in db_sess.query(Lapels).filter(Lapels.deleted == 0).all()]
+    form.season.choices = seasons_opt
+    form.origin.choices = origin_opt
+    form.clasp.choices = clasp_opt
+    form.sleeves.choices = sleeves_opt
+    form.collar.choices = collar_opt
+    form.lapels.choices = lapel_opt
     if form.validate_on_submit():
         obj = UpperBody()
         obj.name = form.name.data
