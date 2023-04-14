@@ -120,13 +120,24 @@ def main():
 
 @app.route("/")
 @app.route("/index")
+@app.route("/main")
 def index():
-    db_sess = db_session.create_session()
-    # if current_user.is_authenticated:
-    #     jobs = db_sess.query(Jobs).filter((Jobs.user == current_user) | (Jobs.is_finished != True))
-    # else:
-    #     jobs = db_sess.query(Jobs).filter(Jobs.is_finished != True)
-    return render_template("index.html", title="Designer help", music=url_for("static", filename="music/ragtime.mp3"))
+    form = LoginInForm()
+    if form.validate_on_submit():
+        db_sess = db_session.create_session()
+        user = db_sess.query(User).filter(User.email == form.email.data).first()
+        # print(form.password.data)
+        # если вам скучно, то разкомментируйте эту^ строку
+        # запустите сервер и отправьте ссылку в классный чат с просьбой потестить
+        # 100% кто-нибудь зарегистрируется с настоящими почтой и паролем (уже такое было)
+        if user and user.check_password(form.password.data):
+            login_user(user, remember=form.remember_me.data)
+            return redirect("/")
+        return render_template('login_in.html',
+                               message="Неправильный логин или пароль",
+                               form=form, title="Неудача")
+    return render_template("main.html", title="Designer help",
+                           music=url_for("static", filename="music/ragtime.mp3"), form=form)
 
 
 @app.route("/show/<table>/<int:id_>")
@@ -143,8 +154,10 @@ def element_information(table, id_):
     if table == "users":
         if not current_user or current_user.access != 3:
             abort(403)
-    fields = FIELDS[table]
+    fields = FIELDS[table][1:-1]
     data = {}
+    picture = ""
+    map_ = ""
     for i in fields:
         data[i] = getattr(obj, i)
     for i in fields:
@@ -152,7 +165,7 @@ def element_information(table, id_):
             data[i] = db_sess.query(TABLES_CLASSES[RELATIONS[i]]).filter(TABLES_CLASSES[RELATIONS[i]].id ==
                                                                          data[i]).first()
     if "picture" in fields:
-        data["picture"] = url_for('static', filename=f'img/{obj.picture}')
+        picture = url_for('static', filename=f'img/{obj.picture}')
     if table in ["Upper_body", "Lower_body", "Hats", "Boots"]:
         country = db_sess.query(Countries).filter(Countries.id == obj.origin).first()
         ll_span = finder.get_ll_span(country.name)
@@ -161,8 +174,8 @@ def element_information(table, id_):
         random_int = random.randint(0, 1000000)
         with open(f"temp/pictures/map_picture{random_int}.png", "wb") as f:
             f.write(map_pic)
-        data["map"] = url_for('temp', filename=f'pictures/map_picture{random_int}.png')
-    return render_template("elem_information", title="Информация", data=data)
+        map_ = url_for('temp', filename=f'pictures/map_picture{random_int}.png')
+    return render_template("elem_information.html", title="Информация", data=data, map=map_, picture=picture)
 
 
 @app.route("/info/<int:id>")
@@ -272,27 +285,30 @@ def clothes(type_, sort_str):
 
 
 @app.route("/additional/add/<type_>", methods=['GET', 'POST'])
-# @login_required
+@login_required
 def additional_add(type_):
-    # if current_user.access < 2:
-    #    abort(403)
+    if current_user.access < 2:
+        abort(403)
     db_sess = db_session.create_session()
     if type_ in SIMPLE:
         form = SimpleForm()
         if form.validate_on_submit():
             obj = TABLES_CLASSES[type_]()
             obj.name = form.name.data
-            if not os.path.exists(os.path.join("static", type_.lower())):
-                os.mkdir(os.path.join("static", type_.lower()))
-            where = "pic_" + obj.name
-            if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + obj.name)):
-                i = 1
-                while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + obj.name + str(i))):
-                    i += 1
-                    where = "/pic_" + obj.name + str(i)
-            with open(where, "wb") as f:
-                f.write(form.picture.data)
-            obj.picture = type_.lower() + where
+            if form.picture.data:
+                print("!!")
+                if not os.path.exists(os.path.join("static", "img/" + type_.lower())):
+                    os.mkdir(os.path.join("static", "img/" + type_.lower()))
+                where = "pic_" + form.name.data + ".png"
+                if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
+                    i = 1
+                    while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
+                                                      form.name.data + str(i) + ".png")):
+                        i += 1
+                        where = "/pic_" + form.name.data + str(i) + ".png"
+                f = form.picture.data
+                f.save(os.path.join("static/img/" + type_.lower(), where))
+                obj.picture = type_.lower() + "/" + where
             db_sess.add(obj)
             db_sess.commit()
             return redirect('/additional/' + type_)
@@ -313,17 +329,19 @@ def additional_add(type_):
             obj.name = form.name.data
             obj.warmth = form.warmth.data
             obj.washing = form.washing.data
-            if not os.path.exists(os.path.join("static", type_.lower())):
-                os.mkdir(os.path.join("static", type_.lower()))
-            where = "pic_" + obj.name
-            if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + obj.name)):
-                i = 1
-                while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + obj.name + str(i))):
-                    i += 1
-                    where = "/pic_" + obj.name + str(i)
-            with open(where, "wb") as f:
-                f.write(form.picture.data)
-            obj.picture = type_.lower() + where
+            if form.picture.data:
+                if not os.path.exists(os.path.join("static", "img/" + type_.lower())):
+                    os.mkdir(os.path.join("static", "img/" + type_.lower()))
+                where = "pic_" + form.name.data + ".png"
+                if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
+                    i = 1
+                    while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
+                                                      form.name.data + str(i) + ".png")):
+                        i += 1
+                        where = "/pic_" + form.name.data + str(i) + ".png"
+                f = form.picture.data
+                f.save(os.path.join("static/img/" + type_.lower(), where))
+                obj.picture = type_.lower() + "/" + where
             db_sess.add(obj)
             db_sess.commit()
             return redirect('/additional/' + type_)
@@ -338,57 +356,65 @@ def additional_edit(type_, id_):
         abort(403)
     db_sess = db_session.create_session()
     old_obj = db_sess.get(TABLES_CLASSES[type_], id_)
+    table = TABLES_CLASSES[type_]
     if not old_obj:
         abort(404)
     if type_ in SIMPLE:
+        old = {"name": old_obj.name}
         form = SimpleForm()
         if form.validate_on_submit():
             old_obj.name = form.name.data
-            if os.path.exists("static/img/" + old_obj.picture):
-                os.remove("static/img/" + old_obj.picture)
-            if not os.path.exists(os.path.join("static", type_.lower())):
-                os.mkdir(os.path.join("static", type_.lower()))
-            where = "pic_" + old_obj.name
-            if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + old_obj.name)):
-                i = 1
-                while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + old_obj.name + str(i))):
-                    i += 1
-                    where = "/pic_" + old_obj.name + str(i)
-            with open(where, "wb") as f:
-                f.write(form.picture.data)
-            old_obj.picture = type_.lower() + where
+            if form.picture.data:
+                if os.path.exists("static/img/" + old_obj.picture):
+                    os.remove("static/img/" + old_obj.picture)
+                if not os.path.exists(os.path.join("static", "img/" + type_.lower())):
+                    os.mkdir(os.path.join("static", "img/" + type_.lower()))
+                where = "pic_" + form.name.data + ".png"
+                if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
+                    i = 1
+                    while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
+                                                                    form.name.data + str(i) + ".png")):
+                        i += 1
+                        where = "/pic_" + form.name.data + str(i) + ".png"
+                f = form.picture.data
+                f.save(os.path.join("static/img/" + type_.lower(), where))
+                old_obj.picture = type_.lower() + "/" + where
             db_sess.commit()
             return redirect('/additional/' + type_)
-        render_template("simple_edit.html", form=form, title="Изменить " + TRANSLATION[type_], old_oj=old_obj)
+        render_template("simple_edit.html", form=form, title="Изменить " + TRANSLATION[type_], old=old)
     elif type_ in NO_PICTURE:
+        old = {"name": old_obj.name}
         form = NoPictureForm()
         if form.validate_on_submit():
             old_obj.name = form.name.data
             db_sess.commit()
             return redirect('/additional/' + type_)
-        render_template("no_picture_edit.html", form=form, title="Изменить " + TRANSLATION[type_], old_oj=old_obj)
+        render_template("no_picture_edit.html", form=form, title="Изменить " + TRANSLATION[type_], old=old)
     elif type_ == "Fabrics":
+        old = {"name": old_obj.name, "warmth": old_obj.warmth, "washing": old_obj.washing}
         form = FabricsForm()
         if form.validate_on_submit():
             old_obj.name = form.name.data
             old_obj.warmth = form.warmth.data
             old_obj.washing = form.washing.data
-            if os.path.exists("static/img/" + old_obj.picture):
-                os.remove("static/img/" + old_obj.picture)
-            if not os.path.exists(os.path.join("static", type_.lower())):
-                os.mkdir(os.path.join("static", type_.lower()))
-            where = "pic_" + old_obj.name
-            if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + old_obj.name)):
-                i = 1
-                while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + old_obj.name + str(i))):
-                    i += 1
-                    where = "/pic_" + old_obj.name + str(i)
-            with open(where, "wb") as f:
-                f.write(form.picture.data)
-            old_obj.picture = type_.lower() + where
+            if form.picture.data:
+                if os.path.exists("static/img/" + old_obj.picture):
+                    os.remove("static/img/" + old_obj.picture)
+                if not os.path.exists(os.path.join("static", "img/" + type_.lower())):
+                    os.mkdir(os.path.join("static", "img/" + type_.lower()))
+                where = "pic_" + form.name.data + ".png"
+                if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
+                    i = 1
+                    while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
+                                                                    form.name.data + str(i) + ".png")):
+                        i += 1
+                        where = "/pic_" + form.name.data + str(i) + ".png"
+                f = form.picture.data
+                f.save(os.path.join("static/img/" + type_.lower(), where))
+                old_obj.picture = type_.lower() + "/" + where
             db_sess.commit()
             return redirect('/additional/' + type_)
-        return render_template("fabrics_edit.html", form=form, title="Изменить " + TRANSLATION[type_], old_oj=old_obj)
+        return render_template("fabrics_edit.html", form=form, title="Изменить " + TRANSLATION[type_], old=old)
     abort(404)
 
 
@@ -399,7 +425,7 @@ def wardrobe_add(type_):
         abort(404)
     table = TABLES_CLASSES[type_]
     if current_user.access < 2:
-       abort(403)
+        abort(403)
     db_sess = db_session.create_session()
     names_opt = [i.name for i in db_sess.query(table).filter(table.deleted == 0).all()]
     size_opt = [i.name for i in db_sess.query(Sizes).filter(Sizes.deleted == 0).all()]
@@ -493,10 +519,10 @@ def wardrobe_edit(id_):
 
 
 @app.route("/clothes/Hats/add", methods=['GET', 'POST'])
-# @login_required
+@login_required
 def hats_add():
-    # if current_user.access < 2:
-    #     abort(403)
+    if current_user.access < 2:
+        abort(403)
     db_sess = db_session.create_session()
     seasons_opt = [i.name for i in db_sess.query(Seasons).filter(Seasons.deleted == 0).all()]
     origin_opt = [i.name for i in db_sess.query(Countries).filter(Countries.deleted == 0).all()]
@@ -516,17 +542,22 @@ def hats_add():
         obj.origin = db_sess.query(Countries).filter(Countries.name == form.origin.data,
                                                      Countries.deleted == 0).first().id
         obj.brim = db_sess.query(Brims).filter(Brims.name == form.brim.data, Brims.deleted == 0).first().id
-        if not os.path.exists(os.path.join("static", "hats")):
-            os.mkdir(os.path.join("static", "hats"))
-        where = "pic_" + obj.name
-        if os.path.exists(os.path.join("static/img", "hats" + "/pic_" + obj.name)):
-            i = 1
-            while os.path.exists(os.path.join("static/img", "hats" + "/pic_" + obj.name + str(i))):
-                i += 1
-                where = "/pic_" + obj.name + str(i)
-        with open(where, "wb") as f:
-            f.write(form.picture.data)
-        obj.picture = "hats" + where
+        if form.picture.data:
+            if not os.path.exists(os.path.join("static", "hats")):
+                os.mkdir(os.path.join("static", "hats"))
+            type_ = "Hats"
+            if not os.path.exists(os.path.join("static", "img/" + type_.lower())):
+                os.mkdir(os.path.join("static", "img/" + type_.lower()))
+            where = "pic_" + form.name.data + ".png"
+            if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
+                i = 1
+                while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
+                                                                form.name.data + str(i) + ".png")):
+                    i += 1
+                    where = "/pic_" + form.name.data + str(i) + ".png"
+            f = form.picture.data
+            f.save(os.path.join("static/img/" + type_.lower(), where))
+            obj.picture = type_.lower() + "/" + where
         db_sess.add(obj)
         db_sess.commit()
         return redirect('/clothes/hats/')
@@ -543,6 +574,11 @@ def hats_edit(id_):
     old_obj = db_sess.get(Hats, id_)
     if not old_obj:
         abort(404)
+    old = {"name": old_obj.name, "appearance_year": old_obj.appearance_year,
+           "popularity_start": old_obj.popularity_start, "popularity_end": old_obj.popularity_end,
+           "season": db_sess.get(Seasons, old_obj.season).name, "origin": db_sess.get(Countries, old_obj.origin).name,
+           "brim": db_sess.get(Brims, old_obj.brim).name,
+           "features": old_obj.features}
     form = HatsForm()
     seasons_opt = db_sess.query(Seasons).filter(Seasons.deleted == 0).all()
     origin_opt = db_sess.query(Countries).filter(Countries.deleted == 0).all()
@@ -558,30 +594,34 @@ def hats_edit(id_):
         old_obj.origin = db_sess.query(Countries).filter(Countries.name == form.origin.data,
                                                          Countries.deleted == 0).first().id
         old_obj.brim = db_sess.query(Brims).filter(Brims.name == form.brim.data, Brims.deleted == 0).first().id
-        if os.path.exists("static/img/" + old_obj.picture):
-            os.remove("static/img/" + old_obj.picture)
-        if not os.path.exists(os.path.join("static", "hats")):
-            os.mkdir(os.path.join("static", "hats"))
-        where = "pic_" + old_obj.name
-        if os.path.exists(os.path.join("static/img", "hats" + "/pic_" + old_obj.name)):
-            i = 1
-            while os.path.exists(os.path.join("static/img", "hats" + "/pic_" + old_obj.name + str(i))):
-                i += 1
-                where = "/pic_" + old_obj.name + str(i)
-        with open(where, "wb") as f:
-            f.write(form.picture.data)
-        old_obj.picture = "hats" + where
+        if form.picture.data:
+            if os.path.exists("static/img/" + old_obj.picture):
+                os.remove("static/img/" + old_obj.picture)
+            if not os.path.exists(os.path.join("static", "hats")):
+                os.mkdir(os.path.join("static", "hats"))
+            type_ = "Hats"
+            if not os.path.exists(os.path.join("static", "img/" + type_.lower())):
+                os.mkdir(os.path.join("static", "img/" + type_.lower()))
+            where = "pic_" + form.name.data + ".png"
+            if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
+                i = 1
+                while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
+                                                                form.name.data + str(i) + ".png")):
+                    i += 1
+                    where = "/pic_" + form.name.data + str(i) + ".png"
+            f = form.picture.data
+            f.save(os.path.join("static/img/" + type_.lower(), where))
+            old_obj.picture = type_.lower() + "/" + where
         db_sess.commit()
         return redirect('/clothes/hats/')
-    return render_template("hats_edit.html", form=form, title="Изменить Шляпы", brims=brims_opt, old_obj=old_obj,
-                           origins=origin_opt, seasons=seasons_opt)
+    return render_template("hats_edit.html", form=form, title="Изменить Шляпы", old=old)
 
 
 @app.route("/clothes/Boots/add", methods=['GET', 'POST'])
-# @login_required
+@login_required
 def boots_add():
-    # if current_user.access < 2:
-    #     abort(403)
+    if current_user.access < 2:
+        abort(403)
     db_sess = db_session.create_session()
     seasons_opt = [i.name for i in db_sess.query(Seasons).filter(Seasons.deleted == 0).all()]
     origin_opt = [i.name for i in db_sess.query(Countries).filter(Countries.deleted == 0).all()]
@@ -604,22 +644,26 @@ def boots_add():
                                                      Countries.deleted == 0).first().id
         obj.heel = db_sess.query(Heels).filter(Heels.name == form.heel.data, Heels.deleted == 0).first().id
         obj.clasp = db_sess.query(Clasps).filter(Clasps.name == form.clasp.data, Clasps.deleted == 0).first().id
-        if not os.path.exists(os.path.join("static", "boots")):
-            os.mkdir(os.path.join("static", "boots"))
-        where = "pic_" + obj.name
-        if os.path.exists(os.path.join("static/img", "boots" + "/pic_" + obj.name)):
-            i = 1
-            while os.path.exists(os.path.join("static/img", "boots" + "/pic_" + obj.name + str(i))):
-                i += 1
-                where = "/pic_" + obj.name + str(i)
-        with open(where, "wb") as f:
-            f.write(form.picture.data)
-        obj.picture = "boots" + where
+        if form.picture.data:
+            if not os.path.exists(os.path.join("static", "boots")):
+                os.mkdir(os.path.join("static", "boots"))
+            type_ = "Boots"
+            if not os.path.exists(os.path.join("static", "img/" + type_.lower())):
+                os.mkdir(os.path.join("static", "img/" + type_.lower()))
+            where = "pic_" + form.name.data + ".png"
+            if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
+                i = 1
+                while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
+                                                  form.name.data + str(i) + ".png")):
+                    i += 1
+                    where = "/pic_" + form.name.data + str(i) + ".png"
+            f = form.picture.data
+            f.save(os.path.join("static/img/" + type_.lower(), where))
+            obj.picture = type_.lower() + "/" + where
         db_sess.add(obj)
         db_sess.commit()
         return redirect('/clothes/boots/')
-    return render_template("boots_add.html", form=form, title="Добавить Обувь", heels=heel_opt, clasps=clasp_opt,
-                           origins=origin_opt, seasons=seasons_opt)
+    return render_template("boots_add.html", form=form, title="Добавить Обувь")
 
 
 @app.route("/clothes/Boots/edit/<int:id_>", methods=['GET', 'POST'])
@@ -632,6 +676,11 @@ def boots_edit(id_):
     if not old_obj:
         abort(404)
     form = BootsForm()
+    old = {"name": old_obj.name, "appearance_year": old_obj.appearance_year,
+           "popularity_start": old_obj.popularity_start, "popularity_end": old_obj.popularity_end,
+           "season": db_sess.get(Seasons, old_obj.season).name, "origin": db_sess.get(Countries, old_obj.origin).name,
+           "heel": db_sess.get(Heels, old_obj.heel).name, "clasp": db_sess.get(Clasps, old_obj.clasp).name,
+           "features": old_obj.features}
     seasons_opt = db_sess.query(Seasons).filter(Seasons.deleted == 0).all()
     origin_opt = db_sess.query(Countries).filter(Countries.deleted == 0).all()
     heel_opt = db_sess.query(Heels).filter(Heels.deleted == 0).all()
@@ -648,30 +697,34 @@ def boots_edit(id_):
                                                          Countries.deleted == 0).first().id
         old_obj.heel = db_sess.query(Heels).filter(Heels.name == form.heel.data, Heels.deleted == 0).first().id
         old_obj.clasp = db_sess.query(Clasps).filter(Clasps.name == form.clasp.data, Clasps.deleted == 0).first().id
-        if os.path.exists("static/img/" + old_obj.picture):
-            os.remove("static/img/" + old_obj.picture)
-        if not os.path.exists(os.path.join("static", "boots")):
-            os.mkdir(os.path.join("static", "boots"))
-        where = "pic_" + old_obj.name
-        if os.path.exists(os.path.join("static/img", "boots" + "/pic_" + old_obj.name)):
-            i = 1
-            while os.path.exists(os.path.join("static/img", "boots" + "/pic_" + old_obj.name + str(i))):
-                i += 1
-                where = "/pic_" + old_obj.name + str(i)
-        with open(where, "wb") as f:
-            f.write(form.picture.data)
-        old_obj.picture = "boots" + where
+        if form.picture.data:
+            if os.path.exists("static/img/" + old_obj.picture):
+                os.remove("static/img/" + old_obj.picture)
+            if not os.path.exists(os.path.join("static", "boots")):
+                os.mkdir(os.path.join("static", "boots"))
+            type_ = "Boots"
+            if not os.path.exists(os.path.join("static", "img/" + type_.lower())):
+                os.mkdir(os.path.join("static", "img/" + type_.lower()))
+            where = "pic_" + form.name.data + ".png"
+            if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
+                i = 1
+                while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
+                                                                form.name.data + str(i) + ".png")):
+                    i += 1
+                    where = "/pic_" + form.name.data + str(i) + ".png"
+            f = form.picture.data
+            f.save(os.path.join("static/img/" + type_.lower(), where))
+            old_obj.picture = type_.lower() + "/" + where
         db_sess.commit()
         return redirect('/clothes/boots/')
-    return render_template("boots_edit.html", form=form, title="Изменить Обувь", heels=heel_opt,
-                           clasps=clasp_opt, old_obj=old_obj, origins=origin_opt, seasons=seasons_opt)
+    return render_template("boots_edit.html", form=form, title="Изменить Обувь", old=old)
 
 
 @app.route("/clothes/Lower_body/add", methods=['GET', 'POST'])
-# @login_required
+@login_required
 def lower_body_add():
-    # if current_user.access < 2:
-     #    abort(403)
+    if current_user.access < 2:
+        abort(403)
     db_sess = db_session.create_session()
     form = LowerBodyForm()
     seasons_opt = [i.name for i in db_sess.query(Seasons).filter(Seasons.deleted == 0).all()]
@@ -698,17 +751,22 @@ def lower_body_add():
         obj.length = db_sess.query(TrouserLengths).filter(TrouserLengths.name == form.lengh.data,
                                                           TrouserLengths.deleted == 0).first().id
         obj.fit = db_sess.query(Fits).filter(Fits.name == form.fit.data, Fits.deleted == 0).first().id
-        if not os.path.exists(os.path.join("static", "lower_body")):
-            os.mkdir(os.path.join("static", "lower_body"))
-        where = "pic_" + obj.name
-        if os.path.exists(os.path.join("static/img", "lower_body" + "/pic_" + obj.name)):
-            i = 1
-            while os.path.exists(os.path.join("static/img", "lower_body" + "/pic_" + obj.name + str(i))):
-                i += 1
-                where = "/pic_" + obj.name + str(i)
-        with open(where, "wb") as f:
-            f.write(form.picture.data)
-        obj.picture = "lower_body" + where
+        if form.picture.data:
+            if not os.path.exists(os.path.join("static", "lower_body")):
+                os.mkdir(os.path.join("static", "lower_body"))
+            type_ = "Lower_body"
+            if not os.path.exists(os.path.join("static", "img/" + type_.lower())):
+                os.mkdir(os.path.join("static", "img/" + type_.lower()))
+            where = "pic_" + form.name.data + ".png"
+            if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
+                i = 1
+                while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
+                                                  form.name.data + str(i) + ".png")):
+                    i += 1
+                    where = "/pic_" + form.name.data + str(i) + ".png"
+            f = form.picture.data
+            f.save(os.path.join("static/img/" + type_.lower(), where))
+            obj.picture = type_.lower() + "/" + where
         db_sess.add(obj)
         db_sess.commit()
         return redirect('/clothes/lower_body/')
@@ -745,19 +803,24 @@ def lower_body_edit(id_):
         old_obj.length = db_sess.query(TrouserLengths).filter(TrouserLengths.name == form.lengh.data,
                                                               TrouserLengths.deleted == 0).first().id
         old_obj.fit = db_sess.query(Fits).filter(Fits.name == form.fit.data, Fits.deleted == 0).first().id
-        if os.path.exists("static/img/" + old_obj.picture):
-            os.remove("static/img/" + old_obj.picture)
-        if not os.path.exists(os.path.join("static", "lower_body")):
-            os.mkdir(os.path.join("static", "lower_body"))
-        where = "pic_" + old_obj.name
-        if os.path.exists(os.path.join("static/img", "lower_body" + "/pic_" + old_obj.name)):
-            i = 1
-            while os.path.exists(os.path.join("static/img", "lower_body" + "/pic_" + old_obj.name + str(i))):
-                i += 1
-                where = "/pic_" + old_obj.name + str(i)
-        with open(where, "wb") as f:
-            f.write(form.picture.data)
-        old_obj.picture = "lower_body" + where
+        if form.picture.data:
+            if os.path.exists("static/img/" + old_obj.picture):
+                os.remove("static/img/" + old_obj.picture)
+            if not os.path.exists(os.path.join("static", "lower_body")):
+                os.mkdir(os.path.join("static", "lower_body"))
+            type_ = "Lower_body"
+            if not os.path.exists(os.path.join("static", "img/" + type_.lower())):
+                os.mkdir(os.path.join("static", "img/" + type_.lower()))
+            where = "pic_" + form.name.data + ".png"
+            if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
+                i = 1
+                while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
+                                                  form.name.data + str(i) + ".png")):
+                    i += 1
+                    where = "/pic_" + form.name.data + str(i) + ".png"
+            f = form.picture.data
+            f.save(os.path.join("static/img/" + type_.lower(), where))
+            old_obj.picture = type_.lower() + "/" + where
         db_sess.commit()
         return redirect('/clothes/lower_body/')
     return render_template("lower_body_edit.html", form=form, title="Изменить Нижнюю Одежду", clasps=clasp_opt,
@@ -765,10 +828,10 @@ def lower_body_edit(id_):
 
 
 @app.route("/clothes/Upper_body/add", methods=['GET', 'POST'])
-# @login_required
+@login_required
 def upper_body_add():
-    # if current_user.access < 2:
-    #     abort(403)
+    if current_user.access < 2:
+        abort(403)
     db_sess = db_session.create_session()
     form = UpperBodyForm()
     seasons_opt = [i.name for i in db_sess.query(Seasons).filter(Seasons.deleted == 0).all()]
@@ -800,23 +863,26 @@ def upper_body_add():
         obj.hood = int(form.hood.data)
         obj.fitted = int(form.fitted.data)
         obj.pockets = int(form.pockets.data)
-        if not os.path.exists(os.path.join("static", "upper_body")):
-            os.mkdir(os.path.join("static", "upper_body"))
-        where = "pic_" + obj.name
-        if os.path.exists(os.path.join("static/img", "upper_body" + "/pic_" + obj.name)):
-            i = 1
-            while os.path.exists(os.path.join("static/img", "upper_body" + "/pic_" + obj.name + str(i))):
-                i += 1
-                where = "/pic_" + obj.name + str(i)
-        with open(where, "wb") as f:
-            f.write(form.picture.data)
-        obj.picture = "upper_body" + where
+        if form.picture.data:
+            if not os.path.exists(os.path.join("static", "upper_body")):
+                os.mkdir(os.path.join("static", "upper_body"))
+            type_ = "Upper_body"
+            if not os.path.exists(os.path.join("static", "img/" + type_.lower())):
+                os.mkdir(os.path.join("static", "img/" + type_.lower()))
+            where = "pic_" + form.name.data + ".png"
+            if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
+                i = 1
+                while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
+                                                  form.name.data + str(i) + ".png")):
+                    i += 1
+                    where = "/pic_" + form.name.data + str(i) + ".png"
+            f = form.picture.data
+            f.save(os.path.join("static/img/" + type_.lower(), where))
+            obj.picture = type_.lower() + "/" + where
         db_sess.add(obj)
         db_sess.commit()
         return redirect('/clothes/upper_body/')
-    return render_template("upper_body_add.html", form=form, title="Добавить Верхнюю Одежду", clasps=clasp_opt,
-                           origins=origin_opt, seasons=seasons_opt, sleeves=sleeves_opt,
-                           collars=collar_opt, lapels=lapel_opt)
+    return render_template("upper_body_add.html", form=form, title="Добавить Верхнюю Одежду")
 
 
 @app.route("/clothes/Upper_body/edit/<int:id_>", methods=['GET', 'POST'])
@@ -854,19 +920,24 @@ def upper_body_edit(id_):
         old_obj.hood = int(form.hood.data)
         old_obj.fitted = int(form.fitted.data)
         old_obj.pockets = int(form.pockets.data)
-        if os.path.exists("static/img/" + old_obj.picture):
-            os.remove("static/img/" + old_obj.picture)
-        if not os.path.exists(os.path.join("static", "upper_body")):
-            os.mkdir(os.path.join("static", "upper_body"))
-        where = "pic_" + old_obj.name
-        if os.path.exists(os.path.join("static/img", "upper_body" + "/pic_" + old_obj.name)):
-            i = 1
-            while os.path.exists(os.path.join("static/img", "upper_body" + "/pic_" + old_obj.name + str(i))):
-                i += 1
-                where = "/pic_" + old_obj.name + str(i)
-        with open(where, "wb") as f:
-            f.write(form.picture.data)
-        old_obj.picture = "upper_body" + where
+        if form.picture.data:
+            if os.path.exists("static/img/" + old_obj.picture):
+                os.remove("static/img/" + old_obj.picture)
+            if not os.path.exists(os.path.join("static", "upper_body")):
+                os.mkdir(os.path.join("static", "upper_body"))
+            type_ = "Upper_body"
+            if not os.path.exists(os.path.join("static", "img/" + type_.lower())):
+                os.mkdir(os.path.join("static", "img/" + type_.lower()))
+            where = "pic_" + form.name.data + ".png"
+            if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
+                i = 1
+                while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
+                                                  form.name.data + str(i) + ".png")):
+                    i += 1
+                    where = "/pic_" + form.name.data + str(i) + ".png"
+            f = form.picture.data
+            f.save(os.path.join("static/img/" + type_.lower(), where))
+            old_obj.picture = type_.lower() + "/" + where
         db_sess.commit()
         return redirect('/clothes/upper_body/')
     return render_template("upper_body_edit.html", form=form, title="Изменить Верхнюю Одежду", clasps=clasp_opt,
@@ -940,46 +1011,46 @@ def users_del(id_):
     return redirect("/users/")
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginInForm()
-    if form.validate_on_submit():
-        db_sess = db_session.create_session()
-        user = db_sess.query(User).filter(User.email == form.email.data).first()
-        # print(form.password.data)
-        # если вам скучно, то разкомментируйте эту^ строку
-        # запустите сервер и отправьте ссылку в классный чат с просьбой потестить
-        # 100% кто-нибудь зарегистрируется с настоящими почтой и паролем (уже такое было)
-        if user and user.check_password(form.password.data):
-            login_user(user, remember=form.remember_me.data)
-            return redirect("/")
-        return render_template('login_in.html',
-                               message="Неправильный логин или пароль",
-                               form=form, title="Неудача")
-    return render_template('login_in.html', title='Авторизация', form=form)
+# @app.route('/login', methods=['GET', 'POST'])
+# def login():
+#     form = LoginInForm()
+#     if form.validate_on_submit():
+#         db_sess = db_session.create_session()
+#         user = db_sess.query(User).filter(User.email == form.email.data).first()
+#         # print(form.password.data)
+#         # если вам скучно, то разкомментируйте эту^ строку
+#         # запустите сервер и отправьте ссылку в классный чат с просьбой потестить
+#         # 100% кто-нибудь зарегистрируется с настоящими почтой и паролем (уже такое было)
+#         if user and user.check_password(form.password.data):
+#             login_user(user, remember=form.remember_me.data)
+#             return redirect("/")
+#         return render_template('login_in.html',
+#                                message="Неправильный логин или пароль",
+#                                form=form, title="Неудача")
+#     return render_template('login_in.html', title='Авторизация', form=form)
 
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
-        ans = {"name": "", "email": "", "password": ""}
-        for i in ans:
-            if i in request.form:
-                ans[i] = request.form[i]
+        # ans = {"name": "", "email": "", "password": ""}
+        # for i in ans:
+        #     if i in request.form:
+        #         ans[i] = request.form[i]
         db_sess = db_session.create_session()
         if db_sess.query(User).filter(User.email == form.email.data).first():
             return render_template('used_email.html')  # если пытаться зарегистрироваться с почтой, которая уже есть
         user = User()
-        user.name = ans["name"]
-        user.email = ans["email"]
-        user.hashed_password = generate_password_hash(ans["password"])
+        user.name = form.name.data
+        user.email = form.email.data
+        user.hashed_password = generate_password_hash(form.password.data)
         # print([ans["password"]], user.hashed_password, generate_password_hash(ans["password"]))
         db_sess.add(user)
         db_sess.commit()
         login_user(user)
         return redirect("/")
-    return render_template('user_form.html', title='Регистрация', form=form)
+    return render_template('register.html', title='Регистрация', form=form)
 
 
 @app.errorhandler(400)
