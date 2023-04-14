@@ -580,9 +580,13 @@ def hats_edit(id_):
            "brim": db_sess.get(Brims, old_obj.brim).name,
            "features": old_obj.features}
     form = HatsForm()
-    seasons_opt = db_sess.query(Seasons).filter(Seasons.deleted == 0).all()
-    origin_opt = db_sess.query(Countries).filter(Countries.deleted == 0).all()
-    brims_opt = db_sess.query(Brims).filter(Brims.deleted == 0).all()
+    seasons_opt = [i.name for i in db_sess.query(Seasons).filter(Seasons.deleted == 0).all()]
+    origin_opt = [i.name for i in db_sess.query(Countries).filter(Countries.deleted == 0).all()]
+    brims_opt = [i.name for i in db_sess.query(Brims).filter(Brims.deleted == 0).all()]
+    form = HatsForm()
+    form.season.choices = seasons_opt
+    form.origin.choices = origin_opt
+    form.brim.choices = brims_opt
     if form.validate_on_submit():
         old_obj.name = form.name.data
         old_obj.appearance_year = int(form.appearance_year.data)
@@ -681,10 +685,15 @@ def boots_edit(id_):
            "season": db_sess.get(Seasons, old_obj.season).name, "origin": db_sess.get(Countries, old_obj.origin).name,
            "heel": db_sess.get(Heels, old_obj.heel).name, "clasp": db_sess.get(Clasps, old_obj.clasp).name,
            "features": old_obj.features}
-    seasons_opt = db_sess.query(Seasons).filter(Seasons.deleted == 0).all()
-    origin_opt = db_sess.query(Countries).filter(Countries.deleted == 0).all()
-    heel_opt = db_sess.query(Heels).filter(Heels.deleted == 0).all()
-    clasp_opt = db_sess.query(Clasps).filter(Clasps.deleted == 0).all()
+    seasons_opt = [i.name for i in db_sess.query(Seasons).filter(Seasons.deleted == 0).all()]
+    origin_opt = [i.name for i in db_sess.query(Countries).filter(Countries.deleted == 0).all()]
+    heel_opt = [i.name for i in db_sess.query(Heels).filter(Heels.deleted == 0).all()]
+    clasp_opt = [i.name for i in db_sess.query(Clasps).filter(Clasps.deleted == 0).all()]
+    form = BootsForm()
+    form.season.choices = seasons_opt
+    form.origin.choices = origin_opt
+    form.heel.choices = heel_opt
+    form.clasp.choices = clasp_opt
     if form.validate_on_submit():
         old_obj.name = form.name.data
         old_obj.appearance_year = int(form.appearance_year.data)
@@ -709,7 +718,7 @@ def boots_edit(id_):
             if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
                 i = 1
                 while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
-                                                                form.name.data + str(i) + ".png")):
+                                                  form.name.data + str(i) + ".png")):
                     i += 1
                     where = "/pic_" + form.name.data + str(i) + ".png"
             f = form.picture.data
@@ -784,11 +793,22 @@ def lower_body_edit(id_):
     if not old_obj:
         abort(404)
     form = LowerBodyForm()
-    seasons_opt = db_sess.query(Seasons).filter(Seasons.deleted == 0).all()
-    origin_opt = db_sess.query(Countries).filter(Countries.deleted == 0).all()
-    clasp_opt = db_sess.query(Clasps).filter(Clasps.deleted == 0).all()
-    fit_opt = db_sess.query(Fits).filter(Fits.deleted == 0).all()
-    length_opt = db_sess.query(TrouserLengths).filter(TrouserLengths.deleted == 0).all()
+    old = {"name": old_obj.name, "appearance_year": old_obj.appearance_year,
+           "popularity_start": old_obj.popularity_start, "popularity_end": old_obj.popularity_end,
+           "season": db_sess.get(Seasons, old_obj.season).name, "origin": db_sess.get(Countries, old_obj.origin).name,
+           "length": db_sess.get(TrouserLengths, old_obj.length).name,
+           "clasp": db_sess.get(Clasps, old_obj.clasp).name, "fit": db_sess.get(Fits, old_obj.fit).name,
+           "features": old_obj.features}
+    seasons_opt = [i.name for i in db_sess.query(Seasons).filter(Seasons.deleted == 0).all()]
+    origin_opt = [i.name for i in db_sess.query(Countries).filter(Countries.deleted == 0).all()]
+    clasp_opt = [i.name for i in db_sess.query(Clasps).filter(Clasps.deleted == 0).all()]
+    fit_opt = [i.name for i in db_sess.query(Fits).filter(Fits.deleted == 0).all()]
+    length_opt = [i.name for i in db_sess.query(TrouserLengths).filter(TrouserLengths.deleted == 0).all()]
+    form.season.choices = seasons_opt
+    form.origin.choices = origin_opt
+    form.clasp.choices = clasp_opt
+    form.fit.choices = fit_opt
+    form.length.choices = length_opt
     if form.validate_on_submit():
         old_obj.name = form.name.data
         old_obj.appearance_year = int(form.appearance_year.data)
@@ -823,8 +843,7 @@ def lower_body_edit(id_):
             old_obj.picture = type_.lower() + "/" + where
         db_sess.commit()
         return redirect('/clothes/lower_body/')
-    return render_template("lower_body_edit.html", form=form, title="Изменить Нижнюю Одежду", clasps=clasp_opt,
-                           fits=fit_opt, lengths=length_opt, old_obj=old_obj, origins=origin_opt, seasons=seasons_opt)
+    return render_template("lower_body_edit.html", form=form, title="Изменить Нижнюю Одежду", old=old)
 
 
 @app.route("/clothes/Upper_body/add", methods=['GET', 'POST'])
@@ -895,12 +914,26 @@ def upper_body_edit(id_):
     if not old_obj:
         abort(404)
     form = UpperBodyForm()
-    seasons_opt = db_sess.query(Seasons).filter(Seasons.deleted == 0).all()
-    origin_opt = db_sess.query(Countries).filter(Countries.deleted == 0).all()
-    clasp_opt = db_sess.query(Clasps).filter(Clasps.deleted == 0).all()
-    sleeves_opt = db_sess.query(Sleeves).filter(Sleeves.deleted == 0).all()
-    collar_opt = db_sess.query(Collars).filter(Collars.deleted == 0).all()
-    lapel_opt = db_sess.query(Lapels).filter(Lapels.deleted == 0).all()
+    old = {"name": old_obj.name, "appearance_year": old_obj.appearance_year,
+           "popularity_start": old_obj.popularity_start, "popularity_end": old_obj.popularity_end,
+           "season": db_sess.get(Seasons, old_obj.season).name, "origin": db_sess.get(Countries, old_obj.origin).name,
+           "collar": db_sess.get(Collars, old_obj.collar).name,
+           "clasp": db_sess.get(Clasps, old_obj.clasp).name, "sleeves": db_sess.get(Sleeves, old_obj.sleeves).name,
+           "lapels": db_sess.get(Lapels, old_obj.lapels).name, "hood": old_obj.hood,
+           "fitted": old_obj.fitted, "pockets": old_obj.pockets,
+           "features": old_obj.features}
+    seasons_opt = [i.name for i in db_sess.query(Seasons).filter(Seasons.deleted == 0).all()]
+    origin_opt = [i.name for i in db_sess.query(Countries).filter(Countries.deleted == 0).all()]
+    clasp_opt = [i.name for i in db_sess.query(Clasps).filter(Clasps.deleted == 0).all()]
+    sleeves_opt = [i.name for i in db_sess.query(Sleeves).filter(Sleeves.deleted == 0).all()]
+    collar_opt = [i.name for i in db_sess.query(Collars).filter(Collars.deleted == 0).all()]
+    lapel_opt = [i.name for i in db_sess.query(Lapels).filter(Lapels.deleted == 0).all()]
+    form.season.choices = seasons_opt
+    form.origin.choices = origin_opt
+    form.clasp.choices = clasp_opt
+    form.sleeves.choices = sleeves_opt
+    form.collar.choices = collar_opt
+    form.lapels.choices = lapel_opt
     if form.validate_on_submit():
         old_obj.name = form.name.data
         old_obj.appearance_year = int(form.appearance_year.data)
@@ -940,9 +973,7 @@ def upper_body_edit(id_):
             old_obj.picture = type_.lower() + "/" + where
         db_sess.commit()
         return redirect('/clothes/upper_body/')
-    return render_template("upper_body_edit.html", form=form, title="Изменить Верхнюю Одежду", clasps=clasp_opt,
-                           origins=origin_opt, seasons=seasons_opt, sleeves=sleeves_opt,
-                           collars=collar_opt, lapels=lapel_opt, old_obj=old_obj)
+    return render_template("upper_body_edit.html", form=form, title="Изменить Верхнюю Одежду", old=old)
 
 
 @app.route("/wardrobe/<int:id_>")

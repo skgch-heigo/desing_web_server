@@ -97,7 +97,7 @@
 
     <p>
         {{ form.hood.label }}<br>
-        {{ form.hood(class="form-control") }}<br>
+        {{ form.hood() }}<br>
         {% for error in form.hood.errors %}
     <div class="alert alert-danger" role="alert">
         {{ error }}
@@ -106,7 +106,7 @@
     </p>
     <p>
         {{ form.pockets.label }}<br>
-        {{ form.pockets(class="form-control") }}<br>
+        {{ form.pockets() }}<br>
         {% for error in form.pockets.errors %}
     <div class="alert alert-danger" role="alert">
         {{ error }}
@@ -115,7 +115,7 @@
     </p>
     <p>
         {{ form.fitted.label }}<br>
-        {{ form.fitted(class="form-control") }}<br>
+        {{ form.fitted() }}<br>
         {% for error in form.fitted.errors %}
     <div class="alert alert-danger" role="alert">
         {{ error }}
