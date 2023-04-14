@@ -59,9 +59,9 @@
     {% endfor %}
     </p>
     <p>
-        {{ form.heel.label }}<br>
-        {{ form.heel(class="btn btn-primary dropdown-toggle") }}<br>
-        {% for error in form.heel.errors %}
+        {{ form.fit.label }}<br>
+        {{ form.fit(class="btn btn-primary dropdown-toggle") }}<br>
+        {% for error in form.fit.errors %}
     <div class="alert alert-danger" role="alert">
         {{ error }}
     </div>
@@ -71,6 +71,15 @@
         {{ form.clasp.label }}<br>
         {{ form.clasp(class="btn btn-primary dropdown-toggle") }}<br>
         {% for error in form.clasp.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.length.label }}<br>
+        {{ form.length(class="btn btn-primary dropdown-toggle") }}<br>
+        {% for error in form.length.errors %}
     <div class="alert alert-danger" role="alert">
         {{ error }}
     </div>

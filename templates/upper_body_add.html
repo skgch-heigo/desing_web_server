@@ -59,9 +59,9 @@
     {% endfor %}
     </p>
     <p>
-        {{ form.heel.label }}<br>
-        {{ form.heel(class="btn btn-primary dropdown-toggle") }}<br>
-        {% for error in form.heel.errors %}
+        {{ form.sleeves.label }}<br>
+        {{ form.sleeves(class="btn btn-primary dropdown-toggle") }}<br>
+        {% for error in form.sleeves.errors %}
     <div class="alert alert-danger" role="alert">
         {{ error }}
     </div>
@@ -71,6 +71,52 @@
         {{ form.clasp.label }}<br>
         {{ form.clasp(class="btn btn-primary dropdown-toggle") }}<br>
         {% for error in form.clasp.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.collar.label }}<br>
+        {{ form.collar(class="btn btn-primary dropdown-toggle") }}<br>
+        {% for error in form.collar.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.lapels.label }}<br>
+        {{ form.lapels(class="btn btn-primary dropdown-toggle") }}<br>
+        {% for error in form.lapels.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+
+    <p>
+        {{ form.hood.label }}<br>
+        {{ form.hood(class="form-control") }}<br>
+        {% for error in form.hood.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.pockets.label }}<br>
+        {{ form.pockets(class="form-control") }}<br>
+        {% for error in form.pockets.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.fitted.label }}<br>
+        {{ form.fitted(class="form-control") }}<br>
+        {% for error in form.fitted.errors %}
     <div class="alert alert-danger" role="alert">
         {{ error }}
     </div>
