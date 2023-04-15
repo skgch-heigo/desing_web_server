@@ -1056,7 +1056,7 @@ def wardrobe_del(id_):
         abort(404)
     if obj.owner != current_user.id and not current_user.access == 3:
         abort(403)
-    if os.path.exists("static/img/" + obj.picture):
+    if os.path.exists("static/img/" + str(obj.picture)):
         os.remove("static/img/" + obj.picture)
     db_sess.delete(obj)
     db_sess.commit()
@@ -1074,7 +1074,7 @@ def clothes_del(type_, id_):
         abort(404)
     if not current_user.access >= 2:
         abort(403)
-    if os.path.exists("static/img/" + obj.picture):
+    if os.path.exists("static/img/" + str(obj.picture)):
         os.remove("static/img/" + obj.picture)
     db_sess.delete(obj)
     db_sess.commit()
@@ -1092,7 +1092,7 @@ def additional_del(type_, id_):
         abort(404)
     if not current_user.access >= 2:
         abort(403)
-    if (type_ in SIMPLE or type_ == "Fabrics") and os.path.exists("static/img/" + obj.picture):
+    if (type_ in SIMPLE or type_ == "Fabrics") and os.path.exists("static/img/" + str(obj.picture)):
         os.remove("static/img/" + obj.picture)
     db_sess.delete(obj)
     db_sess.commit()
