@@ -1,6 +1,7 @@
 import datetime
 import os
 import random
+import logging
 
 from flask import jsonify, url_for
 from flask import Flask, render_template, redirect, request, make_response
@@ -38,6 +39,15 @@ from data.forms.login_in import LoginInForm
 from data.forms.registration_form import RegisterForm
 
 from data.maps import finder
+
+from config.config import LOG_FILE
+
+
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG, filename=LOG_FILE
+)
+
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 api = Api(app)
@@ -134,7 +144,8 @@ def index():
             login_user(user, remember=form.remember_me.data)
             return redirect("/")
         return render_template("main.html", title="Designer help",
-                               music=url_for("static", filename="music/ragtime.mp3"), form=form)
+                               music=url_for("static", filename="music/ragtime.mp3"), form=form,
+                               message="Неправильный логин или пароль")
     return render_template("main.html", title="Designer help",
                            music=url_for("static", filename="music/ragtime.mp3"), form=form)
 
@@ -435,7 +446,7 @@ def wardrobe_add(type_):
     if type_ not in TABLES:
         abort(404)
     table = TABLES_CLASSES[type_]
-    if current_user.access < 2:
+    if not current_user.is_authenticated:
         abort(403)
     db_sess = db_session.create_session()
     names_opt = [i.name for i in db_sess.query(table).filter(table.deleted == 0).all()]
@@ -486,7 +497,7 @@ def wardrobe_edit(id_):
     old_obj = db_sess.get(Wardrobe, id_)
     if not old_obj:
         abort(404)
-    if current_user.access < 2:
+    if not current_user.is_authenticated or (current_user.id != old_obj.owner and current_user.access != 3):
         abort(403)
     table = TABLES_CLASSES[db_sess.get(Types, old_obj.type_).name]
     old = {"name": db_sess.get(table, old_obj.name).name, "size": db_sess.get(Sizes, old_obj.size).name,
@@ -536,7 +547,7 @@ def wardrobe_edit(id_):
     return render_template("wardrobe_edit.html", form=form, title="Изменить в гардеробе", old=old)
 
 
-@app.route("/clothes/Hats/add", methods=['GET', 'POST'])
+@app.route("/clothes/add/Hats", methods=['GET', 'POST'])
 @login_required
 def hats_add():
     if current_user.access < 2:
@@ -584,7 +595,7 @@ def hats_add():
                            origins=origin_opt, seasons=seasons_opt)
 
 
-@app.route("/clothes/Hats/edit/<int:id_>", methods=['GET', 'POST'])
+@app.route("/clothes/edit/Hats/<int:id_>", methods=['GET', 'POST'])
 @login_required
 def hats_edit(id_):
     db_sess = db_session.create_session()
@@ -650,7 +661,7 @@ def hats_edit(id_):
     return render_template("hats_add.html", form=form, title="Изменить Шляпы", old=old)
 
 
-@app.route("/clothes/Boots/add", methods=['GET', 'POST'])
+@app.route("/clothes/add/Boots", methods=['GET', 'POST'])
 @login_required
 def boots_add():
     if current_user.access < 2:
@@ -700,7 +711,7 @@ def boots_add():
     return render_template("boots_add.html", form=form, title="Добавить Обувь")
 
 
-@app.route("/clothes/Boots/edit/<int:id_>", methods=['GET', 'POST'])
+@app.route("/clothes/edit/Boots/<int:id_>", methods=['GET', 'POST'])
 @login_required
 def boots_edit(id_):
     db_sess = db_session.create_session()
@@ -770,7 +781,7 @@ def boots_edit(id_):
     return render_template("boots_add.html", form=form, title="Изменить Обувь", old=old)
 
 
-@app.route("/clothes/Lower_body/add", methods=['GET', 'POST'])
+@app.route("/clothes/add/Lower_body", methods=['GET', 'POST'])
 @login_required
 def lower_body_add():
     if current_user.access < 2:
@@ -825,7 +836,7 @@ def lower_body_add():
                            fits=fit_opt, lengths=length_opt, origins=origin_opt, seasons=seasons_opt)
 
 
-@app.route("/clothes/Lower_body/edit/<int:id_>", methods=['GET', 'POST'])
+@app.route("/clothes/edit/Lower_body/<int:id_>", methods=['GET', 'POST'])
 @login_required
 def lower_body_edit(id_):
     db_sess = db_session.create_session()
@@ -900,7 +911,7 @@ def lower_body_edit(id_):
     return render_template("lower_body_add.html", form=form, title="Изменить Нижнюю Одежду", old=old)
 
 
-@app.route("/clothes/Upper_body/add", methods=['GET', 'POST'])
+@app.route("/clothes/add/Upper_body", methods=['GET', 'POST'])
 @login_required
 def upper_body_add():
     if current_user.access < 2:
@@ -959,7 +970,7 @@ def upper_body_add():
     return render_template("upper_body_add.html", form=form, title="Добавить Верхнюю Одежду")
 
 
-@app.route("/clothes/Upper_body/edit/<int:id_>", methods=['GET', 'POST'])
+@app.route("/clothes/edit/Upper_body/<int:id_>", methods=['GET', 'POST'])
 @login_required
 def upper_body_edit(id_):
     db_sess = db_session.create_session()
@@ -1113,6 +1124,22 @@ def users_del(id_):
     return redirect("/users/")
 
 
+@app.route("/users/set_access/<int:id_>/<int:access>")
+@login_required
+def users_set_access(id_, access):
+    db_sess = db_session.create_session()
+    obj = db_sess.get(User, id_)
+    if not obj:
+        abort(404)
+    if not(4 > access > 0):
+        abort(404)
+    if not current_user.access == 3:
+        abort(403)
+    obj.access = access
+    db_sess.commit()
+    return redirect("/users/")
+
+
 # @app.route('/login', methods=['GET', 'POST'])
 # def login():
 #     form = LoginInForm()
@@ -1142,7 +1169,8 @@ def register():
         #         ans[i] = request.form[i]
         db_sess = db_session.create_session()
         if db_sess.query(User).filter(User.email == form.email.data).first():
-            return render_template('used_email.html')  # если пытаться зарегистрироваться с почтой, которая уже есть
+            return render_template('register.html', title='Регистрация', form=form, message="Такая почта уже есть")
+            # если пытаться зарегистрироваться с почтой, которая уже есть
         user = User()
         user.name = form.name.data
         user.email = form.email.data

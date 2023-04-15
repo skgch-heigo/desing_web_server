@@ -30,10 +30,10 @@
                 </a>
                 <ul class="dropdown-menu text-small shadow" style="">
                     <li><a class="dropdown-item" href="show/users/{{current_user.id}}">Профиль</a></li>
-                    <li><a class="dropdown-item" href="#">Добавить в гардероб шляпы...</a></li>
-                    <li><a class="dropdown-item" href="#">Добавить в гардероб верхнюю одежду...</a></li>
-                    <li><a class="dropdown-item" href="#">Добавить в гардероб нижнюю одежду...</a></li>
-                    <li><a class="dropdown-item" href="#">Добавить в гардероб обувь...</a></li>
+                    <li><a class="dropdown-item" href="/wardrobe/add/Hats">Добавить в гардероб шляпы...</a></li>
+                    <li><a class="dropdown-item" href="/wardrobe/add/Upper_body">Добавить в гардероб верхнюю одежду...</a></li>
+                    <li><a class="dropdown-item" href="/wardrobe/add/Lower_body">Добавить в гардероб нижнюю одежду...</a></li>
+                    <li><a class="dropdown-item" href="/wardrobe/add/Boots">Добавить в гардероб обувь...</a></li>
                     {% if current_user.is_authenticated and current_user.access >= 2 %}
                     <li>
                         <hr class="dropdown-divider">
@@ -85,19 +85,19 @@
                         <li>
                         <hr class="dropdown-divider">
                     </li>
-                        <li><a class="dropdown-item" href="/additional/Brims/">Добавить поля...</a></li>
-                        <li><a class="dropdown-item" href="/additional/Clasps/">Добавить застёжки...</a></li>
-                        <li><a class="dropdown-item" href="/additional/Collars/">Добавить воротники...</a></li>
-                        <li><a class="dropdown-item" href="/additional/Countries/">Добавить страны...</a></li>
-                        <li><a class="dropdown-item" href="/additional/Fabrics/">Добавить ткани...</a></li>
-                        <li><a class="dropdown-item" href="/additional/Fits/">Добавить посадки...</a></li>
-                        <li><a class="dropdown-item" href="/additional/Heels/">Добавить каблуки...</a></li>
-                        <li><a class="dropdown-item" href="/additional/Lapels/">Добавить лацканы...</a></li>
-                        <li><a class="dropdown-item" href="/additional/Patterns/">Добавить узоры...</a></li>
-                        <li><a class="dropdown-item" href="/additional/Seasons/">Добавить сезоны...</a></li>
-                        <li><a class="dropdown-item" href="/additional/Sizes/">Добавить размеры...</a></li>
-                        <li><a class="dropdown-item" href="/additional/Sleeves/">Добавить рукава...</a></li>
-                        <li><a class="dropdown-item" href="/additional/Trouser_lengths/">Добавить длины...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Brims/">Поля...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Clasps/">Застёжки...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Collars/">Воротники...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Countries/">Страны...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Fabrics/">Ткани...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Fits/">Посадки...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Heels/">Каблуки...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Lapels/">Лацканы...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Patterns/">Узоры...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Seasons/">Сезоны...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Sizes/">Размеры...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Sleeves/">Рукава...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Trouser_lengths/">Длины...</a></li>
                     </ul>
                 </nav>
             </li>
@@ -107,7 +107,9 @@
         </ul>
     </header>
 </div>
+<main role="main" class="container">
 {% block content %}{% endblock %}
+</main>
 <div class="container">
     <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
