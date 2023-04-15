@@ -3,14 +3,14 @@ import aiohttp
 
 from telegram import ReplyKeyboardMarkup
 from telegram.ext import Application, MessageHandler, filters, CommandHandler
-from config.config import BOT_TOKEN, SITE_URL, LOG_FILE
+from config.config import BOT_TOKEN, SITE_URL, LOG_FILE, LOG_LEVEL
 
 # Запускаем логгирование
 from data.constants.tables_inf import TABLES_CLASSES, RELATIONS, FIELDS
 from data.models import db_session
 
 logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG, filename=LOG_FILE
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=LOG_LEVEL, filename=LOG_FILE
 )
 
 logger = logging.getLogger(__name__)

@@ -40,11 +40,11 @@ from data.forms.registration_form import RegisterForm
 
 from data.maps import finder
 
-from config.config import LOG_FILE
+from config.config import LOG_FILE, LOG_LEVEL
 
 
 logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG, filename=LOG_FILE
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=LOG_LEVEL, filename=LOG_FILE
 )
 
 logger = logging.getLogger(__name__)
