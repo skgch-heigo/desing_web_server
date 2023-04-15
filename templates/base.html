@@ -26,7 +26,7 @@
             <div style="position:absolute;left:90px" class="flex-shrink-0 dropdown">
                 <a class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
                    aria-expanded="false">
-                    <img src="/static/img/pfp/base_png.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
+                    <img src="/static/img/pfp/base_png.jpg" alt="mdo" width="32" height="32" class="rounded-circle"> {{ current_user.name }}
                 </a>
                 <ul class="dropdown-menu text-small shadow" style="">
                     <li><a class="dropdown-item" href="show/users/{{current_user.id}}">Профиль</a></li>

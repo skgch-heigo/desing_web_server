@@ -11,6 +11,7 @@
                 например, чтобы составить гардероб для какого-либо персонажа.</p>
         </div>
         <div class="col-md-10 mx-auto col-lg-5">
+            {% if not current_user.is_authenticated %}
             <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary" enctype="multipart/form-data" method="post" novalidate>
                 {{ form.hidden_tag() }}
                 <div class="form-floating mb-3">
@@ -47,6 +48,7 @@
                 <small class="text-body-secondary">Нажимая на Регистрация, вы соглашаетесь с Условиями
                     пользования.</small>
             </form>
+            {% endif %}
         </div>
     </div>
 </div>
