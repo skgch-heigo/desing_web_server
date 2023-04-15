@@ -118,9 +118,9 @@ def main():
     app.run()
 
 
-@app.route("/")
-@app.route("/index")
-@app.route("/main")
+@app.route("/", methods=['GET', 'POST'])
+@app.route("/index", methods=['GET', 'POST'])
+@app.route("/main", methods=['GET', 'POST'])
 def index():
     form = LoginInForm()
     if form.validate_on_submit():
@@ -133,9 +133,8 @@ def index():
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
             return redirect("/")
-        return render_template('login_in.html',
-                               message="Неправильный логин или пароль",
-                               form=form, title="Неудача")
+        return render_template("main.html", title="Designer help",
+                               music=url_for("static", filename="music/ragtime.mp3"), form=form)
     return render_template("main.html", title="Designer help",
                            music=url_for("static", filename="music/ragtime.mp3"), form=form)
 
@@ -302,16 +301,17 @@ def additional_add(type_):
                 where = "pic_" + form.name.data + ".png"
                 if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
                     i = 1
+                    where = "pic_" + form.name.data + str(i) + ".png"
                     while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
                                                       form.name.data + str(i) + ".png")):
                         i += 1
-                        where = "/pic_" + form.name.data + str(i) + ".png"
+                        where = "pic_" + form.name.data + str(i) + ".png"
                 f = form.picture.data
                 f.save(os.path.join("static/img/" + type_.lower(), where))
                 obj.picture = type_.lower() + "/" + where
             db_sess.add(obj)
             db_sess.commit()
-            return redirect('/additional/' + type_)
+            return redirect('/additional/' + type_ + "/")
         return render_template("simple_add.html", form=form, title="Добавить " + TRANSLATION[type_])
     elif type_ in NO_PICTURE:
         form = NoPictureForm()
@@ -320,7 +320,7 @@ def additional_add(type_):
             obj.name = form.name.data
             db_sess.add(obj)
             db_sess.commit()
-            return redirect('/additional/' + type_)
+            return redirect('/additional/' + type_ + "/")
         return render_template("no_picture_add.html", form=form, title="Добавить " + TRANSLATION[type_])
     elif type_ == "Fabrics":
         form = FabricsForm()
@@ -335,16 +335,17 @@ def additional_add(type_):
                 where = "pic_" + form.name.data + ".png"
                 if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
                     i = 1
+                    where = "pic_" + form.name.data + str(i) + ".png"
                     while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
                                                       form.name.data + str(i) + ".png")):
                         i += 1
-                        where = "/pic_" + form.name.data + str(i) + ".png"
+                        where = "pic_" + form.name.data + str(i) + ".png"
                 f = form.picture.data
                 f.save(os.path.join("static/img/" + type_.lower(), where))
                 obj.picture = type_.lower() + "/" + where
             db_sess.add(obj)
             db_sess.commit()
-            return redirect('/additional/' + type_)
+            return redirect('/additional/' + type_ + "/")
         return render_template("fabrics_add.html", form=form, title="Добавить " + TRANSLATION[type_])
     abort(404)
 
@@ -365,22 +366,23 @@ def additional_edit(type_, id_):
         if form.validate_on_submit():
             old_obj.name = form.name.data
             if form.picture.data:
-                if os.path.exists("static/img/" + old_obj.picture):
-                    os.remove("static/img/" + old_obj.picture)
+                if os.path.exists("static/img/" + str(old_obj.picture)):
+                    os.remove("static/img/" + str(old_obj.picture))
                 if not os.path.exists(os.path.join("static", "img/" + type_.lower())):
                     os.mkdir(os.path.join("static", "img/" + type_.lower()))
                 where = "pic_" + form.name.data + ".png"
                 if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
                     i = 1
+                    where = "pic_" + form.name.data + str(i) + ".png"
                     while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
                                                                     form.name.data + str(i) + ".png")):
                         i += 1
-                        where = "/pic_" + form.name.data + str(i) + ".png"
+                        where = "pic_" + form.name.data + str(i) + ".png"
                 f = form.picture.data
                 f.save(os.path.join("static/img/" + type_.lower(), where))
                 old_obj.picture = type_.lower() + "/" + where
             db_sess.commit()
-            return redirect('/additional/' + type_)
+            return redirect('/additional/' + type_ + "/")
         form.name.default = old["name"]
         form.process()
         render_template("simple_add.html", form=form, title="Изменить " + TRANSLATION[type_], old=old)
@@ -390,7 +392,7 @@ def additional_edit(type_, id_):
         if form.validate_on_submit():
             old_obj.name = form.name.data
             db_sess.commit()
-            return redirect('/additional/' + type_)
+            return redirect('/additional/' + type_ + "/")
         form.name.default = old["name"]
         form.process()
         render_template("no_picture_add.html", form=form, title="Изменить " + TRANSLATION[type_], old=old)
@@ -402,22 +404,23 @@ def additional_edit(type_, id_):
             old_obj.warmth = form.warmth.data
             old_obj.washing = form.washing.data
             if form.picture.data:
-                if os.path.exists("static/img/" + old_obj.picture):
-                    os.remove("static/img/" + old_obj.picture)
+                if os.path.exists("static/img/" + str(old_obj.picture)):
+                    os.remove("static/img/" + str(old_obj.picture))
                 if not os.path.exists(os.path.join("static", "img/" + type_.lower())):
                     os.mkdir(os.path.join("static", "img/" + type_.lower()))
                 where = "pic_" + form.name.data + ".png"
                 if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
                     i = 1
+                    where = "pic_" + form.name.data + str(i) + ".png"
                     while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
                                                                     form.name.data + str(i) + ".png")):
                         i += 1
-                        where = "/pic_" + form.name.data + str(i) + ".png"
+                        where = "pic_" + form.name.data + str(i) + ".png"
                 f = form.picture.data
                 f.save(os.path.join("static/img/" + type_.lower(), where))
                 old_obj.picture = type_.lower() + "/" + where
             db_sess.commit()
-            return redirect('/additional/' + type_)
+            return redirect('/additional/' + type_ + "/")
         form.name.default = old["name"]
         form.warmth.default = old["warmth"]
         form.washing.default = old["washing"]
@@ -508,8 +511,8 @@ def wardrobe_edit(id_):
                                                          Patterns.deleted == 0).first().id
         if form.picture.data:
             print("!!")
-            if os.path.exists("static/img/" + old_obj.picture):
-                os.remove("static/img/" + old_obj.picture)
+            if os.path.exists("static/img/" + str(old_obj.picture)):
+                os.remove("static/img/" + str(old_obj.picture))
             if not os.path.exists(os.path.join("static", "img/wardrobe")):
                 os.mkdir(os.path.join("static", "img/wardrobe"))
             where = "pic_" + form.name.data + ".png"
@@ -566,10 +569,11 @@ def hats_add():
             where = "pic_" + form.name.data + ".png"
             if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
                 i = 1
+                where = "pic_" + form.name.data + str(i) + ".png"
                 while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
                                                                 form.name.data + str(i) + ".png")):
                     i += 1
-                    where = "/pic_" + form.name.data + str(i) + ".png"
+                    where = "pic_" + form.name.data + str(i) + ".png"
             f = form.picture.data
             f.save(os.path.join("static/img/" + type_.lower(), where))
             obj.picture = type_.lower() + "/" + where
@@ -614,8 +618,8 @@ def hats_edit(id_):
                                                          Countries.deleted == 0).first().id
         old_obj.brim = db_sess.query(Brims).filter(Brims.name == form.brim.data, Brims.deleted == 0).first().id
         if form.picture.data:
-            if os.path.exists("static/img/" + old_obj.picture):
-                os.remove("static/img/" + old_obj.picture)
+            if os.path.exists("static/img/" + str(old_obj.picture)):
+                os.remove("static/img/" + str(old_obj.picture))
             if not os.path.exists(os.path.join("static", "hats")):
                 os.mkdir(os.path.join("static", "hats"))
             type_ = "Hats"
@@ -624,10 +628,11 @@ def hats_edit(id_):
             where = "pic_" + form.name.data + ".png"
             if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
                 i = 1
+                where = "pic_" + form.name.data + str(i) + ".png"
                 while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
                                                                 form.name.data + str(i) + ".png")):
                     i += 1
-                    where = "/pic_" + form.name.data + str(i) + ".png"
+                    where = "pic_" + form.name.data + str(i) + ".png"
             f = form.picture.data
             f.save(os.path.join("static/img/" + type_.lower(), where))
             old_obj.picture = type_.lower() + "/" + where
@@ -681,10 +686,11 @@ def boots_add():
             where = "pic_" + form.name.data + ".png"
             if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
                 i = 1
+                where = "pic_" + form.name.data + str(i) + ".png"
                 while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
                                                   form.name.data + str(i) + ".png")):
                     i += 1
-                    where = "/pic_" + form.name.data + str(i) + ".png"
+                    where = "pic_" + form.name.data + str(i) + ".png"
             f = form.picture.data
             f.save(os.path.join("static/img/" + type_.lower(), where))
             obj.picture = type_.lower() + "/" + where
@@ -731,8 +737,8 @@ def boots_edit(id_):
         old_obj.heel = db_sess.query(Heels).filter(Heels.name == form.heel.data, Heels.deleted == 0).first().id
         old_obj.clasp = db_sess.query(Clasps).filter(Clasps.name == form.clasp.data, Clasps.deleted == 0).first().id
         if form.picture.data:
-            if os.path.exists("static/img/" + old_obj.picture):
-                os.remove("static/img/" + old_obj.picture)
+            if os.path.exists("static/img/" + str(old_obj.picture)):
+                os.remove("static/img/" + str(old_obj.picture))
             if not os.path.exists(os.path.join("static", "boots")):
                 os.mkdir(os.path.join("static", "boots"))
             type_ = "Boots"
@@ -741,10 +747,11 @@ def boots_edit(id_):
             where = "pic_" + form.name.data + ".png"
             if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
                 i = 1
+                where = "pic_" + form.name.data + str(i) + ".png"
                 while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
                                                   form.name.data + str(i) + ".png")):
                     i += 1
-                    where = "/pic_" + form.name.data + str(i) + ".png"
+                    where = "pic_" + form.name.data + str(i) + ".png"
             f = form.picture.data
             f.save(os.path.join("static/img/" + type_.lower(), where))
             old_obj.picture = type_.lower() + "/" + where
@@ -803,10 +810,11 @@ def lower_body_add():
             where = "pic_" + form.name.data + ".png"
             if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
                 i = 1
+                where = "pic_" + form.name.data + str(i) + ".png"
                 while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
                                                   form.name.data + str(i) + ".png")):
                     i += 1
-                    where = "/pic_" + form.name.data + str(i) + ".png"
+                    where = "pic_" + form.name.data + str(i) + ".png"
             f = form.picture.data
             f.save(os.path.join("static/img/" + type_.lower(), where))
             obj.picture = type_.lower() + "/" + where
@@ -858,8 +866,8 @@ def lower_body_edit(id_):
                                                               TrouserLengths.deleted == 0).first().id
         old_obj.fit = db_sess.query(Fits).filter(Fits.name == form.fit.data, Fits.deleted == 0).first().id
         if form.picture.data:
-            if os.path.exists("static/img/" + old_obj.picture):
-                os.remove("static/img/" + old_obj.picture)
+            if os.path.exists("static/img/" + str(old_obj.picture)):
+                os.remove("static/img/" + str(old_obj.picture))
             if not os.path.exists(os.path.join("static", "lower_body")):
                 os.mkdir(os.path.join("static", "lower_body"))
             type_ = "Lower_body"
@@ -868,10 +876,11 @@ def lower_body_edit(id_):
             where = "pic_" + form.name.data + ".png"
             if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
                 i = 1
+                where = "pic_" + form.name.data + str(i) + ".png"
                 while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
                                                   form.name.data + str(i) + ".png")):
                     i += 1
-                    where = "/pic_" + form.name.data + str(i) + ".png"
+                    where = "pic_" + form.name.data + str(i) + ".png"
             f = form.picture.data
             f.save(os.path.join("static/img/" + type_.lower(), where))
             old_obj.picture = type_.lower() + "/" + where
@@ -936,10 +945,11 @@ def upper_body_add():
             where = "pic_" + form.name.data + ".png"
             if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
                 i = 1
+                where = "pic_" + form.name.data + str(i) + ".png"
                 while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
                                                   form.name.data + str(i) + ".png")):
                     i += 1
-                    where = "/pic_" + form.name.data + str(i) + ".png"
+                    where = "pic_" + form.name.data + str(i) + ".png"
             f = form.picture.data
             f.save(os.path.join("static/img/" + type_.lower(), where))
             obj.picture = type_.lower() + "/" + where
@@ -999,8 +1009,8 @@ def upper_body_edit(id_):
         old_obj.fitted = int(form.fitted.data)
         old_obj.pockets = int(form.pockets.data)
         if form.picture.data:
-            if os.path.exists("static/img/" + old_obj.picture):
-                os.remove("static/img/" + old_obj.picture)
+            if os.path.exists("static/img/" + str(old_obj.picture)):
+                os.remove("static/img/" + str(old_obj.picture))
             if not os.path.exists(os.path.join("static", "upper_body")):
                 os.mkdir(os.path.join("static", "upper_body"))
             type_ = "Upper_body"
@@ -1009,10 +1019,11 @@ def upper_body_edit(id_):
             where = "pic_" + form.name.data + ".png"
             if os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" + form.name.data + ".png")):
                 i = 1
+                where = "pic_" + form.name.data + str(i) + ".png"
                 while os.path.exists(os.path.join("static/img", type_.lower() + "/pic_" +
                                                   form.name.data + str(i) + ".png")):
                     i += 1
-                    where = "/pic_" + form.name.data + str(i) + ".png"
+                    where = "pic_" + form.name.data + str(i) + ".png"
             f = form.picture.data
             f.save(os.path.join("static/img/" + type_.lower(), where))
             old_obj.picture = type_.lower() + "/" + where

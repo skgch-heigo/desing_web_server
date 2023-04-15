@@ -22,25 +22,47 @@
 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
 
-            {% if log_in %}
+            {% if current_user.is_authenticated %}
             <div style="position:absolute;left:90px" class="flex-shrink-0 dropdown">
                 <a class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
                    aria-expanded="false">
-                    <img src="/static/img/base_png.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
+                    <img src="/static/img/pfp/base_png.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
                 </a>
                 <ul class="dropdown-menu text-small shadow" style="">
-                    <li><a class="dropdown-item" href="#">Профиль</a></li>
+                    <li><a class="dropdown-item" href="show/users/{{current_user.id}}">Профиль</a></li>
+                    <li><a class="dropdown-item" href="#">Добавить в гардероб шляпы...</a></li>
+                    <li><a class="dropdown-item" href="#">Добавить в гардероб верхнюю одежду...</a></li>
+                    <li><a class="dropdown-item" href="#">Добавить в гардероб нижнюю одежду...</a></li>
+                    <li><a class="dropdown-item" href="#">Добавить в гардероб обувь...</a></li>
+                    {% if current_user.is_authenticated and current_user.access >= 2 %}
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="/clothes/add/hats">Добавить шляпы...</a></li>
-                    <li><a class="dropdown-item" href="#">Добавить верхнюю одежду...</a></li>
-                    <li><a class="dropdown-item" href="#">Добавить нижнюю одежду...</a></li>
-                    <li><a class="dropdown-item" href="#">Добавить обувь...</a></li>
+                    <li><a class="dropdown-item" href="/clothes/add/Hats">Добавить шляпы...</a></li>
+                    <li><a class="dropdown-item" href="/clothes/add/Upper_body">Добавить верхнюю одежду...</a></li>
+                    <li><a class="dropdown-item" href="/clothes/add/Lower_body">Добавить нижнюю одежду...</a></li>
+                    <li><a class="dropdown-item" href="/clothes/add/Boots">Добавить обувь...</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="#">Выйти</a></li>
+                    <li><a class="dropdown-item" href="/additional/add/Brims">Добавить поля...</a></li>
+                    <li><a class="dropdown-item" href="/additional/add/Clasps">Добавить застёжки...</a></li>
+                    <li><a class="dropdown-item" href="/additional/add/Collars">Добавить воротники...</a></li>
+                    <li><a class="dropdown-item" href="/additional/add/Countries">Добавить страны...</a></li>
+                    <li><a class="dropdown-item" href="/additional/add/Fabrics">Добавить ткани...</a></li>
+                    <li><a class="dropdown-item" href="/additional/add/Fits">Добавить посадки...</a></li>
+                    <li><a class="dropdown-item" href="/additional/add/Heels">Добавить каблуки...</a></li>
+                    <li><a class="dropdown-item" href="/additional/add/Lapels">Добавить лацканы...</a></li>
+                    <li><a class="dropdown-item" href="/additional/add/Patterns">Добавить узоры...</a></li>
+                    <li><a class="dropdown-item" href="/additional/add/Seasons">Добавить сезоны...</a></li>
+                    <li><a class="dropdown-item" href="/additional/add/Sizes">Добавить размеры...</a></li>
+                    <li><a class="dropdown-item" href="/additional/add/Sleeves">Добавить рукава...</a></li>
+                    <li><a class="dropdown-item" href="/additional/add/Trouser_lengths">Добавить длины...</a></li>
+                    {% endif %}
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="logout">Выйти</a></li>
                 </ul>
             </div>
             {%endif %}
@@ -50,10 +72,32 @@
                 <nav class="">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Навигация</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/clothes/hats">Шляпы</a></li>
-                        <li><a class="dropdown-item" href="/clothes/upper_body">Верхняя одежда</a></li>
-                        <li><a class="dropdown-item" href="/clothes/lower_body">Нижняя одежда</a></li>
-                        <li><a class="dropdown-item" href="/clothes/boots">Обувь</a></li>
+                        {% if current_user.is_authenticated and current_user.access == 3 %}
+                        <li><a class="dropdown-item" href="/users/">Пользователи</a></li>
+                        {% endif %}
+                        {% if current_user.is_authenticated %}
+                        <li><a class="dropdown-item" href="/wardrobe/">Гардероб</a></li>
+                        {% endif %}
+                        <li><a class="dropdown-item" href="/clothes/Hats/">Шляпы</a></li>
+                        <li><a class="dropdown-item" href="/clothes/Upper_body/">Верхняя одежда</a></li>
+                        <li><a class="dropdown-item" href="/clothes/Lower_body/">Нижняя одежда</a></li>
+                        <li><a class="dropdown-item" href="/clothes/Boots/">Обувь</a></li>
+                        <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                        <li><a class="dropdown-item" href="/additional/Brims/">Добавить поля...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Clasps/">Добавить застёжки...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Collars/">Добавить воротники...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Countries/">Добавить страны...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Fabrics/">Добавить ткани...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Fits/">Добавить посадки...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Heels/">Добавить каблуки...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Lapels/">Добавить лацканы...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Patterns/">Добавить узоры...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Seasons/">Добавить сезоны...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Sizes/">Добавить размеры...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Sleeves/">Добавить рукава...</a></li>
+                        <li><a class="dropdown-item" href="/additional/Trouser_lengths/">Добавить длины...</a></li>
                     </ul>
                 </nav>
             </li>
