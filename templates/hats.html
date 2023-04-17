@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Таблица шляп</h1>
+<br>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.sort_str.label }}<br>
+        {{ form.sort_str(class="form-control") }}<br>
+        {% for error in form.sort_str.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+</form>
+<br>
+<table class="table table-bordered">
+    <thead>
+    <tr class="table-primary">
+        <th scope="col">Название</th>
+        <th scope="col">Сезон</th>
+        <th scope="col">Место происхождения</th>
+        <th scope="col">Год появления</th>
+        <th scope="col">Начало популярности</th>
+        <th scope="col">Конец популярности</th>
+        <th scope="col">Поля</th>
+        <th scope="col">Дополнительная информация</th>
+        <th scope="col">Изображение</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in range(count_cols) %}
+    <tr>
+        <th scope="row"><a href="#"> {{ data[item][0] }} </a></th>
+        <td>{{ data[item][1] }}</td>
+        <td>{{ data[item][2] }}</td>
+        <td>{{ data[item][3] }}</td>
+        <td>{{ data[item][4] }}</td>
+        <td>{{ data[item][5] }}</td>
+        <td>{{ data[item][6] }}</td>
+        <td>{{ data[item][7] }}</td>
+        <td>{{ data[item][8] }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
