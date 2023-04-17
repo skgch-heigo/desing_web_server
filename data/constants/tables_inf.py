@@ -30,7 +30,7 @@ FIELDS = {"Boots": ["id", "name", "season", "origin", "appearance_year",
           "Upper_body": ["id", "name", "season", "origin", "appearance_year",
                          "popularity_start", "popularity_end", "sleeves", "clasp", "collar",
                          "hood", "lapels", "pockets", "fitted", "features", "picture", "deleted"],
-          "Wardrobe": ["id", "type", "name", "color", "size",
+          "Wardrobe": ["id", "type_", "name", "color", "size",
                        "fabric", "pattern", "picture", "deleted", "owner"],
           "users": ["id", "email", "hashed_password", "name", "access", "deleted"]}
 
@@ -54,7 +54,7 @@ RELATIONS = {"brim": "Brims", "clasp": "Clasps", "collar": "Collars",
              "origin": "Countries", "fabric": "Fabrics", "fit": "Fits",
              "heel": "Heels", "lapels": "Lapels", "pattern": "Patterns",
              "season": "Seasons", "size": "Sizes", "sleeves": "Sleeves",
-             "length": "Trouser_lengths", "type": "Types", "owner": "User"}
+             "length": "Trouser_lengths", "type_": "Types", "owner": "User"}
 
 TRANSLATION = {"Boots": "Обувь", "Brims": "Поля", "Clasps": "Методы крепления", "Collars": "Воротники",
                "Countries": "Страны", "Fabrics": "Ткани", "Fits": "Посадки", "Hats": "Шляпы",

@@ -11,3 +11,1065 @@
 2023-04-15 18:04:35,586 - telegram.ext._application - INFO - Application is stopping. This might take a moment.
 2023-04-15 18:04:35,586 - apscheduler.scheduler - INFO - Scheduler has been shut down
 2023-04-15 18:04:35,586 - telegram.ext._application - INFO - Application.stop() complete
+2023-04-17 19:38:03,618 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 19:38:03,657 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 19:38:14,985 - apscheduler.scheduler - INFO - Scheduler started
+2023-04-17 19:38:14,985 - telegram.ext._application - INFO - Application started
+2023-04-17 19:38:21,579 - __main__ - INFO - getting https://aa83-89-178-40-100.ngrok-free.app/api/hats
+2023-04-17 19:38:21,860 - telegram.ext._application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_application.py", line 1115, in process_update
+    await coroutine
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_handler.py", line 141, in handle_update
+    return await self.callback(update, context)
+  File "D:\PythonProg\design_web\wilson_bot.py", line 61, in get_data
+    response = await get_response(SITE_URL + "/api/" + context.args[0].lower())
+  File "D:\PythonProg\design_web\wilson_bot.py", line 57, in get_response
+    return await resp.json()
+  File "C:\Program Files\Python39\lib\site-packages\aiohttp\client_reqrep.py", line 1104, in json
+    raise ContentTypeError(
+aiohttp.client_exceptions.ContentTypeError: 0, message='Attempt to decode JSON with unexpected mimetype: text/html', url=URL('https://aa83-89-178-40-100.ngrok-free.app/api/hats')
+2023-04-17 19:39:27,692 - telegram.ext._application - INFO - Application is stopping. This might take a moment.
+2023-04-17 19:39:27,692 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2023-04-17 19:39:27,692 - telegram.ext._application - INFO - Application.stop() complete
+2023-04-17 19:39:32,265 - apscheduler.scheduler - INFO - Scheduler started
+2023-04-17 19:39:32,266 - telegram.ext._application - INFO - Application started
+2023-04-17 19:39:40,208 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/hats
+2023-04-17 19:39:40,841 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:39:40] "GET /api/hats HTTP/1.1" 200 -
+2023-04-17 19:39:40,912 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/seasons/5
+2023-04-17 19:39:41,428 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:39:41] "GET /api/seasons/5 HTTP/1.1" 200 -
+2023-04-17 19:39:41,496 - telegram.ext._application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_application.py", line 1115, in process_update
+    await coroutine
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_handler.py", line 141, in handle_update
+    return await self.callback(update, context)
+  File "D:\PythonProg\design_web\wilson_bot.py", line 70, in get_data
+    if name:
+UnboundLocalError: local variable 'name' referenced before assignment
+2023-04-17 19:41:11,184 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:41:11] "[33mGET /api/seasons/9 HTTP/1.1[0m" 404 -
+2023-04-17 19:43:18,953 - telegram.ext._application - INFO - Application is stopping. This might take a moment.
+2023-04-17 19:43:18,954 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2023-04-17 19:43:18,954 - telegram.ext._application - INFO - Application.stop() complete
+2023-04-17 19:43:23,547 - apscheduler.scheduler - INFO - Scheduler started
+2023-04-17 19:43:23,547 - telegram.ext._application - INFO - Application started
+2023-04-17 19:43:31,769 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/hats
+2023-04-17 19:43:32,309 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:43:32] "GET /api/hats HTTP/1.1" 200 -
+2023-04-17 19:43:32,375 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/seasons/5
+2023-04-17 19:43:32,870 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:43:32] "GET /api/seasons/5 HTTP/1.1" 200 -
+2023-04-17 19:43:32,932 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/countries/1
+2023-04-17 19:43:33,467 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:43:33] "GET /api/countries/1 HTTP/1.1" 200 -
+2023-04-17 19:43:33,539 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/brims/1
+2023-04-17 19:43:34,041 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:43:34] "GET /api/brims/1 HTTP/1.1" 200 -
+2023-04-17 19:43:34,106 - telegram.ext._application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_application.py", line 1115, in process_update
+    await coroutine
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_handler.py", line 141, in handle_update
+    return await self.callback(update, context)
+  File "D:\PythonProg\design_web\wilson_bot.py", line 72, in get_data
+    name = resp[el]["name"]
+TypeError: string indices must be integers
+2023-04-17 19:44:20,249 - telegram.ext._application - INFO - Application is stopping. This might take a moment.
+2023-04-17 19:44:20,250 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2023-04-17 19:44:20,250 - telegram.ext._application - INFO - Application.stop() complete
+2023-04-17 19:44:25,979 - apscheduler.scheduler - INFO - Scheduler started
+2023-04-17 19:44:25,979 - telegram.ext._application - INFO - Application started
+2023-04-17 19:44:26,199 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/hats
+2023-04-17 19:44:26,811 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:44:26] "GET /api/hats HTTP/1.1" 200 -
+2023-04-17 19:44:26,896 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/seasons/5
+2023-04-17 19:44:27,446 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:44:27] "GET /api/seasons/5 HTTP/1.1" 200 -
+2023-04-17 19:44:27,517 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/countries/1
+2023-04-17 19:44:28,055 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:44:28] "GET /api/countries/1 HTTP/1.1" 200 -
+2023-04-17 19:44:28,124 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/brims/1
+2023-04-17 19:44:28,682 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:44:28] "GET /api/brims/1 HTTP/1.1" 200 -
+2023-04-17 19:44:28,759 - telegram.ext._application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_application.py", line 1115, in process_update
+    await coroutine
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_handler.py", line 141, in handle_update
+    return await self.callback(update, context)
+  File "D:\PythonProg\design_web\wilson_bot.py", line 73, in get_data
+    name = resp[el]["name"]
+TypeError: string indices must be integers
+2023-04-17 19:49:49,324 - telegram.ext._application - INFO - Application is stopping. This might take a moment.
+2023-04-17 19:49:49,325 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2023-04-17 19:49:49,325 - telegram.ext._application - INFO - Application.stop() complete
+2023-04-17 19:52:11,523 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-17 19:52:11,524 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 19:52:18,070 - apscheduler.scheduler - INFO - Scheduler started
+2023-04-17 19:52:18,070 - telegram.ext._application - INFO - Application started
+2023-04-17 19:52:21,936 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/hats
+2023-04-17 19:52:24,717 - telegram.ext._application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_application.py", line 1115, in process_update
+    await coroutine
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_handler.py", line 141, in handle_update
+    return await self.callback(update, context)
+  File "D:\PythonProg\design_web\wilson_bot.py", line 61, in get_data
+    response = await get_response(SITE_URL + "/api/" + context.args[0].lower())
+  File "D:\PythonProg\design_web\wilson_bot.py", line 57, in get_response
+    return await resp.json()
+  File "C:\Program Files\Python39\lib\site-packages\aiohttp\client_reqrep.py", line 1104, in json
+    raise ContentTypeError(
+aiohttp.client_exceptions.ContentTypeError: 0, message='Attempt to decode JSON with unexpected mimetype: text/html', url=URL('https://ea94-89-178-40-100.ngrok-free.app/api/hats')
+2023-04-17 19:52:33,405 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/hats
+2023-04-17 19:52:36,081 - telegram.ext._application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_application.py", line 1115, in process_update
+    await coroutine
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_handler.py", line 141, in handle_update
+    return await self.callback(update, context)
+  File "D:\PythonProg\design_web\wilson_bot.py", line 61, in get_data
+    response = await get_response(SITE_URL + "/api/" + context.args[0].lower())
+  File "D:\PythonProg\design_web\wilson_bot.py", line 57, in get_response
+    return await resp.json()
+  File "C:\Program Files\Python39\lib\site-packages\aiohttp\client_reqrep.py", line 1104, in json
+    raise ContentTypeError(
+aiohttp.client_exceptions.ContentTypeError: 0, message='Attempt to decode JSON with unexpected mimetype: text/html', url=URL('https://ea94-89-178-40-100.ngrok-free.app/api/hats')
+2023-04-17 19:53:26,985 - telegram.ext._application - INFO - Application is stopping. This might take a moment.
+2023-04-17 19:53:26,985 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2023-04-17 19:53:26,985 - telegram.ext._application - INFO - Application.stop() complete
+2023-04-17 19:53:31,674 - apscheduler.scheduler - INFO - Scheduler started
+2023-04-17 19:53:31,675 - telegram.ext._application - INFO - Application started
+2023-04-17 19:53:31,875 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/hats
+2023-04-17 19:53:34,582 - telegram.ext._application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_application.py", line 1115, in process_update
+    await coroutine
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_handler.py", line 141, in handle_update
+    return await self.callback(update, context)
+  File "D:\PythonProg\design_web\wilson_bot.py", line 61, in get_data
+    response = await get_response(SITE_URL + "/api/" + context.args[0].lower())
+  File "D:\PythonProg\design_web\wilson_bot.py", line 57, in get_response
+    return await resp.json()
+  File "C:\Program Files\Python39\lib\site-packages\aiohttp\client_reqrep.py", line 1104, in json
+    raise ContentTypeError(
+aiohttp.client_exceptions.ContentTypeError: 0, message='Attempt to decode JSON with unexpected mimetype: text/html', url=URL('https://ea94-89-178-40-100.ngrok-free.app/api/hats')
+2023-04-17 19:53:41,199 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/hats
+2023-04-17 19:53:43,926 - telegram.ext._application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_application.py", line 1115, in process_update
+    await coroutine
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_handler.py", line 141, in handle_update
+    return await self.callback(update, context)
+  File "D:\PythonProg\design_web\wilson_bot.py", line 61, in get_data
+    response = await get_response(SITE_URL + "/api/" + context.args[0].lower())
+  File "D:\PythonProg\design_web\wilson_bot.py", line 57, in get_response
+    return await resp.json()
+  File "C:\Program Files\Python39\lib\site-packages\aiohttp\client_reqrep.py", line 1104, in json
+    raise ContentTypeError(
+aiohttp.client_exceptions.ContentTypeError: 0, message='Attempt to decode JSON with unexpected mimetype: text/html', url=URL('https://ea94-89-178-40-100.ngrok-free.app/api/hats')
+2023-04-17 19:54:43,305 - telegram.ext._application - INFO - Application is stopping. This might take a moment.
+2023-04-17 19:54:43,305 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2023-04-17 19:54:43,305 - telegram.ext._application - INFO - Application.stop() complete
+2023-04-17 19:54:47,491 - apscheduler.scheduler - INFO - Scheduler started
+2023-04-17 19:54:47,491 - telegram.ext._application - INFO - Application started
+2023-04-17 19:54:49,548 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/hats
+2023-04-17 19:54:52,603 - telegram.ext._application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_application.py", line 1115, in process_update
+    await coroutine
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_handler.py", line 141, in handle_update
+    return await self.callback(update, context)
+  File "D:\PythonProg\design_web\wilson_bot.py", line 62, in get_data
+    response = await get_response(SITE_URL + "/api/" + context.args[0].lower())
+  File "D:\PythonProg\design_web\wilson_bot.py", line 57, in get_response
+    return await resp.json()
+  File "C:\Program Files\Python39\lib\site-packages\aiohttp\client_reqrep.py", line 1104, in json
+    raise ContentTypeError(
+aiohttp.client_exceptions.ContentTypeError: 0, message='Attempt to decode JSON with unexpected mimetype: text/html', url=URL('https://ea94-89-178-40-100.ngrok-free.app/api/hats')
+2023-04-17 19:55:17,561 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 19:55:17,561 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 19:55:23,151 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/hats
+2023-04-17 19:55:23,698 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:23] "GET /api/hats HTTP/1.1" 200 -
+2023-04-17 19:55:23,772 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/seasons/5
+2023-04-17 19:55:24,315 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:24] "GET /api/seasons/5 HTTP/1.1" 200 -
+2023-04-17 19:55:24,393 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/countries/1
+2023-04-17 19:55:24,940 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:24] "GET /api/countries/1 HTTP/1.1" 200 -
+2023-04-17 19:55:25,010 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/brims/1
+2023-04-17 19:55:25,562 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:25] "GET /api/brims/1 HTTP/1.1" 200 -
+2023-04-17 19:55:25,635 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/seasons/5
+2023-04-17 19:55:26,145 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:26] "GET /api/seasons/5 HTTP/1.1" 200 -
+2023-04-17 19:55:26,211 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/countries/4
+2023-04-17 19:55:26,775 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:26] "GET /api/countries/4 HTTP/1.1" 200 -
+2023-04-17 19:55:26,847 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/brims/3
+2023-04-17 19:55:27,380 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:27] "GET /api/brims/3 HTTP/1.1" 200 -
+2023-04-17 19:55:27,459 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/seasons/3
+2023-04-17 19:55:28,005 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:28] "GET /api/seasons/3 HTTP/1.1" 200 -
+2023-04-17 19:55:28,081 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/countries/3
+2023-04-17 19:55:28,633 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:28] "GET /api/countries/3 HTTP/1.1" 200 -
+2023-04-17 19:55:28,706 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/brims/4
+2023-04-17 19:55:29,299 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:29] "GET /api/brims/4 HTTP/1.1" 200 -
+2023-04-17 19:55:29,378 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/seasons/5
+2023-04-17 19:55:29,898 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:29] "GET /api/seasons/5 HTTP/1.1" 200 -
+2023-04-17 19:55:29,972 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/countries/4
+2023-04-17 19:55:30,512 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:30] "GET /api/countries/4 HTTP/1.1" 200 -
+2023-04-17 19:55:30,583 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/brims/2
+2023-04-17 19:55:31,119 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:31] "GET /api/brims/2 HTTP/1.1" 200 -
+2023-04-17 19:55:44,883 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/boots
+2023-04-17 19:55:45,423 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:45] "GET /api/boots HTTP/1.1" 200 -
+2023-04-17 19:55:45,496 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/seasons/5
+2023-04-17 19:55:46,014 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:46] "GET /api/seasons/5 HTTP/1.1" 200 -
+2023-04-17 19:55:46,084 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/countries/4
+2023-04-17 19:55:46,591 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:46] "GET /api/countries/4 HTTP/1.1" 200 -
+2023-04-17 19:55:46,660 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/heels/5
+2023-04-17 19:55:47,170 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:47] "GET /api/heels/5 HTTP/1.1" 200 -
+2023-04-17 19:55:47,238 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/clasps/2
+2023-04-17 19:55:47,748 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:47] "GET /api/clasps/2 HTTP/1.1" 200 -
+2023-04-17 19:55:47,816 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/seasons/7
+2023-04-17 19:55:48,340 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:48] "GET /api/seasons/7 HTTP/1.1" 200 -
+2023-04-17 19:55:48,410 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/countries/4
+2023-04-17 19:55:48,933 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:48] "GET /api/countries/4 HTTP/1.1" 200 -
+2023-04-17 19:55:49,004 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/heels/5
+2023-04-17 19:55:49,513 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:49] "GET /api/heels/5 HTTP/1.1" 200 -
+2023-04-17 19:55:49,576 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/clasps/2
+2023-04-17 19:55:50,085 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:50] "GET /api/clasps/2 HTTP/1.1" 200 -
+2023-04-17 19:55:50,154 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/seasons/7
+2023-04-17 19:55:50,702 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:50] "GET /api/seasons/7 HTTP/1.1" 200 -
+2023-04-17 19:55:50,772 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/countries/4
+2023-04-17 19:55:51,313 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:55:51] "GET /api/countries/4 HTTP/1.1" 200 -
+2023-04-17 19:55:51,377 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/heels/5
+2023-04-17 19:56:21,933 - main - ERROR - Exception on /api/heels/5 [GET]
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "C:\Program Files\Python39\lib\site-packages\flask_restful\__init__.py", line 467, in wrapper
+    resp = resource(*args, **kwargs)
+  File "C:\Program Files\Python39\lib\site-packages\flask\views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+  File "C:\Program Files\Python39\lib\site-packages\flask_restful\__init__.py", line 582, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "D:\PythonProg\design_web\data\resources\heels_resource.py", line 20, in get
+    for _ in session.query(Heels).filter(Heels.deleted == 1, Heels.id == heels_id):
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\orm\query.py", line 2841, in __iter__
+    result = self._iter()
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\orm\query.py", line 2855, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\orm\session.py", line 2229, in execute
+    return self._execute_internal(
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\orm\session.py", line 2114, in _execute_internal
+    conn = self._connection_for_bind(bind)
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\orm\session.py", line 1981, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+  File "<string>", line 2, in _connection_for_bind
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\orm\session.py", line 1108, in _connection_for_bind
+    conn = bind.connect()
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\engine\base.py", line 3251, in connect
+    return self._connection_cls(self)
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\engine\base.py", line 3275, in raw_connection
+    return self.pool.connect()
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\pool\base.py", line 455, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\pool\base.py", line 1271, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\pool\base.py", line 719, in checkout
+    rec = pool._do_get()
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\pool\impl.py", line 157, in _do_get
+    raise exc.TimeoutError(
+sqlalchemy.exc.TimeoutError: QueuePool limit of size 5 overflow 10 reached, connection timed out, timeout 30.00 (Background on this error at: https://sqlalche.me/e/20/3o7r)
+2023-04-17 19:56:22,059 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:56:22] "[35m[1mGET /api/heels/5 HTTP/1.1[0m" 500 -
+2023-04-17 19:56:22,128 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/clasps/2
+2023-04-17 19:56:22,641 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:56:22] "GET /api/clasps/2 HTTP/1.1" 200 -
+2023-04-17 19:56:22,705 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/seasons/5
+2023-04-17 19:56:23,239 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:56:23] "GET /api/seasons/5 HTTP/1.1" 200 -
+2023-04-17 19:56:23,312 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/countries/4
+2023-04-17 19:56:23,849 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:56:23] "GET /api/countries/4 HTTP/1.1" 200 -
+2023-04-17 19:56:23,927 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/heels/5
+2023-04-17 19:56:24,479 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:56:24] "GET /api/heels/5 HTTP/1.1" 200 -
+2023-04-17 19:56:24,542 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/clasps/0
+2023-04-17 19:56:55,075 - main - ERROR - Exception on /api/clasps/0 [GET]
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "C:\Program Files\Python39\lib\site-packages\flask_restful\__init__.py", line 467, in wrapper
+    resp = resource(*args, **kwargs)
+  File "C:\Program Files\Python39\lib\site-packages\flask\views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+  File "C:\Program Files\Python39\lib\site-packages\flask_restful\__init__.py", line 582, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "D:\PythonProg\design_web\data\resources\clasps_resource.py", line 19, in get
+    abort_if_clasps_not_found(clasps_id)
+  File "D:\PythonProg\design_web\data\resources\clasps_resource.py", line 12, in abort_if_clasps_not_found
+    clasps = session.query(Clasps).get(clasps_id)
+  File "<string>", line 2, in get
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\util\deprecations.py", line 383, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\orm\query.py", line 1130, in get
+    return self._get_impl(ident, loading.load_on_pk_identity)
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\orm\query.py", line 1139, in _get_impl
+    return self.session._get_impl(
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\orm\session.py", line 3672, in _get_impl
+    return db_load_fn(
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\orm\loading.py", line 668, in load_on_pk_identity
+    session.execute(
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\orm\session.py", line 2229, in execute
+    return self._execute_internal(
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\orm\session.py", line 2114, in _execute_internal
+    conn = self._connection_for_bind(bind)
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\orm\session.py", line 1981, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+  File "<string>", line 2, in _connection_for_bind
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\orm\session.py", line 1108, in _connection_for_bind
+    conn = bind.connect()
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\engine\base.py", line 3251, in connect
+    return self._connection_cls(self)
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\engine\base.py", line 3275, in raw_connection
+    return self.pool.connect()
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\pool\base.py", line 455, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\pool\base.py", line 1271, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\pool\base.py", line 719, in checkout
+    rec = pool._do_get()
+  File "C:\Program Files\Python39\lib\site-packages\sqlalchemy\pool\impl.py", line 157, in _do_get
+    raise exc.TimeoutError(
+sqlalchemy.exc.TimeoutError: QueuePool limit of size 5 overflow 10 reached, connection timed out, timeout 30.00 (Background on this error at: https://sqlalche.me/e/20/3o7r)
+2023-04-17 19:56:55,129 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:56:55] "[35m[1mGET /api/clasps/0 HTTP/1.1[0m" 500 -
+2023-04-17 19:57:52,848 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/lower_body
+2023-04-17 19:57:53,384 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:57:53] "GET /api/lower_body HTTP/1.1" 200 -
+2023-04-17 19:57:53,656 - telegram.ext._application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_application.py", line 1115, in process_update
+    await coroutine
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_handler.py", line 141, in handle_update
+    return await self.callback(update, context)
+  File "D:\PythonProg\design_web\wilson_bot.py", line 88, in get_data
+    await update.message.reply_text(answer)
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\_message.py", line 1041, in reply_text
+    return await self.get_bot().send_message(
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_extbot.py", line 2618, in send_message
+    return await super().send_message(
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\_bot.py", line 368, in decorator
+    result = await func(*args, **kwargs)  # skipcq: PYL-E1102
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\_bot.py", line 797, in send_message
+    return await self._send_message(
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_extbot.py", line 494, in _send_message
+    result = await super()._send_message(
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\_bot.py", line 549, in _send_message
+    result = await self._post(
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\_bot.py", line 456, in _post
+    return await self._do_post(
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\ext\_extbot.py", line 312, in _do_post
+    return await super()._do_post(
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\_bot.py", line 487, in _do_post
+    return await request.post(
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\request\_baserequest.py", line 165, in post
+    result = await self._request_wrapper(
+  File "C:\Users\Masha\AppData\Roaming\Python\Python39\site-packages\telegram\request\_baserequest.py", line 328, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Message text is empty
+2023-04-17 19:58:37,206 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:58:37] "GET /api/heels/5 HTTP/1.1" 200 -
+2023-04-17 19:59:03,831 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/upper_body
+2023-04-17 19:59:04,357 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:59:04] "GET /api/upper_body HTTP/1.1" 200 -
+2023-04-17 19:59:04,424 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/seasons/6
+2023-04-17 19:59:04,950 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:59:04] "GET /api/seasons/6 HTTP/1.1" 200 -
+2023-04-17 19:59:05,018 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/countries/6
+2023-04-17 19:59:05,540 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:59:05] "GET /api/countries/6 HTTP/1.1" 200 -
+2023-04-17 19:59:05,608 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/sleeves/10
+2023-04-17 19:59:06,161 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:59:06] "GET /api/sleeves/10 HTTP/1.1" 200 -
+2023-04-17 19:59:06,239 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/clasps/0
+2023-04-17 19:59:06,765 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:59:06] "[33mGET /api/clasps/0 HTTP/1.1[0m" 404 -
+2023-04-17 19:59:06,836 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/collars/6
+2023-04-17 19:59:07,381 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:59:07] "GET /api/collars/6 HTTP/1.1" 200 -
+2023-04-17 19:59:07,469 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/lapels/4
+2023-04-17 19:59:08,029 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:59:08] "GET /api/lapels/4 HTTP/1.1" 200 -
+2023-04-17 19:59:08,112 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/seasons/7
+2023-04-17 19:59:08,666 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:59:08] "GET /api/seasons/7 HTTP/1.1" 200 -
+2023-04-17 19:59:08,732 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/countries/2
+2023-04-17 19:59:09,254 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:59:09] "GET /api/countries/2 HTTP/1.1" 200 -
+2023-04-17 19:59:09,328 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/sleeves/10
+2023-04-17 19:59:09,876 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:59:09] "GET /api/sleeves/10 HTTP/1.1" 200 -
+2023-04-17 19:59:09,951 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/clasps/2
+2023-04-17 19:59:10,498 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:59:10] "GET /api/clasps/2 HTTP/1.1" 200 -
+2023-04-17 19:59:10,574 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/collars/8
+2023-04-17 19:59:11,122 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:59:11] "GET /api/collars/8 HTTP/1.1" 200 -
+2023-04-17 19:59:11,188 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/lapels/1
+2023-04-17 19:59:11,712 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 19:59:11] "GET /api/lapels/1 HTTP/1.1" 200 -
+2023-04-17 20:00:13,703 - telegram.ext._application - INFO - Application is stopping. This might take a moment.
+2023-04-17 20:00:13,703 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2023-04-17 20:00:13,704 - telegram.ext._application - INFO - Application.stop() complete
+2023-04-17 20:00:19,746 - apscheduler.scheduler - INFO - Scheduler started
+2023-04-17 20:00:19,747 - telegram.ext._application - INFO - Application started
+2023-04-17 20:00:20,106 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/lower_body
+2023-04-17 20:00:20,655 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:00:20] "GET /api/lower_body HTTP/1.1" 200 -
+2023-04-17 20:00:55,879 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/countries
+2023-04-17 20:00:56,421 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:00:56] "GET /api/countries HTTP/1.1" 200 -
+2023-04-17 20:01:03,423 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/lapels
+2023-04-17 20:01:03,990 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:01:03] "GET /api/lapels HTTP/1.1" 200 -
+2023-04-17 20:01:12,144 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/fabrics
+2023-04-17 20:01:12,723 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:01:12] "GET /api/fabrics HTTP/1.1" 200 -
+2023-04-17 20:01:27,543 - __main__ - INFO - getting https://ea94-89-178-40-100.ngrok-free.app/api/trouser_lengths
+2023-04-17 20:01:28,083 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:01:28] "GET /api/trouser_lengths HTTP/1.1" 200 -
+2023-04-17 20:11:26,402 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-17 20:11:26,402 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 20:11:36,933 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 20:11:36,933 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 20:11:59,536 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:11:59] "GET / HTTP/1.1" 200 -
+2023-04-17 20:12:03,798 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:12:03] "[33mGET /clothes/Hats/ HTTP/1.1[0m" 404 -
+2023-04-17 20:12:44,531 - main - ERROR - Exception on /clothes/Hats/a [GET]
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask_restful\__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\PythonProg\design_web\main.py", line 291, in clothes
+    return render_template("hats.html", data=data, title="Ўл€пы", form=form)
+  File "C:\Program Files\Python39\lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(app, template, context)
+  File "C:\Program Files\Python39\lib\site-packages\flask\templating.py", line 130, in _render
+    rv = template.render(context)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\PythonProg\design_web\templates\hats.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\PythonProg\design_web\templates\base.html", line 111, in top-level template code
+    {% block content %}{% endblock %}
+  File "D:\PythonProg\design_web\templates\hats.html", line 34, in block 'content'
+    {% for item in range(count_cols) %}
+TypeError: 'Undefined' object cannot be interpreted as an integer
+2023-04-17 20:12:44,573 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:12:44] "[35m[1mGET /clothes/Hats/a HTTP/1.1[0m" 500 -
+2023-04-17 20:14:25,282 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:14:25] "[33mGET /api/heels/ HTTP/1.1[0m" 404 -
+2023-04-17 20:14:28,540 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:14:28] "GET /api/heels HTTP/1.1" 200 -
+2023-04-17 20:16:28,063 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-17 20:16:28,063 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 20:16:36,849 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 20:16:36,849 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 20:16:46,037 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:16:46] "GET / HTTP/1.1" 200 -
+2023-04-17 20:16:49,215 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:16:49] "[33mGET /clothes/Hats/ HTTP/1.1[0m" 404 -
+2023-04-17 20:16:54,087 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:16:54] "GET /clothes/Hats/a HTTP/1.1" 200 -
+2023-04-17 20:17:41,292 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-17 20:17:41,292 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 20:17:47,101 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 20:17:47,101 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 20:17:48,013 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:17:48] "GET /clothes/Hats/a HTTP/1.1" 200 -
+2023-04-17 20:17:52,523 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:17:52] "GET /clothes/Hats/a HTTP/1.1" 200 -
+2023-04-17 20:18:08,268 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:18:08] "[32mPOST /clothes/Hats/a HTTP/1.1[0m" 302 -
+2023-04-17 20:18:08,810 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:18:08] "GET /clothes/Hats/fed HTTP/1.1" 200 -
+2023-04-17 20:18:54,196 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-17 20:18:54,196 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 20:19:00,315 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 20:19:00,315 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 20:21:10,791 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:21:10] "[32mPOST /clothes/Hats/fed HTTP/1.1[0m" 302 -
+2023-04-17 20:21:11,318 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:21:11] "GET /clothes/Hats/fed HTTP/1.1" 200 -
+2023-04-17 20:21:14,499 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:21:14] "[32mPOST /clothes/Hats/fed HTTP/1.1[0m" 302 -
+2023-04-17 20:21:14,980 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:21:14] "[33mGET /clothes/Hats/ HTTP/1.1[0m" 404 -
+2023-04-17 20:21:32,319 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:21:32] "GET /clothes/Hats/* HTTP/1.1" 200 -
+2023-04-17 20:21:42,430 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:21:42] "[33mGET /clothes/Hats/ HTTP/1.1[0m" 404 -
+2023-04-17 20:22:04,673 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:22:04] "GET /clothes/Hats/j HTTP/1.1" 200 -
+2023-04-17 20:22:11,902 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:22:11] "GET /clothes/Hats/f HTTP/1.1" 200 -
+2023-04-17 20:22:25,827 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:22:25] "[33mGET /clothes/Hats/ HTTP/1.1[0m" 404 -
+2023-04-17 20:22:37,322 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:22:37] "GET /clothes/Hats/!! HTTP/1.1" 200 -
+2023-04-17 20:25:15,043 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-17 20:25:15,043 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 20:25:21,714 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 20:25:21,714 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 20:25:31,432 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-17 20:25:31,432 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 20:27:18,828 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 20:27:18,828 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 20:27:25,421 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-17 20:27:25,421 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 20:43:52,523 - telegram.ext._application - INFO - Application is stopping. This might take a moment.
+2023-04-17 20:43:52,523 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2023-04-17 20:43:52,523 - telegram.ext._application - INFO - Application.stop() complete
+2023-04-17 20:43:57,349 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 20:43:57,349 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 20:45:06,448 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 20:45:06,449 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 20:45:12,023 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:45:12] "GET / HTTP/1.1" 200 -
+2023-04-17 20:45:15,582 - main - ERROR - Exception on /clothes/Hats/!!!None [GET]
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask_restful\__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\PythonProg\design_web\main.py", line 322, in clothes
+    return render_template("hats.html", data=data, title="Ўл€пы", form=form, count_cols=len(data))
+  File "C:\Program Files\Python39\lib\site-packages\flask\templating.py", line 146, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 1081, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 768, in compile
+    self.handle_exception(source=source_hint)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\PythonProg\design_web\templates\hats.html", line 31, in template
+    {% current_user.is_authenticated and current_user.access >= 2 %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'current_user'. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.
+2023-04-17 20:45:15,606 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:45:15] "[35m[1mGET /clothes/Hats/!!!None HTTP/1.1[0m" 500 -
+2023-04-17 20:46:42,427 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 20:46:42,427 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 20:46:45,924 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:46:45] "GET / HTTP/1.1" 200 -
+2023-04-17 20:47:50,447 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:47:50] "GET /clothes/Hats/!!!None HTTP/1.1" 200 -
+2023-04-17 20:47:59,945 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:47:59] "[32mPOST /clothes/Hats/!!!None HTTP/1.1[0m" 302 -
+2023-04-17 20:48:00,442 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:48:00] "GET /clothes/Hats/o HTTP/1.1" 200 -
+2023-04-17 20:48:03,673 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:48:03] "[32mPOST /clothes/Hats/o HTTP/1.1[0m" 302 -
+2023-04-17 20:48:04,153 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:48:04] "[33mGET /clothes/Hats/ HTTP/1.1[0m" 404 -
+2023-04-17 20:49:50,063 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-17 20:49:50,063 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 20:49:55,560 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 20:49:55,560 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 20:49:57,173 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:49:57] "GET / HTTP/1.1" 200 -
+2023-04-17 20:50:34,191 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:50:34] "GET /clothes/Hats/!!!None HTTP/1.1" 200 -
+2023-04-17 20:50:39,134 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:50:39] "[32mPOST /clothes/Hats/!!!None HTTP/1.1[0m" 302 -
+2023-04-17 20:50:39,615 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:50:39] "GET /clothes/Hats/o HTTP/1.1" 200 -
+2023-04-17 20:50:44,107 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:50:44] "[32mPOST /clothes/Hats/o HTTP/1.1[0m" 302 -
+2023-04-17 20:50:44,576 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:50:44] "GET /clothes/Hats/!!!None HTTP/1.1" 200 -
+2023-04-17 20:50:47,777 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:50:47] "GET /clothes/Upper_body/!!!None HTTP/1.1" 200 -
+2023-04-17 20:51:02,500 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:51:02] "GET /clothes/Lower_body/!!!None HTTP/1.1" 200 -
+2023-04-17 20:51:05,973 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:51:05] "GET /clothes/Boots/!!!None HTTP/1.1" 200 -
+2023-04-17 20:51:11,474 - main - ERROR - Exception on /additional/Brims/!!!None [GET]
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask_restful\__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\PythonProg\design_web\main.py", line 250, in additional
+    del fields[-1]
+IndexError: list assignment index out of range
+2023-04-17 20:51:11,476 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:51:11] "[35m[1mGET /additional/Brims/!!!None HTTP/1.1[0m" 500 -
+2023-04-17 20:51:38,640 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:51:38] "GET /main HTTP/1.1" 200 -
+2023-04-17 20:52:04,715 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:52:04] "[32mPOST /main HTTP/1.1[0m" 302 -
+2023-04-17 20:52:05,235 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:52:05] "GET / HTTP/1.1" 200 -
+2023-04-17 20:52:06,786 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:52:06] "GET /static/img/pfp/base_png.jpg HTTP/1.1" 200 -
+2023-04-17 20:52:13,261 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:52:13] "GET /clothes/Hats/!!!None HTTP/1.1" 200 -
+2023-04-17 20:52:14,044 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:52:14] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 20:52:22,419 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:52:22] "GET /clothes/edit/Hats/1 HTTP/1.1" 200 -
+2023-04-17 20:52:23,399 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:52:23] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 20:52:26,605 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:52:26] "GET /clothes/Hats/!!!None HTTP/1.1" 200 -
+2023-04-17 20:52:32,846 - main - ERROR - Exception on /clothes/del/Hats/6 [GET]
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask_restful\__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "C:\Program Files\Python39\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "D:\PythonProg\design_web\main.py", line 1123, in clothes_del
+    os.remove("static/img/" + obj.picture)
+PermissionError: [WinError 5] ќтказано в доступе: 'static/img/'
+2023-04-17 20:52:32,872 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:52:32] "[35m[1mGET /clothes/del/Hats/6 HTTP/1.1[0m" 500 -
+2023-04-17 20:53:49,060 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:53:49] "GET / HTTP/1.1" 200 -
+2023-04-17 20:53:49,718 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:53:49] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 20:53:52,614 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:53:52] "GET /clothes/Hats/!!!None HTTP/1.1" 200 -
+2023-04-17 20:53:53,388 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:53:53] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 20:54:02,711 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:54:02] "[32mPOST /clothes/Hats/!!!None HTTP/1.1[0m" 302 -
+2023-04-17 20:54:03,188 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:54:03] "GET /clothes/Hats/o HTTP/1.1" 200 -
+2023-04-17 20:54:03,916 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:54:03] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 20:54:09,182 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:54:09] "[32mPOST /clothes/Hats/o HTTP/1.1[0m" 302 -
+2023-04-17 20:54:09,648 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:54:09] "GET /clothes/Hats/fed HTTP/1.1" 200 -
+2023-04-17 20:54:10,299 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:54:10] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 20:54:12,696 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:54:12] "[32mPOST /clothes/Hats/fed HTTP/1.1[0m" 302 -
+2023-04-17 20:54:13,178 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:54:13] "GET /clothes/Hats/!!!None HTTP/1.1" 200 -
+2023-04-17 20:54:13,893 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 20:54:13] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 21:46:28,223 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-17 21:46:28,224 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 21:46:49,083 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 21:46:49,084 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 21:46:56,431 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:46:56] "GET / HTTP/1.1" 200 -
+2023-04-17 21:46:57,761 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:46:57] "GET /static/img/pfp/base_png.jpg HTTP/1.1" 200 -
+2023-04-17 21:47:07,222 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:47:07] "GET /clothes/Boots/!!!None HTTP/1.1" 200 -
+2023-04-17 21:47:07,954 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:47:07] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 21:47:36,387 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 21:47:36,387 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 21:47:38,537 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:47:38] "GET /clothes/Boots/!!!None HTTP/1.1" 200 -
+2023-04-17 21:47:39,568 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:47:39] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 21:47:49,565 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 21:47:49,565 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 21:47:51,603 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:47:51] "GET /clothes/Boots/!!!None HTTP/1.1" 200 -
+2023-04-17 21:47:52,842 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:47:52] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 21:48:03,763 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 21:48:03,763 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 21:48:07,260 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:48:07] "GET /clothes/Boots/!!!None HTTP/1.1" 200 -
+2023-04-17 21:48:08,369 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:48:08] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 21:48:28,379 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:48:28] "GET /additional/add/Clasps HTTP/1.1" 200 -
+2023-04-17 21:48:29,102 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:48:29] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 21:48:33,485 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:48:33] "[32mPOST /additional/add/Clasps HTTP/1.1[0m" 302 -
+2023-04-17 21:48:33,977 - main - ERROR - Exception on /additional/Clasps/!!!None [GET]
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask_restful\__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\PythonProg\design_web\main.py", line 259, in additional
+    return render_template("simple.html", data=data, title=TRANSLATION[type_], form=form, count_cols=len(data))
+  File "C:\Program Files\Python39\lib\site-packages\flask\templating.py", line 146, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 1081, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Program Files\Python39\lib\site-packages\flask\templating.py", line 62, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Program Files\Python39\lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: simple.html
+2023-04-17 21:48:33,980 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:48:33] "[35m[1mGET /additional/Clasps/!!!None HTTP/1.1[0m" 500 -
+2023-04-17 21:49:05,665 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:49:05] "GET / HTTP/1.1" 200 -
+2023-04-17 21:49:06,358 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:49:06] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 21:49:09,920 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:49:09] "GET /clothes/Boots/!!!None HTTP/1.1" 200 -
+2023-04-17 21:49:10,667 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:49:10] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 21:49:12,947 - main - ERROR - Exception on /clothes/edit/Boots/12 [GET]
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask_restful\__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "C:\Program Files\Python39\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "D:\PythonProg\design_web\main.py", line 761, in boots_edit
+    "heel": db_sess.get(Heels, old_obj.heel).name, "clasp": db_sess.get(Clasps, old_obj.clasp).name,
+AttributeError: 'NoneType' object has no attribute 'name'
+2023-04-17 21:49:12,948 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:49:12] "[35m[1mGET /clothes/edit/Boots/12 HTTP/1.1[0m" 500 -
+2023-04-17 21:58:09,440 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 21:58:09,440 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 21:58:11,064 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:58:11] "GET / HTTP/1.1" 200 -
+2023-04-17 21:58:12,340 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:58:12] "GET /static/img/pfp/base_png.jpg HTTP/1.1" 200 -
+2023-04-17 21:58:14,866 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:58:14] "GET /clothes/Boots/!!!None HTTP/1.1" 200 -
+2023-04-17 21:58:16,030 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:58:16] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 21:58:18,034 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:58:18] "GET /clothes/edit/Boots/12 HTTP/1.1" 200 -
+2023-04-17 21:58:18,860 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:58:18] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 21:58:28,733 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:58:28] "[32mPOST /clothes/edit/Boots/12 HTTP/1.1[0m" 302 -
+2023-04-17 21:58:29,294 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 21:58:29] "[33mGET /clothes/boots/!!!None HTTP/1.1[0m" 404 -
+2023-04-17 22:00:28,533 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-17 22:00:28,533 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:00:33,844 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 22:00:33,844 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:00:41,693 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:00:41] "GET / HTTP/1.1" 200 -
+2023-04-17 22:00:48,072 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:00:48] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:01:27,826 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:01:27] "GET /clothes/Boots/!!!None HTTP/1.1" 200 -
+2023-04-17 22:01:28,583 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:01:28] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:01:30,780 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:01:30] "GET /clothes/edit/Boots/12 HTTP/1.1" 200 -
+2023-04-17 22:01:31,533 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:01:31] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:01:33,174 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:01:33] "[32mPOST /clothes/edit/Boots/12 HTTP/1.1[0m" 302 -
+2023-04-17 22:01:33,732 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:01:33] "GET /clothes/Boots/!!!None HTTP/1.1" 200 -
+2023-04-17 22:01:34,473 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:01:34] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:01:40,139 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:01:40] "GET /clothes/Lower_body/!!!None HTTP/1.1" 200 -
+2023-04-17 22:01:40,844 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:01:40] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:01:44,678 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:01:44] "GET /clothes/Upper_body/!!!None HTTP/1.1" 200 -
+2023-04-17 22:01:45,433 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:01:45] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:01:54,216 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:01:54] "GET /clothes/Hats/!!!None HTTP/1.1" 200 -
+2023-04-17 22:01:54,952 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:01:54] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:04:03,850 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 22:04:03,850 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:04:15,414 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:04:15] "GET / HTTP/1.1" 200 -
+2023-04-17 22:04:16,505 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:04:16] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:04:24,718 - main - ERROR - Exception on /additional/Fabrics/!!!None [GET]
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask_restful\__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\PythonProg\design_web\main.py", line 250, in additional
+    del fields[-1]
+IndexError: list assignment index out of range
+2023-04-17 22:04:24,721 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:04:24] "[35m[1mGET /additional/Fabrics/!!!None HTTP/1.1[0m" 500 -
+2023-04-17 22:07:15,875 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-17 22:07:15,876 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:07:19,602 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 22:07:19,602 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:07:22,093 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:07:22] "GET / HTTP/1.1" 200 -
+2023-04-17 22:07:23,234 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:07:23] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:07:26,221 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:07:26] "GET /additional/Fabrics/!!!None HTTP/1.1" 200 -
+2023-04-17 22:07:26,896 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:07:26] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:08:06,423 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:08:06] "GET /additional/edit/Fabrics/1 HTTP/1.1" 200 -
+2023-04-17 22:08:07,123 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:08:07] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:08:09,433 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:08:09] "[32mPOST /additional/edit/Fabrics/1 HTTP/1.1[0m" 302 -
+2023-04-17 22:08:09,973 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:08:09] "GET /additional/Fabrics/!!!None HTTP/1.1" 200 -
+2023-04-17 22:08:10,661 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:08:10] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:11:41,388 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-17 22:11:41,388 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:11:44,800 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 22:11:44,800 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:11:48,806 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:11:48] "GET / HTTP/1.1" 200 -
+2023-04-17 22:11:50,156 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:11:50] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:11:56,927 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:11:56] "GET /additional/Seasons/!!!None HTTP/1.1" 200 -
+2023-04-17 22:11:57,657 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:11:57] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:12:01,274 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:12:01] "[33mGET /additional/edit/Seasons/1 HTTP/1.1[0m" 404 -
+2023-04-17 22:14:22,932 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 22:14:22,932 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:14:24,644 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:14:24] "GET / HTTP/1.1" 200 -
+2023-04-17 22:14:25,772 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:14:25] "GET /static/img/pfp/base_png.jpg HTTP/1.1" 200 -
+2023-04-17 22:14:29,502 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:14:29] "GET /additional/Seasons/!!!None HTTP/1.1" 200 -
+2023-04-17 22:14:30,299 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:14:30] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:14:31,570 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:14:31] "GET /additional/edit/Seasons/1 HTTP/1.1" 200 -
+2023-04-17 22:14:32,293 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:14:32] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:14:34,687 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:14:34] "[32mPOST /additional/edit/Seasons/1 HTTP/1.1[0m" 302 -
+2023-04-17 22:14:35,181 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:14:35] "GET /additional/Seasons/!!!None HTTP/1.1" 200 -
+2023-04-17 22:14:35,922 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:14:35] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:14:40,091 - main - ERROR - Exception on /additional/Trouser_lengths/!!!None [GET]
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask_restful\__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\PythonProg\design_web\main.py", line 260, in additional
+    return render_template("simple.html", data=data, title=TRANSLATION[type_],
+  File "C:\Program Files\Python39\lib\site-packages\flask\templating.py", line 146, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 1081, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Program Files\Python39\lib\site-packages\flask\templating.py", line 62, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Program Files\Python39\lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: simple.html
+2023-04-17 22:14:40,094 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:14:40] "[35m[1mGET /additional/Trouser_lengths/!!!None HTTP/1.1[0m" 500 -
+2023-04-17 22:14:48,081 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:14:48] "GET / HTTP/1.1" 200 -
+2023-04-17 22:14:48,814 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:14:48] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:14:52,628 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:14:52] "GET /additional/Countries/!!!None HTTP/1.1" 200 -
+2023-04-17 22:14:53,414 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:14:53] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:14:58,326 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:14:58] "GET /additional/edit/Countries/1 HTTP/1.1" 200 -
+2023-04-17 22:14:59,027 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:14:59] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:15:00,447 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:15:00] "[32mPOST /additional/edit/Countries/1 HTTP/1.1[0m" 302 -
+2023-04-17 22:15:00,947 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:15:00] "GET /additional/Countries/!!!None HTTP/1.1" 200 -
+2023-04-17 22:15:01,714 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:15:01] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:16:24,182 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-17 22:16:24,182 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:16:28,264 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 22:16:28,264 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:16:31,951 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:16:31] "GET /additional/Brims/!!!None HTTP/1.1" 200 -
+2023-04-17 22:16:33,111 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:16:33] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:16:50,865 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:16:50] "[32mPOST /additional/Brims/!!!None HTTP/1.1[0m" 302 -
+2023-04-17 22:16:51,361 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:16:51] "GET /additional/Brims/p HTTP/1.1" 200 -
+2023-04-17 22:16:52,068 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:16:52] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:16:55,967 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:16:55] "[32mPOST /additional/Brims/p HTTP/1.1[0m" 302 -
+2023-04-17 22:16:56,460 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:16:56] "GET /additional/Brims/!!!None HTTP/1.1" 200 -
+2023-04-17 22:16:57,221 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:16:57] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:16:59,747 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:16:59] "GET /additional/Clasps/!!!None HTTP/1.1" 200 -
+2023-04-17 22:17:00,454 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:00] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:17:01,952 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:01] "GET /additional/Collars/!!!None HTTP/1.1" 200 -
+2023-04-17 22:17:02,750 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:02] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:17:04,253 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:04] "GET /additional/Countries/!!!None HTTP/1.1" 200 -
+2023-04-17 22:17:05,096 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:05] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:17:06,384 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:06] "GET /additional/Fabrics/!!!None HTTP/1.1" 200 -
+2023-04-17 22:17:07,137 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:07] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:17:08,556 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:08] "GET /additional/Fits/!!!None HTTP/1.1" 200 -
+2023-04-17 22:17:09,298 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:09] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:17:12,874 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:12] "GET /additional/Heels/!!!None HTTP/1.1" 200 -
+2023-04-17 22:17:13,736 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:13] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:17:15,201 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:15] "GET /additional/Lapels/!!!None HTTP/1.1" 200 -
+2023-04-17 22:17:15,902 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:15] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:17:17,559 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:17] "GET /additional/Patterns/!!!None HTTP/1.1" 200 -
+2023-04-17 22:17:18,326 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:18] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:17:43,543 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 22:17:43,544 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:17:46,556 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:46] "GET /additional/Patterns/!!!None HTTP/1.1" 200 -
+2023-04-17 22:17:47,683 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:47] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:17:50,358 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:50] "GET /additional/Seasons/!!!None HTTP/1.1" 200 -
+2023-04-17 22:17:51,230 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:51] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:17:53,791 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:53] "GET /additional/Sizes/!!!None HTTP/1.1" 200 -
+2023-04-17 22:17:54,559 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:54] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:17:56,810 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:56] "GET /additional/Sleeves/!!!None HTTP/1.1" 200 -
+2023-04-17 22:17:57,721 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:17:57] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:18:00,979 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:18:00] "GET /additional/Trouser_lengths/!!!None HTTP/1.1" 200 -
+2023-04-17 22:18:01,685 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:18:01] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:18:14,381 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:18:14] "GET /main HTTP/1.1" 200 -
+2023-04-17 22:18:15,148 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:18:15] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:23:16,687 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 22:23:16,687 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:23:20,867 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:23:20] "GET /main HTTP/1.1" 200 -
+2023-04-17 22:23:21,914 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:23:21] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:23:24,124 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:23:24] "GET /users/!!!None HTTP/1.1" 200 -
+2023-04-17 22:23:24,874 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:23:24] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:23:34,518 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:23:34] "[33mGET /users/set_access/1.0 HTTP/1.1[0m" 404 -
+2023-04-17 22:24:12,929 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:24:12] "GET / HTTP/1.1" 200 -
+2023-04-17 22:24:13,670 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:24:13] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:24:15,558 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:24:15] "GET /users/!!!None HTTP/1.1" 200 -
+2023-04-17 22:24:16,255 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:24:16] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:24:19,584 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:24:19] "[33mGET /users/set_access/1.0 HTTP/1.1[0m" 404 -
+2023-04-17 22:24:26,325 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 22:24:26,325 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:24:30,162 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:24:30] "GET / HTTP/1.1" 200 -
+2023-04-17 22:24:31,241 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:24:31] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:24:39,279 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:24:39] "GET /users/!!!None HTTP/1.1" 200 -
+2023-04-17 22:24:40,049 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:24:40] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:24:51,837 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:24:51] "[32mGET /users/set_access/3/3 HTTP/1.1[0m" 302 -
+2023-04-17 22:24:52,314 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:24:52] "GET /users/!!!None HTTP/1.1" 200 -
+2023-04-17 22:24:53,095 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:24:53] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:24:56,077 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:24:56] "[32mGET /users/set_access/3/1 HTTP/1.1[0m" 302 -
+2023-04-17 22:24:56,558 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:24:56] "GET /users/!!!None HTTP/1.1" 200 -
+2023-04-17 22:24:57,288 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:24:57] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:24:59,077 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:24:59] "[32mGET /users/set_access/3/2 HTTP/1.1[0m" 302 -
+2023-04-17 22:24:59,571 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:24:59] "GET /users/!!!None HTTP/1.1" 200 -
+2023-04-17 22:25:00,508 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:25:00] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:25:05,571 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:25:05] "GET /main HTTP/1.1" 200 -
+2023-04-17 22:25:06,296 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:25:06] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:25:07,931 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:25:07] "[32mGET /logout HTTP/1.1[0m" 302 -
+2023-04-17 22:25:08,411 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:25:08] "GET / HTTP/1.1" 200 -
+2023-04-17 22:25:10,142 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:25:10] "GET /register HTTP/1.1" 200 -
+2023-04-17 22:25:34,453 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:25:34] "[32mPOST /register HTTP/1.1[0m" 302 -
+2023-04-17 22:25:34,974 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:25:34] "GET / HTTP/1.1" 200 -
+2023-04-17 22:25:35,694 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:25:35] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:25:40,945 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:25:40] "GET /additional/Countries/!!!None HTTP/1.1" 200 -
+2023-04-17 22:25:41,617 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:25:41] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:25:45,829 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:25:45] "GET /clothes/Upper_body/!!!None HTTP/1.1" 200 -
+2023-04-17 22:25:46,592 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:25:46] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:25:58,035 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:25:58] "GET /additional/Sleeves/!!!None HTTP/1.1" 200 -
+2023-04-17 22:25:58,850 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:25:58] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:26:04,200 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:26:04] "GET /additional/Sleeves/logout HTTP/1.1" 200 -
+2023-04-17 22:26:04,892 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:26:04] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:26:10,422 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:26:10] "GET /main HTTP/1.1" 200 -
+2023-04-17 22:26:11,105 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:26:11] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:26:37,256 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:26:37] "[32mGET /logout HTTP/1.1[0m" 302 -
+2023-04-17 22:26:37,730 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:26:37] "GET / HTTP/1.1" 200 -
+2023-04-17 22:26:59,013 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:26:59] "[32mPOST / HTTP/1.1[0m" 302 -
+2023-04-17 22:26:59,533 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:26:59] "GET / HTTP/1.1" 200 -
+2023-04-17 22:27:00,235 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:27:00] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:27:03,792 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:27:03] "GET /users/!!!None HTTP/1.1" 200 -
+2023-04-17 22:27:04,543 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:27:04] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:27:07,235 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:27:07] "[32mGET /users/del/5 HTTP/1.1[0m" 302 -
+2023-04-17 22:27:07,719 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:27:07] "GET /users/!!!None HTTP/1.1" 200 -
+2023-04-17 22:27:08,451 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:27:08] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:27:14,538 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:27:14] "GET /main HTTP/1.1" 200 -
+2023-04-17 22:27:15,239 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:27:15] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:29:39,863 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:29:39] "GET /additional/Countries/!!!None HTTP/1.1" 200 -
+2023-04-17 22:29:40,621 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:29:40] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:29:52,476 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:29:52] "GET /clothes/Upper_body/!!!None HTTP/1.1" 200 -
+2023-04-17 22:29:53,243 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:29:53] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:31:40,375 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 22:31:40,376 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:31:41,078 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:31:41] "GET /main HTTP/1.1" 200 -
+2023-04-17 22:31:42,308 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:31:42] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:31:43,669 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:31:43] "GET /users/!!!None HTTP/1.1" 200 -
+2023-04-17 22:31:44,530 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:31:44] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:31:45,927 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:31:45] "GET /wardrobe/!!!None HTTP/1.1" 200 -
+2023-04-17 22:31:46,610 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:31:46] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:31:55,628 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:31:55] "GET /wardrobe/add/Hats HTTP/1.1" 200 -
+2023-04-17 22:31:56,388 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:31:56] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:32:02,931 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:32:02] "[32mPOST /wardrobe/add/Hats HTTP/1.1[0m" 302 -
+2023-04-17 22:32:03,460 - main - ERROR - Exception on /wardrobe/!!!None [GET]
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask_restful\__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "C:\Program Files\Python39\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "D:\PythonProg\design_web\main.py", line 213, in wardrobe
+    if sort_str in db_sess.get(TABLES_CLASSES[db_sess.get(Types, obj.type_).name], obj.id):
+TypeError: argument of type 'NoneType' is not iterable
+2023-04-17 22:32:03,462 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:32:03] "[35m[1mGET /wardrobe/!!!None HTTP/1.1[0m" 500 -
+2023-04-17 22:34:38,206 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-17 22:34:38,206 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:34:42,811 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 22:34:42,811 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:34:49,638 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:34:49] "GET / HTTP/1.1" 200 -
+2023-04-17 22:34:50,853 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:34:50] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:34:55,024 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:34:55] "GET /wardrobe/add/Hats HTTP/1.1" 200 -
+2023-04-17 22:34:55,731 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:34:55] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:35:00,947 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:35:00] "[32mPOST /wardrobe/add/Hats HTTP/1.1[0m" 302 -
+2023-04-17 22:35:01,500 - main - ERROR - Exception on /wardrobe/!!!None [GET]
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask_restful\__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "C:\Program Files\Python39\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "D:\PythonProg\design_web\main.py", line 220, in wardrobe
+    beta = getattr(obj, i)
+AttributeError: 'Wardrobe' object has no attribute 'type'
+2023-04-17 22:35:01,502 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:35:01] "[35m[1mGET /wardrobe/!!!None HTTP/1.1[0m" 500 -
+2023-04-17 22:35:41,945 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 22:35:41,945 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:35:44,843 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:35:44] "GET / HTTP/1.1" 200 -
+2023-04-17 22:35:45,927 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:35:45] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:35:47,573 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:35:47] "GET /wardrobe/add/Hats HTTP/1.1" 200 -
+2023-04-17 22:35:48,317 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:35:48] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:35:52,666 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:35:52] "[32mPOST /wardrobe/add/Hats HTTP/1.1[0m" 302 -
+2023-04-17 22:35:53,243 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:35:53] "GET /wardrobe/!!!None HTTP/1.1" 200 -
+2023-04-17 22:35:53,919 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:35:53] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:36:42,342 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:36:42] "[33mGET /wardrobe/edit/None HTTP/1.1[0m" 404 -
+2023-04-17 22:40:16,910 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 22:40:16,910 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:40:28,154 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:40:28] "[33mGET /wardrobe.!!!None HTTP/1.1[0m" 404 -
+2023-04-17 22:40:33,321 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:40:33] "GET /wardrobe/!!!None HTTP/1.1" 200 -
+2023-04-17 22:40:34,445 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:40:34] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:41:10,919 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 22:41:10,919 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:41:11,643 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:41:11] "GET /wardrobe/!!!None HTTP/1.1" 200 -
+2023-04-17 22:41:12,671 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:41:12] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:43:02,065 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 22:43:02,066 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:43:03,228 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:43:03] "GET /wardrobe/!!!None HTTP/1.1" 200 -
+2023-04-17 22:43:04,274 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:43:04] "GET /static/img/pfp/base_png.jpg HTTP/1.1" 200 -
+2023-04-17 22:43:07,958 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:43:07] "[33mGET /wardrobe/edit/0 HTTP/1.1[0m" 404 -
+2023-04-17 22:45:11,892 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 22:45:11,892 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:45:14,719 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:45:14] "GET /wardrobe/!!!None HTTP/1.1" 200 -
+2023-04-17 22:45:15,760 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:45:15] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:45:18,215 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:45:18] "GET /wardrobe/edit/30 HTTP/1.1" 200 -
+2023-04-17 22:45:18,905 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:45:18] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:45:28,807 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:45:28] "[32mPOST /wardrobe/edit/30 HTTP/1.1[0m" 302 -
+2023-04-17 22:45:29,370 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:45:29] "GET /wardrobe/!!!None HTTP/1.1" 200 -
+2023-04-17 22:45:30,046 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:45:30] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:45:32,853 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:45:32] "GET /wardrobe/edit/31 HTTP/1.1" 200 -
+2023-04-17 22:45:33,568 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:45:33] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:45:39,614 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:45:39] "[32mPOST /wardrobe/edit/31 HTTP/1.1[0m" 302 -
+2023-04-17 22:45:40,184 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:45:40] "GET /wardrobe/!!!None HTTP/1.1" 200 -
+2023-04-17 22:45:40,864 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:45:40] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:45:44,272 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:45:44] "[32mGET /wardrobe/del/31 HTTP/1.1[0m" 302 -
+2023-04-17 22:45:44,758 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:45:44] "GET /wardrobe/!!!None HTTP/1.1" 200 -
+2023-04-17 22:45:45,488 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:45:45] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:46:28,668 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 22:46:28,668 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:46:30,283 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:46:30] "GET /wardrobe/!!!None HTTP/1.1" 200 -
+2023-04-17 22:46:31,397 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:46:31] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:46:32,412 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:46:32] "GET /wardrobe/edit/32 HTTP/1.1" 200 -
+2023-04-17 22:46:33,201 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:46:33] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:46:36,614 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:46:36] "[32mPOST /wardrobe/edit/32 HTTP/1.1[0m" 302 -
+2023-04-17 22:46:37,218 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:46:37] "GET /wardrobe/!!!None HTTP/1.1" 200 -
+2023-04-17 22:46:37,922 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:46:37] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:46:43,822 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:46:43] "GET /wardrobe/logout HTTP/1.1" 200 -
+2023-04-17 22:46:44,490 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:46:44] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:48:18,139 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-17 22:48:18,140 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-17 22:48:21,687 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:48:21] "[33mGET /wardrobe HTTP/1.1[0m" 404 -
+2023-04-17 22:48:25,846 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:48:25] "GET / HTTP/1.1" 200 -
+2023-04-17 22:48:26,844 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:48:26] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:48:31,725 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:48:31] "GET /wardrobe/!!!None HTTP/1.1" 200 -
+2023-04-17 22:48:32,443 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:48:32] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-17 22:48:40,018 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:48:40] "[32mGET /logout HTTP/1.1[0m" 302 -
+2023-04-17 22:48:40,494 - werkzeug - INFO - 127.0.0.1 - - [17/Apr/2023 22:48:40] "GET / HTTP/1.1" 200 -

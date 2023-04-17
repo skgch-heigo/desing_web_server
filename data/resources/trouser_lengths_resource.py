@@ -21,7 +21,7 @@ class TrouserLengthsResource(Resource):
             return jsonify({f'trouser lengths {trouserlengths_id}': 'deleted'})
         else:
             trouserlengths = session.query(TrouserLengths).get(trouserlengths_id)
-            return jsonify({'trouser lengths': trouserlengths.to_dict(
+            return jsonify({'length': trouserlengths.to_dict(
                 only=('name', 'picture'))})
 
     def delete(self,trouserlengths_id):
@@ -50,7 +50,7 @@ class TrouserLengthsListResource(Resource):
         session = db_session.create_session()
         trouserlengths = session.query(TrouserLengths).filter(TrouserLengths.deleted == 0)
         if trouserlengths:
-            return jsonify({'trouserlengths': [item.to_dict(
+            return jsonify({'length': [item.to_dict(
                 only=('id', 'name', 'picture')) for item in trouserlengths]})
 
     def post(self):

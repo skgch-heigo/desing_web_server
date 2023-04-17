@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Таблица {{title}}</h1>
+<br>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.sort_str.label }}<br>
+        {{ form.sort_str(class="form-control") }}<br>
+        {% for error in form.sort_str.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+</form>
+<br>
+<table class="table table-bordered">
+    <thead>
+    <tr class="table-primary">
+        <th scope="col">Название</th>
+        {% if current_user.is_authenticated and current_user.access >= 2 %}
+        <th scope="col"></th>
+        {% endif %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in range(count_cols) %}
+    <tr>
+        <th scope="row"><a href="#"> {{ data[item][0] }} </a></th>
+        {% if current_user.is_authenticated and current_user.access >= 2 %}
+        <td><a class="btn btn-primary" href="/additional/edit/{{table}}/{{data[item][1]}}" role="button">Изменить</a><br><br>
+            <a class="btn btn-primary" href="/additional/del/{{table}}/{{data[item][1]}}" role="button">Удалить</a></td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

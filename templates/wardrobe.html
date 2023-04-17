@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Гардероб</h1>
+<br>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.sort_str.label }}<br>
+        {{ form.sort_str(class="form-control") }}<br>
+        {% for error in form.sort_str.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+</form>
+<br>
+<table class="table table-bordered">
+    <thead>
+    <tr class="table-primary">
+        <th scope="col">Тип</th>
+        <th scope="col">Название</th>
+        <th scope="col">Цвет</th>
+        <th scope="col">Размер</th>
+        <th scope="col">Ткань</th>
+        <th scope="col">Узор</th>
+        <th scope="col">Изображение</th>
+        {% if current_user.is_authenticated and current_user.access >= 2 %}
+        <th scope="col"></th>
+        {% endif %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in range(count_cols) %}
+    <tr>
+        <td>{{ data[item][0] }}</td>
+        <th scope="row"><a href="#"> {{ data[item][1] }} </a></th>
+        <td>{{ data[item][2] }}</td>
+        <td>{{ data[item][3] }}</td>
+        <td>{{ data[item][4] }}</td>
+        <td>{{ data[item][5] }}</td>
+        <td>{{ data[item][6] }}</td>
+        {% if current_user.is_authenticated and current_user.access >= 2 %}
+        <td><a class="btn btn-primary" href="/wardrobe/edit/{{data[item][7]}}" role="button">Изменить</a><br><br>
+            <a class="btn btn-primary" href="/wardrobe/del/{{data[item][7]}}" role="button">Удалить</a></td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

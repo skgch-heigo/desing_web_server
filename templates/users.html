@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Таблица аккаунтов</h1>
+<br>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.sort_str.label }}<br>
+        {{ form.sort_str(class="form-control") }}<br>
+        {% for error in form.sort_str.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+</form>
+<br>
+<table class="table table-bordered">
+    <thead>
+    <tr class="table-primary">
+        <th scope="col">Имя</th>
+        <th scope="col">Почта</th>
+        <th scope="col">Доступ</th>
+        {% if current_user.is_authenticated and current_user.access >= 2 %}
+        <th scope="col"></th>
+        {% endif %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in range(count_cols) %}
+    <tr>
+        <th scope="row"><a href="#"> {{ data[item][0] }} </a></th>
+        <td>{{ data[item][1] }}</td>
+        <td>{{ data[item][2] }}</td>
+        {% if current_user.is_authenticated and current_user.access >= 2 %}
+        <td><a class="btn btn-primary" href="/users/set_access/{{data[item][3]}}/1" role="button">Установить уровень доступа 1</a><br><br>
+            <a class="btn btn-primary" href="/users/set_access/{{data[item][3]}}/2" role="button">Установить уровень доступа 2</a><br><br>
+            <a class="btn btn-primary" href="/users/set_access/{{data[item][3]}}/3" role="button">Установить уровень доступа 3</a><br><br>
+            <a class="btn btn-primary" href="/users/del/{{data[item][3]}}" role="button">Удалить аккаунт</a>
+        {% endif %}
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
