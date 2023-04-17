@@ -5,9 +5,42 @@ from telegram import ReplyKeyboardMarkup
 from telegram.ext import Application, MessageHandler, filters, CommandHandler
 from config.config import BOT_TOKEN, SITE_URL, LOG_FILE, LOG_LEVEL
 
-# Запускаем логгирование
-from data.constants.tables_inf import TABLES_CLASSES, RELATIONS, FIELDS
-from data.models import db_session
+
+FIELDS = {"Boots": ["id", "name", "season", "origin", "appearance_year",
+                    "popularity_start", "popularity_end",
+                    "heel", "clasp", "features", "picture", "deleted"],
+          "Brims": ["id", "name", "picture", "deleted"],
+          "Clasps": ["id", "name", "picture", "deleted"],
+          "Collars": ["id", "name", "picture", "deleted"],
+          "Countries": ["id", "name", "deleted"],
+          "Fabrics": ["id", "name", "warmth", "washing", "picture", "deleted"],
+          "Fits": ["id", "name", "deleted"],
+          "Hats": ["id", "name", "season", "origin", "appearance_year",
+                   "popularity_start", "popularity_end", "brim", "features", "picture", "deleted"],
+          "Heels": ["id", "name", "picture", "deleted"],
+          "Lapels": ["id", "name", "picture", "deleted"],
+          "Lower_body": ["id", "name", "season", "origin", "appearance_year",
+                         "popularity_start", "popularity_end", "fit",
+                         "clasp", "length", "features", "picture", "deleted"],
+          "Patterns": ["id", "name", "picture", "deleted"],
+          "Seasons": ["id", "name", "deleted"],
+          "Sizes": ["id", "name", "deleted"],
+          "Sleeves": ["id", "name", "picture", "deleted"],
+          "Trouser_lengths": ["id", "name", "picture", "deleted"],
+          "Types": ["id", "name", "deleted"],
+          "Upper_body": ["id", "name", "season", "origin", "appearance_year",
+                         "popularity_start", "popularity_end", "sleeves", "clasp", "collar",
+                         "hood", "lapels", "pockets", "fitted", "features", "picture", "deleted"],
+          "Wardrobe": ["id", "type", "name", "color", "size",
+                       "fabric", "pattern", "picture", "deleted", "owner"],
+          "users": ["id", "email", "hashed_password", "name", "access", "deleted"]}
+
+RELATIONS = {"brim": "Brims", "clasp": "Clasps", "collar": "Collars",
+             "origin": "Countries", "fabric": "Fabrics", "fit": "Fits",
+             "heel": "Heels", "lapels": "Lapels", "pattern": "Patterns",
+             "season": "Seasons", "size": "Sizes", "sleeves": "Sleeves",
+             "length": "Trouser_lengths", "type": "Types", "owner": "User"}
+
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=LOG_LEVEL, filename=LOG_FILE
@@ -58,19 +91,25 @@ async def get_response(url, params=None):
 
 
 async def get_data(update, context):
+    print(SITE_URL + "/api/" + context.args[0].lower())
     response = await get_response(SITE_URL + "/api/" + context.args[0].lower())
     answer = ""
-    table = TABLES_CLASSES[context.args[0]]
-    db_sess = db_session.create_session()
     print(response)
     for i in response:
         for j in response[i]:
             for k in FIELDS[context.args[0]][1:-1]:
                 if k in RELATIONS:
-                    name = db_sess.query(TABLES_CLASSES[RELATIONS[k]]).filter(TABLES_CLASSES[RELATIONS[k]].id
-                                                                              == j[k]).first()
-                    if name:
-                        name = name.name
+                    print(SITE_URL + "/api/" + RELATIONS[k].lower() + "/" + str(j[k]))
+                    resp = await get_response(SITE_URL + "/api/" + RELATIONS[k].lower() + "/" + str(j[k]))
+                    print(resp)
+                    if "message" not in resp:
+                        name = ""
+                        for el in resp:
+                            if isinstance(resp[el], dict):
+                                name = resp[el]["name"]
+                            else:
+                                name = str(resp[el])
+                            break
                     else:
                         name = ""
                     answer += str(k) + ": " + name + "\n"
@@ -79,6 +118,8 @@ async def get_data(update, context):
             answer += "\n"
         answer += "\n\n"
     answer = answer.strip()
+    if not answer:
+        answer = "There are none, sorry"
     await update.message.reply_text(answer)
 
 
@@ -86,7 +127,6 @@ def main():
     # Создаём объект Application.
     # Вместо слова "TOKEN" надо разместить полученный от @BotFather токен
     application = Application.builder().token(BOT_TOKEN).build()
-    db_session.global_init("db/designer_base.db")
 
     # Создаём обработчик сообщений типа filters.TEXT
     # из описанной выше асинхронной функции echo()

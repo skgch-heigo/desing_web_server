@@ -29,6 +29,9 @@
         <th scope="col">Метод застегивания</th>
         <th scope="col">Дополнительная информация</th>
         <th scope="col">Изображение</th>
+        {% if current_user.is_authenticated and current_user.access >= 2 %}
+        <th scope="col"></th>
+        {% endif %}
     </tr>
     </thead>
     <tbody>
@@ -44,6 +47,10 @@
         <td>{{ data[item][7] }}</td>
         <td>{{ data[item][8] }}</td>
         <td>{{ data[item][9] }}</td>
+        {% if current_user.is_authenticated and current_user.access >= 2 %}
+        <td><a class="btn btn-primary" href="/clothes/edit/Boots/{{data[item][10]}}" role="button">Изменить</a><br><br>
+            <a class="btn btn-primary" href="/clothes/del/Boots/{{data[item][10]}}" role="button">Удалить</a></td>
+        {% endif %}
     </tr>
     {% endfor %}
     </tbody>

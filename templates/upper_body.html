@@ -34,6 +34,9 @@
         <th scope="col">Приталенный</th>
         <th scope="col">Дополнительная информация</th>
         <th scope="col">Изображение</th>
+        {% if current_user.is_authenticated and current_user.access >= 2 %}
+        <th scope="col"></th>
+        {% endif %}
     </tr>
     </thead>
     <tbody>
@@ -54,6 +57,10 @@
         <td>{{ data[item][12] }}</td>
         <td>{{ data[item][13] }}</td>
         <td>{{ data[item][14] }}</td>
+        {% if current_user.is_authenticated and current_user.access >= 2 %}
+        <td><a class="btn btn-primary" href="/clothes/edit/Upper_body/{{data[item][15]}}" role="button">Изменить</a><br><br>
+            <a class="btn btn-primary" href="/clothes/del/Upper_body/{{data[item][15]}}" role="button">Удалить</a></td>
+        {% endif %}
     </tr>
     {% endfor %}
     </tbody>

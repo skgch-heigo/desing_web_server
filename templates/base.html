@@ -62,7 +62,7 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="logout">Выйти</a></li>
+                    <li><a class="dropdown-item" href="/logout">Выйти</a></li>
                 </ul>
             </div>
             {%endif %}
@@ -73,31 +73,31 @@
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Навигация</a>
                     <ul class="dropdown-menu">
                         {% if current_user.is_authenticated and current_user.access == 3 %}
-                        <li><a class="dropdown-item" href="/users/">Пользователи</a></li>
+                        <li><a class="dropdown-item" href="/users/!!!None">Пользователи</a></li>
                         {% endif %}
                         {% if current_user.is_authenticated %}
-                        <li><a class="dropdown-item" href="/wardrobe/">Гардероб</a></li>
+                        <li><a class="dropdown-item" href="/wardrobe/!!!None">Гардероб</a></li>
                         {% endif %}
-                        <li><a class="dropdown-item" href="/clothes/Hats/">Шляпы</a></li>
-                        <li><a class="dropdown-item" href="/clothes/Upper_body/">Верхняя одежда</a></li>
-                        <li><a class="dropdown-item" href="/clothes/Lower_body/">Нижняя одежда</a></li>
-                        <li><a class="dropdown-item" href="/clothes/Boots/">Обувь</a></li>
+                        <li><a class="dropdown-item" href="/clothes/Hats/!!!None">Шляпы</a></li>
+                        <li><a class="dropdown-item" href="/clothes/Upper_body/!!!None">Верхняя одежда</a></li>
+                        <li><a class="dropdown-item" href="/clothes/Lower_body/!!!None">Нижняя одежда</a></li>
+                        <li><a class="dropdown-item" href="/clothes/Boots/!!!None">Обувь</a></li>
                         <li>
                         <hr class="dropdown-divider">
                     </li>
-                        <li><a class="dropdown-item" href="/additional/Brims/">Поля</a></li>
-                        <li><a class="dropdown-item" href="/additional/Clasps/">Застёжки</a></li>
-                        <li><a class="dropdown-item" href="/additional/Collars/">Воротники</a></li>
-                        <li><a class="dropdown-item" href="/additional/Countries/">Страны</a></li>
-                        <li><a class="dropdown-item" href="/additional/Fabrics/">Ткани</a></li>
-                        <li><a class="dropdown-item" href="/additional/Fits/">Посадки</a></li>
-                        <li><a class="dropdown-item" href="/additional/Heels/">Каблуки</a></li>
-                        <li><a class="dropdown-item" href="/additional/Lapels/">Лацканы</a></li>
-                        <li><a class="dropdown-item" href="/additional/Patterns/">Узоры</a></li>
-                        <li><a class="dropdown-item" href="/additional/Seasons/">Сезоны</a></li>
-                        <li><a class="dropdown-item" href="/additional/Sizes/">Размеры</a></li>
-                        <li><a class="dropdown-item" href="/additional/Sleeves/">Рукава</a></li>
-                        <li><a class="dropdown-item" href="/additional/Trouser_lengths/">Длины</a></li>
+                        <li><a class="dropdown-item" href="/additional/Brims/!!!None">Поля</a></li>
+                        <li><a class="dropdown-item" href="/additional/Clasps/!!!None">Застёжки</a></li>
+                        <li><a class="dropdown-item" href="/additional/Collars/!!!None">Воротники</a></li>
+                        <li><a class="dropdown-item" href="/additional/Countries/!!!None">Страны</a></li>
+                        <li><a class="dropdown-item" href="/additional/Fabrics/!!!None">Ткани</a></li>
+                        <li><a class="dropdown-item" href="/additional/Fits/!!!None">Посадки</a></li>
+                        <li><a class="dropdown-item" href="/additional/Heels/!!!None">Каблуки</a></li>
+                        <li><a class="dropdown-item" href="/additional/Lapels/!!!None">Лацканы</a></li>
+                        <li><a class="dropdown-item" href="/additional/Patterns/!!!None">Узоры</a></li>
+                        <li><a class="dropdown-item" href="/additional/Seasons/!!!None">Сезоны</a></li>
+                        <li><a class="dropdown-item" href="/additional/Sizes/!!!None">Размеры</a></li>
+                        <li><a class="dropdown-item" href="/additional/Sleeves/!!!None">Рукава</a></li>
+                        <li><a class="dropdown-item" href="/additional/Trouser_lengths/!!!None">Длины</a></li>
                     </ul>
                 </nav>
             </li>
