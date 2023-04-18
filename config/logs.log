@@ -1902,3 +1902,50 @@ jinja2.exceptions.TemplateNotFound: oops.html
 2023-04-18 17:49:28,303 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
 2023-04-18 17:49:31,794 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 17:49:31] "GET /e HTTP/1.1" 200 -
 2023-04-18 17:49:32,644 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 17:49:32] "GET /static/img/backs/img.png HTTP/1.1" 200 -
+2023-04-18 18:02:34,295 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-18 18:02:34,295 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-18 18:03:06,592 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:03:06] "GET / HTTP/1.1" 200 -
+2023-04-18 18:03:07,319 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:03:07] "GET /apple-touch-icon.png HTTP/1.1" 200 -
+2023-04-18 18:03:07,323 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:03:07] "GET /favicon-32x32.png HTTP/1.1" 200 -
+2023-04-18 18:03:18,933 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:03:18] "GET /main HTTP/1.1" 200 -
+2023-04-18 18:03:19,966 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:03:19] "GET /main HTTP/1.1" 200 -
+2023-04-18 18:03:53,341 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:03:53] "GET / HTTP/1.1" 200 -
+2023-04-18 18:04:33,262 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-18 18:04:33,262 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-18 18:04:44,715 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:04:44] "GET / HTTP/1.1" 200 -
+2023-04-18 18:04:46,034 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:04:46] "GET /apple-touch-icon.png HTTP/1.1" 200 -
+2023-04-18 18:04:46,039 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:04:46] "GET /favicon-32x32.png HTTP/1.1" 200 -
+2023-04-18 18:06:29,757 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:06:29] "GET / HTTP/1.1" 200 -
+2023-04-18 18:06:31,083 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:06:31] "GET /favicon-32x32.png HTTP/1.1" 200 -
+2023-04-18 18:06:31,669 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:06:31] "GET /favicon-16x16.png HTTP/1.1" 200 -
+2023-04-18 18:08:01,024 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:08:01] "GET /favicon-32x32.png HTTP/1.1" 200 -
+2023-04-18 18:08:01,910 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:08:01] "GET /static/img/backs/img.png HTTP/1.1" 200 -
+2023-04-18 18:08:46,916 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:08:46] "GET / HTTP/1.1" 200 -
+2023-04-18 18:09:28,524 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-18 18:09:28,524 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-18 18:09:48,753 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:09:48] "GET / HTTP/1.1" 200 -
+2023-04-18 18:10:05,695 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:10:05] "GET /faq HTTP/1.1" 200 -
+2023-04-18 18:10:21,814 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:10:21] "GET / HTTP/1.1" 200 -
+2023-04-18 18:14:47,392 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:14:47] "GET / HTTP/1.1" 200 -
+2023-04-18 18:15:21,624 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:15:21] "GET / HTTP/1.1" 200 -
+2023-04-18 18:15:30,836 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:15:30] "GET / HTTP/1.1" 200 -
+2023-04-18 18:15:31,678 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:15:31] "GET /favicon-32x32.png HTTP/1.1" 200 -
+2023-04-18 18:15:32,329 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:15:32] "GET /favicon-16x16.png HTTP/1.1" 200 -
+2023-04-18 18:15:38,123 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:15:38] "GET / HTTP/1.1" 200 -
+2023-04-18 18:15:39,171 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:15:39] "GET /favicon-32x32.png HTTP/1.1" 200 -
+2023-04-18 18:15:39,744 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:15:39] "GET /favicon-16x16.png HTTP/1.1" 200 -
+2023-04-18 18:17:08,870 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-18 18:17:08,870 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-18 18:17:12,504 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-18 18:17:12,504 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-18 18:17:18,325 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:17:18] "GET / HTTP/1.1" 200 -
+2023-04-18 18:17:19,669 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:17:19] "GET /favicon-32x32.png HTTP/1.1" 200 -
+2023-04-18 18:17:51,679 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:17:51] "GET / HTTP/1.1" 200 -
+2023-04-18 18:18:04,480 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:18:04] "GET / HTTP/1.1" 200 -
+2023-04-18 18:18:06,180 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:18:06] "GET /favicon-32x32.png HTTP/1.1" 200 -
+2023-04-18 18:18:06,191 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:18:06] "GET /apple-touch-icon.png HTTP/1.1" 200 -

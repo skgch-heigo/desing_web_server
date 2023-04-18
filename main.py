@@ -1286,6 +1286,36 @@ def bad_request(_):
     return render_template("oops.html", error=405)
 
 
+@app.route('/favicon-16x16.png')
+def fav():
+    with open("favicon-16x16.png", "rb") as f:
+        return f.read()
+
+
+@app.route('/favicon.ico')
+def fav():
+    with open("favicon.ico", "rb") as f:
+        return f.read()
+
+
+@app.route('/apple-touch-icon.png')
+def fav():
+    with open("apple-touch-icon.png", "rb") as f:
+        return f.read()
+
+
+@app.route('/android-chrome-192x192.png')
+def fav():
+    with open("android-chrome-192x192.png", "rb") as f:
+        return f.read()
+
+
+@app.route('/android-chrome-512x512.png')
+def fav():
+    with open("android-chrome-512x512.png", "rb") as f:
+        return f.read()
+
+
 if __name__ == '__main__':
     main()
     app.run(port=8080, host='127.0.0.1')
