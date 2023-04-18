@@ -1949,3 +1949,9 @@ jinja2.exceptions.TemplateNotFound: oops.html
 2023-04-18 18:18:04,480 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:18:04] "GET / HTTP/1.1" 200 -
 2023-04-18 18:18:06,180 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:18:06] "GET /favicon-32x32.png HTTP/1.1" 200 -
 2023-04-18 18:18:06,191 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 18:18:06] "GET /apple-touch-icon.png HTTP/1.1" 200 -
+2023-04-18 21:28:37,004 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-18 21:28:37,004 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-18 21:28:54,325 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-18 21:28:54,326 - werkzeug - INFO - [33mPress CTRL+C to quit[0m

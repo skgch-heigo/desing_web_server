@@ -1287,7 +1287,7 @@ def bad_request(_):
 
 
 @app.route('/favicon-16x16.png')
-def fav():
+def fav16():
     with open("favicon-16x16.png", "rb") as f:
         return f.read()
 
@@ -1299,19 +1299,19 @@ def fav():
 
 
 @app.route('/apple-touch-icon.png')
-def fav():
+def fav_apple():
     with open("apple-touch-icon.png", "rb") as f:
         return f.read()
 
 
 @app.route('/android-chrome-192x192.png')
-def fav():
+def fav192():
     with open("android-chrome-192x192.png", "rb") as f:
         return f.read()
 
 
 @app.route('/android-chrome-512x512.png')
-def fav():
+def fav512():
     with open("android-chrome-512x512.png", "rb") as f:
         return f.read()
 
