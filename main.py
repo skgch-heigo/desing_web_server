@@ -187,12 +187,20 @@ def element_information(table, id_):
     return render_template("elem_information.html", title="Информация", data=data, map=map_, picture=picture)
 
 
-@app.route("/info/<int:id>")
+@app.route("/info")
 @login_required
-def info(id_):
-    if current_user and current_user.id == id_:
-        return redirect("/show/users/" + str(id_))
-    abort(403)
+def info():
+    return render_template("profile.html")
+
+
+@app.route("/faq")
+def faq():
+    return render_template("faq.html")
+
+
+# @app.route("/about_us")
+# def about_us():
+#     return render_template("about.html")
 
 
 @app.route("/wardrobe/<sort_str>", methods=['GET', 'POST'])
@@ -203,7 +211,7 @@ def wardrobe(sort_str):
     form = FilterForm()
     if form.validate_on_submit():
         return redirect("/wardrobe/" + (request.form["sort_str"] if ("sort_str" in request.form and
-                                                                             request.form["sort_str"]) else "!!!None"))
+                                                                     request.form["sort_str"]) else "!!!None"))
     form.sort_str.default = sort_str
     form.process()
     db_sess = db_session.create_session()
@@ -246,7 +254,8 @@ def additional(type_, sort_str):
     form = FilterForm()
     if form.validate_on_submit():
         return redirect(f"/additional/{type_}/" + (request.form["sort_str"] if ("sort_str" in request.form and
-                                                                             request.form["sort_str"]) else "!!!None"))
+                                                                                request.form[
+                                                                                    "sort_str"]) else "!!!None"))
     form.sort_str.default = sort_str
     form.process()
     db_sess = db_session.create_session()
@@ -272,8 +281,8 @@ def additional(type_, sort_str):
                                form=form, count_cols=len(data), table=type_)
 
 
-@login_required
 @app.route("/users/<sort_str>", methods=['GET', 'POST'])
+@login_required
 def users(sort_str):
     if sort_str == "!!!None":
         sort_str = ""
@@ -863,7 +872,7 @@ def lower_body_add():
         obj.origin = db_sess.query(Countries).filter(Countries.name == form.origin.data,
                                                      Countries.deleted == 0).first().id
         obj.clasp = db_sess.query(Clasps).filter(Clasps.name == form.clasp.data, Clasps.deleted == 0).first().id
-        obj.length = db_sess.query(TrouserLengths).filter(TrouserLengths.name == form.lengh.data,
+        obj.length = db_sess.query(TrouserLengths).filter(TrouserLengths.name == form.length.data,
                                                           TrouserLengths.deleted == 0).first().id
         obj.fit = db_sess.query(Fits).filter(Fits.name == form.fit.data, Fits.deleted == 0).first().id
         if form.picture.data:
@@ -1185,11 +1194,17 @@ def users_del(id_):
         abort(404)
     if not (current_user.access == 3 or current_user.id == id_):
         abort(403)
+    flag = True
+    if current_user.id == id_:
+        flag = False
+        logout_user()
     for i in db_sess.query(Wardrobe).filter(Wardrobe.owner == id_).all():
         db_sess.delete(i)
     db_sess.delete(obj)
     db_sess.commit()
-    return redirect("/users/!!!None")
+    if flag:
+        return redirect("/users/!!!None")
+    return redirect("/")
 
 
 @app.route("/users/set_access/<int:id_>/<int:access>")
@@ -1253,22 +1268,22 @@ def register():
 
 @app.errorhandler(400)
 def bad_request(_):
-    return make_response(jsonify({'error': 'Bad Request 400'}), 400)
+    return render_template("oops.html", error=400)
 
 
 @app.errorhandler(403)
 def access_denied(_):
-    return make_response(jsonify({'error': 'Access denied 403'}), 403)
+    return render_template("oops.html", error=403)
 
 
 @app.errorhandler(404)
 def not_found(_):
-    return make_response(jsonify({'error': 'Not found 404'}), 404)
+    return render_template("oops.html", error=404)
 
 
 @app.errorhandler(405)
 def bad_request(_):
-    return make_response(jsonify({'error': 'Bad Request 405'}), 405)
+    return render_template("oops.html", error=405)
 
 
 if __name__ == '__main__':
