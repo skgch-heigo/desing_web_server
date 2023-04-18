@@ -1955,3 +1955,21 @@ jinja2.exceptions.TemplateNotFound: oops.html
 2023-04-18 21:28:54,325 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:8080
 2023-04-18 21:28:54,326 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-18 22:11:40,391 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-18 22:11:40,391 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-18 22:11:55,101 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:11:55] "GET / HTTP/1.1" 200 -
+2023-04-18 22:11:55,490 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:11:55] "GET /apple-touch-icon.png HTTP/1.1" 200 -
+2023-04-18 22:11:55,494 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:11:55] "GET /favicon-16x16.png HTTP/1.1" 200 -
+2023-04-18 22:11:55,732 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:11:55] "GET /static/img/pfp/base_png.jpg HTTP/1.1" 200 -
+2023-04-18 22:12:01,520 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:12:01] "GET /clothes/Upper_body/!!!None HTTP/1.1" 200 -
+2023-04-18 22:12:01,628 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:12:01] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-18 22:12:13,476 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:12:13] "GET /additional/Fits/!!!None HTTP/1.1" 200 -
+2023-04-18 22:12:13,570 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:12:13] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-18 22:12:20,398 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:12:20] "GET /clothes/Lower_body/!!!None HTTP/1.1" 200 -
+2023-04-18 22:12:20,492 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:12:20] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-18 22:12:25,410 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:12:25] "GET /additional/Fabrics/!!!None HTTP/1.1" 200 -
+2023-04-18 22:12:25,534 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:12:25] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-18 22:13:02,863 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-18 22:13:02,863 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
