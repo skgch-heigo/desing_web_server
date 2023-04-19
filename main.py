@@ -199,6 +199,11 @@ def info():
     return render_template("profile.html")
 
 
+@app.route("/contacts")
+def contacts():
+    return render_template("contacts.html")
+
+
 @app.route("/faq")
 def faq():
     return render_template("faq.html")
