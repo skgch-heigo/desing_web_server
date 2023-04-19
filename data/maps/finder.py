@@ -1,8 +1,6 @@
 import math
-from io import BytesIO
 
 import requests
-from PIL import Image
 
 
 API_KEY = "40d1649f-0493-4b70-98ba-98533de7710b"
