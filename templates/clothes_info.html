@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold text-body-emphasis">{{ data['name'] }}</h1>
+</div>
+<div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="col-md-10 mx-auto col-lg-5">
+        {% if data['picture_path'] != '' %}
+            <img src="{{ url_for('static', filename=data['picture_path']) }}" width="600" height="600">
+        {% else %}
+            <img src="{{ url_for('static', filename='/img/no_photo.png') }}" width="600" height="600">
+        {% endif %}
+    </div>
+    <div class="col-md-10 mx-auto col-lg-5">
+        {% if data['map_path'] != '' %}
+            <img src="{{ url_for('static', filename=data['map_path']) }}" width="600" height="600">
+        {% else %}
+            <img src="{{ url_for('static', filename='/img/no_photo.png') }}" width="600" height="600">
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
