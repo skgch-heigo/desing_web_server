@@ -1973,3 +1973,450 @@ jinja2.exceptions.TemplateNotFound: oops.html
 2023-04-18 22:13:02,863 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:8080
 2023-04-18 22:13:02,863 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-18 22:14:10,573 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-18 22:14:10,573 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-18 22:14:18,320 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:14:18] "GET / HTTP/1.1" 200 -
+2023-04-18 22:14:18,885 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:14:18] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-18 22:15:02,473 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:15:02] "GET /info HTTP/1.1" 200 -
+2023-04-18 22:15:02,588 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:15:02] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-18 22:15:09,211 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:15:09] "GET /main HTTP/1.1" 200 -
+2023-04-18 22:15:09,340 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:15:09] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-18 22:15:10,322 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:15:10] "GET /faq HTTP/1.1" 200 -
+2023-04-18 22:15:10,461 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:15:10] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-18 22:15:22,110 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:15:22] "GET /main HTTP/1.1" 200 -
+2023-04-18 22:15:22,205 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:15:22] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-18 22:15:24,461 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:15:24] "GET /main HTTP/1.1" 200 -
+2023-04-18 22:15:24,552 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:15:24] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-18 22:15:33,954 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:15:33] "GET /egf HTTP/1.1" 200 -
+2023-04-18 22:15:34,077 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:15:34] "GET /static/img/backs/img.png HTTP/1.1" 200 -
+2023-04-18 22:15:34,109 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:15:34] "GET /favicon.ico HTTP/1.1" 200 -
+2023-04-18 22:18:27,855 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:18:27] "GET / HTTP/1.1" 200 -
+2023-04-18 22:18:27,990 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:18:27] "GET /static/img/pfp/base_png.jpg HTTP/1.1" 200 -
+2023-04-18 22:21:48,781 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:21:48] "GET /info HTTP/1.1" 200 -
+2023-04-18 22:21:48,915 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:21:48] "GET /static/img/pfp/base_png.jpg HTTP/1.1" 200 -
+2023-04-18 22:21:48,985 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:21:48] "GET /apple-touch-icon.png HTTP/1.1" 200 -
+2023-04-18 22:21:49,049 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:21:49] "GET /favicon-16x16.png HTTP/1.1" 200 -
+2023-04-18 22:22:02,207 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:22:02] "GET /info HTTP/1.1" 200 -
+2023-04-18 22:22:02,317 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:22:02] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-18 22:22:04,193 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:22:04] "GET /main HTTP/1.1" 200 -
+2023-04-18 22:22:04,306 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:22:04] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-18 22:22:05,486 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:22:05] "GET /faq HTTP/1.1" 200 -
+2023-04-18 22:22:05,623 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:22:05] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-18 22:22:28,486 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:22:28] "GET /main HTTP/1.1" 200 -
+2023-04-18 22:22:28,652 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:22:28] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-18 22:22:34,093 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:22:34] "GET /efg HTTP/1.1" 200 -
+2023-04-18 22:22:34,225 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:22:34] "GET /static/img/backs/img.png HTTP/1.1" 200 -
+2023-04-18 22:22:34,245 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:22:34] "GET /favicon.ico HTTP/1.1" 200 -
+2023-04-18 22:22:56,806 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:22:56] "GET / HTTP/1.1" 200 -
+2023-04-18 22:22:56,921 - werkzeug - INFO - 127.0.0.1 - - [18/Apr/2023 22:22:56] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-18 22:23:12,780 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-18 22:23:12,781 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:06:29,173 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:06:29,194 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:06:34,675 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:06:34] "GET / HTTP/1.1" 200 -
+2023-04-19 16:06:35,265 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:06:35] "GET /apple-touch-icon.png HTTP/1.1" 200 -
+2023-04-19 16:06:35,348 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:06:35] "GET /favicon-16x16.png HTTP/1.1" 200 -
+2023-04-19 16:06:35,481 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:06:35] "GET /static/img/pfp/base_png.jpg HTTP/1.1" 200 -
+2023-04-19 16:06:38,474 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:06:38] "[32mGET /logout HTTP/1.1[0m" 302 -
+2023-04-19 16:06:38,502 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:06:38] "GET / HTTP/1.1" 200 -
+2023-04-19 16:07:20,522 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:07:20] "GET /register HTTP/1.1" 200 -
+2023-04-19 16:13:14,084 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:13:14,084 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:13:31,264 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:13:31] "GET / HTTP/1.1" 200 -
+2023-04-19 16:13:33,293 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:13:33] "GET /register HTTP/1.1" 200 -
+2023-04-19 16:13:53,016 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:13:53,017 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:13:55,355 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:13:55] "GET /register HTTP/1.1" 200 -
+2023-04-19 16:13:59,110 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:13:59] "GET /static/files/terms_of_us.pdf HTTP/1.1" 200 -
+2023-04-19 16:13:59,500 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:13:59] "GET /favicon.ico HTTP/1.1" 200 -
+2023-04-19 16:13:59,812 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:13:59] "[36mGET /static/img/backs/img.png HTTP/1.1[0m" 304 -
+2023-04-19 16:15:46,178 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:15:46] "GET /static/files/terms_of_use.pdf HTTP/1.1" 200 -
+2023-04-19 16:21:02,631 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:21:02,632 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:21:05,697 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:21:05] "GET /register HTTP/1.1" 200 -
+2023-04-19 16:21:09,093 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:21:09] "GET /static/files/terms_of_use.pdf HTTP/1.1" 200 -
+2023-04-19 16:22:53,954 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:22:53] "POST /register HTTP/1.1" 200 -
+2023-04-19 16:23:09,873 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:23:09] "POST /register HTTP/1.1" 200 -
+2023-04-19 16:23:20,819 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:23:20] "[32mPOST /register HTTP/1.1[0m" 302 -
+2023-04-19 16:23:20,872 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:23:20] "GET / HTTP/1.1" 200 -
+2023-04-19 16:23:20,964 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:23:20] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 16:23:25,413 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:23:25] "GET /clothes/Upper_body/!!!None HTTP/1.1" 200 -
+2023-04-19 16:23:25,538 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:23:25] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 16:28:07,499 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:28:07,499 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:28:32,286 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:28:32] "GET /clothes/Upper_body HTTP/1.1" 200 -
+2023-04-19 16:28:32,835 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:28:32] "GET /static/img/backs/img.png HTTP/1.1" 200 -
+2023-04-19 16:28:36,314 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:28:36] "GET / HTTP/1.1" 200 -
+2023-04-19 16:28:36,458 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:28:36] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 16:28:43,245 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:28:43] "GET /clothes/Upper_body/!!!None HTTP/1.1" 200 -
+2023-04-19 16:28:43,368 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:28:43] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 16:28:45,378 - main - ERROR - Exception on /show/Upper_body/1 [GET]
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask_restful\__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\PythonProg\design_web\main.py", line 185, in element_information
+    f.write(map_pic)
+TypeError: a bytes-like object is required, not 'NoneType'
+2023-04-19 16:28:45,400 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:28:45] "[35m[1mGET /show/Upper_body/1 HTTP/1.1[0m" 500 -
+2023-04-19 16:31:01,494 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:31:01,495 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:31:02,243 - main - ERROR - Exception on /show/Upper_body/1 [GET]
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask_restful\__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\PythonProg\design_web\main.py", line 185, in element_information
+    f.write(map_pic)
+TypeError: a bytes-like object is required, not 'NoneType'
+2023-04-19 16:31:02,246 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:31:02] "[35m[1mGET /show/Upper_body/1 HTTP/1.1[0m" 500 -
+2023-04-19 16:31:59,691 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:31:59,691 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:32:01,808 - main - ERROR - Exception on /show/Upper_body/1 [GET]
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask_restful\__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\PythonProg\design_web\main.py", line 185, in element_information
+    f.write(map_pic)
+TypeError: a bytes-like object is required, not 'Response'
+2023-04-19 16:32:01,812 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:32:01] "[35m[1mGET /show/Upper_body/1 HTTP/1.1[0m" 500 -
+2023-04-19 16:33:04,468 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:33:04,468 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:33:05,171 - main - ERROR - Exception on /show/Upper_body/1 [GET]
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask_restful\__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\PythonProg\design_web\main.py", line 186, in element_information
+    map_ = url_for('temp', filename=f'pictures/map_picture{random_int}.png')
+  File "C:\Program Files\Python39\lib\site-packages\flask\helpers.py", line 256, in url_for
+    return current_app.url_for(
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 2034, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 2023, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "C:\Program Files\Python39\lib\site-packages\werkzeug\routing\map.py", line 917, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'temp' with values ['filename']. Did you mean 'clothes' instead?
+2023-04-19 16:33:05,239 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:33:05] "[35m[1mGET /show/Upper_body/1 HTTP/1.1[0m" 500 -
+2023-04-19 16:38:42,351 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-19 16:38:42,351 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:38:47,725 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:38:47,726 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:39:22,323 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:39:22,323 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:39:26,405 - main - ERROR - Exception on /show/Upper_body/1 [GET]
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask_restful\__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\PythonProg\design_web\main.py", line 188, in element_information
+    return render_template("clothes_info.html", title="Информация", data=data, map=map_, picture=picture)
+  File "C:\Program Files\Python39\lib\site-packages\flask\templating.py", line 146, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 1081, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 768, in compile
+    self.handle_exception(source=source_hint)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\PythonProg\design_web\templates\clothes_info.html", line 9, in template
+    {{item}}: {{data[item}}<br>
+jinja2.exceptions.TemplateSyntaxError: unexpected '}', expected ']'
+2023-04-19 16:39:26,446 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:39:26] "[35m[1mGET /show/Upper_body/1 HTTP/1.1[0m" 500 -
+2023-04-19 16:40:12,017 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-19 16:40:12,017 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:40:23,324 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:40:23,324 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:40:27,912 - main - ERROR - Exception on /show/Upper_body/1 [GET]
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask_restful\__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Program Files\Python39\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\PythonProg\design_web\main.py", line 188, in element_information
+    return render_template("clothes_info.html", title="Информация", data=data, map=map_, picture=picture)
+  File "C:\Program Files\Python39\lib\site-packages\flask\templating.py", line 146, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 1081, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 768, in compile
+    self.handle_exception(source=source_hint)
+  File "C:\Program Files\Python39\lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\PythonProg\design_web\templates\clothes_info.html", line 25, in template
+    {% endblock %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endblock'. You probably made a nesting mistake. Jinja is expecting this tag, but currently looking for 'endif'. The innermost block that needs to be closed is 'if'.
+2023-04-19 16:40:27,916 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:40:27] "[35m[1mGET /show/Upper_body/1 HTTP/1.1[0m" 500 -
+2023-04-19 16:41:12,673 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:41:12,674 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:41:20,769 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:41:20] "GET /show/Upper_body/1 HTTP/1.1" 200 -
+2023-04-19 16:41:20,871 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:41:20] "[32mGET /static//static/img/upper_body/turtleneck.png HTTP/1.1[0m" 308 -
+2023-04-19 16:41:20,898 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:41:20] "GET /static/temp/pictures/map_picture%7Brandom_int%7D.png HTTP/1.1" 200 -
+2023-04-19 16:41:20,947 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:41:20] "GET /static/static/img/upper_body/turtleneck.png HTTP/1.1" 200 -
+2023-04-19 16:41:21,178 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:41:21] "GET /apple-touch-icon.png HTTP/1.1" 200 -
+2023-04-19 16:41:21,237 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:41:21] "GET /favicon-16x16.png HTTP/1.1" 200 -
+2023-04-19 16:41:21,439 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:41:21] "GET /static/img/pfp/base_png.jpg HTTP/1.1" 200 -
+2023-04-19 16:43:53,970 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:43:53,970 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:43:57,989 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:43:57] "GET / HTTP/1.1" 200 -
+2023-04-19 16:43:58,604 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:43:58] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 16:43:59,964 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:43:59] "GET /clothes/Upper_body/!!!None HTTP/1.1" 200 -
+2023-04-19 16:44:00,179 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:44:00] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 16:44:09,472 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:44:09] "GET /show/Upper_body/4 HTTP/1.1" 200 -
+2023-04-19 16:44:09,554 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:44:09] "[32mGET /static//static/img/upper_body/pic_T-shirt.png HTTP/1.1[0m" 308 -
+2023-04-19 16:44:09,567 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:44:09] "[32mGET /static//temp/pictures/map_picture%7Brandom_int%7D.png HTTP/1.1[0m" 308 -
+2023-04-19 16:44:09,592 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:44:09] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 16:44:09,650 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:44:09] "GET /static/static/img/upper_body/pic_T-shirt.png HTTP/1.1" 200 -
+2023-04-19 16:44:09,653 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:44:09] "GET /static/temp/pictures/map_picture%7Brandom_int%7D.png HTTP/1.1" 200 -
+2023-04-19 16:44:25,208 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:44:25] "GET /additional/Countries/!!!None HTTP/1.1" 200 -
+2023-04-19 16:44:25,317 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:44:25] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 16:44:50,762 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:44:50] "GET /show/Upper_body/4 HTTP/1.1" 200 -
+2023-04-19 16:44:50,924 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:44:50] "GET /static/static/img/upper_body/pic_T-shirt.png HTTP/1.1" 200 -
+2023-04-19 16:44:50,936 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:44:50] "GET /static/temp/pictures/map_picture%7Brandom_int%7D.png HTTP/1.1" 200 -
+2023-04-19 16:44:50,949 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:44:50] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 16:45:45,893 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:45:45,893 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:45:47,674 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:45:47] "GET /show/Upper_body/4 HTTP/1.1" 200 -
+2023-04-19 16:45:47,799 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:45:47] "GET /static/static/img/upper_body/pic_T-shirt.png HTTP/1.1" 200 -
+2023-04-19 16:45:47,856 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:45:47] "GET /static/temp/pictures/map_picture%7Brandom_int%7D.png HTTP/1.1" 200 -
+2023-04-19 16:45:48,362 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:45:48] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 16:46:04,801 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:46:04] "GET /clothes/Upper_body/!!!None HTTP/1.1" 200 -
+2023-04-19 16:46:04,908 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:46:04] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 16:46:08,280 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:46:08] "GET /show/Upper_body/4 HTTP/1.1" 200 -
+2023-04-19 16:46:08,409 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:46:08] "GET /static/static/img/upper_body/pic_T-shirt.png HTTP/1.1" 200 -
+2023-04-19 16:46:08,438 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:46:08] "GET /static/temp/pictures/map_picture%7Brandom_int%7D.png HTTP/1.1" 200 -
+2023-04-19 16:46:08,451 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:46:08] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 16:46:34,812 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:46:34] "[32mGET /static//static/img/upper_body/pic_T-shirt.png HTTP/1.1[0m" 308 -
+2023-04-19 16:46:34,834 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:46:34] "GET /static/static/img/upper_body/pic_T-shirt.png HTTP/1.1" 200 -
+2023-04-19 16:49:32,347 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:49:32,348 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:49:37,675 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:49:37] "GET /show/Upper_body/4 HTTP/1.1" 200 -
+2023-04-19 16:49:37,834 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:49:37] "GET /temp/pictures/map_picture%7Brandom_int%7D.png HTTP/1.1" 200 -
+2023-04-19 16:49:38,467 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:49:38] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 16:49:38,494 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:49:38] "GET /static/img/upper_body/pic_T-shirt.png HTTP/1.1" 200 -
+2023-04-19 16:53:23,413 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:53:23,413 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:53:30,606 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:53:30] "GET /show/Upper_body/4 HTTP/1.1" 200 -
+2023-04-19 16:53:30,707 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:53:30] "GET /temp/pictures/map_picture673253.png HTTP/1.1" 200 -
+2023-04-19 16:53:31,237 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:53:31] "GET /static/img/upper_body/pic_T-shirt.png HTTP/1.1" 200 -
+2023-04-19 16:53:31,265 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:53:31] "GET /static/img/pfp/base_png.jpg HTTP/1.1" 200 -
+2023-04-19 16:54:46,772 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:54:46,772 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:54:47,730 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:54:47] "GET /show/Upper_body/4 HTTP/1.1" 200 -
+2023-04-19 16:54:47,781 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:54:47] "GET /temp/pictures/map_picture297928.png HTTP/1.1" 200 -
+2023-04-19 16:54:48,365 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:54:48] "GET /static/img/pfp/base_png.jpg HTTP/1.1" 200 -
+2023-04-19 16:54:48,395 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:54:48] "[36mGET /static/img/upper_body/pic_T-shirt.png HTTP/1.1[0m" 304 -
+2023-04-19 16:57:05,517 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:57:05,518 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:57:06,045 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:57:06] "GET /show/Upper_body/4 HTTP/1.1" 200 -
+2023-04-19 16:57:06,091 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:57:06] "GET /temp/pictures/map_picture672514.png HTTP/1.1" 200 -
+2023-04-19 16:57:06,217 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:57:06] "GET /temp/pictures/map_picture672514.png HTTP/1.1" 200 -
+2023-04-19 16:57:06,693 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:57:06] "GET /favicon-16x16.png HTTP/1.1" 200 -
+2023-04-19 16:57:06,810 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:57:06] "GET /static/img/upper_body/pic_T-shirt.png HTTP/1.1" 200 -
+2023-04-19 16:57:06,813 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:57:06] "GET /static/img/pfp/base_png.jpg HTTP/1.1" 200 -
+2023-04-19 16:58:14,701 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:58:14,702 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:58:15,702 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:58:15] "GET /show/Upper_body/4 HTTP/1.1" 200 -
+2023-04-19 16:58:15,810 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:58:15] "GET /temp/pictures/map_picture634443.png HTTP/1.1" 200 -
+2023-04-19 16:58:16,347 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:58:16] "GET /static/img/upper_body/pic_T-shirt.png HTTP/1.1" 200 -
+2023-04-19 16:58:16,400 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:58:16] "GET /static/img/pfp/base_png.jpg HTTP/1.1" 200 -
+2023-04-19 16:58:38,941 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:58:38,942 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:58:39,894 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:58:39] "GET /show/Upper_body/4 HTTP/1.1" 200 -
+2023-04-19 16:58:39,963 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:58:39] "GET /temp/pictures/map_picture21673.png HTTP/1.1" 200 -
+2023-04-19 16:58:40,017 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:58:40] "GET /temp/pictures/map_picture21673.png HTTP/1.1" 200 -
+2023-04-19 16:58:40,642 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:58:40] "GET /static/img/pfp/base_png.jpg HTTP/1.1" 200 -
+2023-04-19 16:58:40,649 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:58:40] "GET /static/img/upper_body/pic_T-shirt.png HTTP/1.1" 200 -
+2023-04-19 16:59:08,187 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-19 16:59:08,187 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:59:13,641 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 16:59:13,641 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 16:59:17,703 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:59:17] "GET /show/Upper_body/4 HTTP/1.1" 200 -
+2023-04-19 16:59:17,841 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:59:17] "GET /temp/pictures/map_picture746472.png HTTP/1.1" 200 -
+2023-04-19 16:59:18,543 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:59:18] "GET /static/img/upper_body/pic_T-shirt.png HTTP/1.1" 200 -
+2023-04-19 16:59:18,562 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:59:18] "GET /static/img/pfp/base_png.jpg HTTP/1.1" 200 -
+2023-04-19 16:59:39,604 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:59:39] "GET / HTTP/1.1" 200 -
+2023-04-19 16:59:39,709 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:59:39] "GET /static/img/pfp/base_png.jpg HTTP/1.1" 200 -
+2023-04-19 16:59:44,342 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:59:44] "GET /temp/pictures/map_picture746472.png HTTP/1.1" 200 -
+2023-04-19 16:59:44,412 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 16:59:44] "GET /static/img/backs/img.png HTTP/1.1" 200 -
+2023-04-19 16:59:58,238 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-19 16:59:58,238 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 17:01:51,975 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 17:01:51,975 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 17:01:55,208 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:01:55] "GET /show/Upper_body/4 HTTP/1.1" 200 -
+2023-04-19 17:01:55,311 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:01:55] "GET /show/Upper_body/static/temp/pictures/map_picture304760.png HTTP/1.1" 200 -
+2023-04-19 17:01:55,930 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:01:55] "GET /static/img/pfp/base_png.jpg HTTP/1.1" 200 -
+2023-04-19 17:01:55,930 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:01:55] "GET /static/img/upper_body/pic_T-shirt.png HTTP/1.1" 200 -
+2023-04-19 17:02:19,427 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:02:19] "GET /static/temp/pictures/map_picture304760.png HTTP/1.1" 200 -
+2023-04-19 17:02:57,033 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:02:57] "GET /show/Upper_body/4 HTTP/1.1" 200 -
+2023-04-19 17:02:57,121 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:02:57] "GET /show/Upper_body/static/temp/pictures/map_picture794857.png HTTP/1.1" 200 -
+2023-04-19 17:02:57,136 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:02:57] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 17:02:57,145 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:02:57] "[36mGET /static/img/upper_body/pic_T-shirt.png HTTP/1.1[0m" 304 -
+2023-04-19 17:03:42,315 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 17:03:42,315 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 17:03:48,402 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:03:48] "[32mGET /show/Upper_body/4 HTTP/1.1[0m" 302 -
+2023-04-19 17:03:48,432 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:03:48] "GET /show/Upper_body/static/temp/pictures/map_picture498829.png HTTP/1.1" 200 -
+2023-04-19 17:03:49,019 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:03:49] "GET /static/img/backs/img.png HTTP/1.1" 200 -
+2023-04-19 17:04:19,415 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:04:19] "GET /static/temp/pictures/map_picture498829.png HTTP/1.1" 200 -
+2023-04-19 17:04:20,954 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:04:20] "GET /show/Upper_body/static/temp/pictures/map_picture498829.png HTTP/1.1" 200 -
+2023-04-19 17:04:40,275 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:04:40] "[36mGET /static/temp/pictures/map_picture498829.png HTTP/1.1[0m" 304 -
+2023-04-19 17:05:31,376 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 17:05:31,376 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 17:05:34,005 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:05:34] "[32mGET /show/Upper_body/4 HTTP/1.1[0m" 302 -
+2023-04-19 17:05:34,376 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:05:34] "GET /static/temp/pictures/map_picture444410.png HTTP/1.1" 200 -
+2023-04-19 17:05:38,383 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:05:38] "GET /show/Upper_body/static/temp/pictures/map_picture498829.png HTTP/1.1" 200 -
+2023-04-19 17:05:54,778 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 17:05:54,779 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 17:06:01,488 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:06:01] "GET /show/Upper_body/4 HTTP/1.1" 200 -
+2023-04-19 17:06:02,401 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:06:02] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 17:06:02,429 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:06:02] "GET /static/temp/pictures/map_picture880972.png HTTP/1.1" 200 -
+2023-04-19 17:06:02,500 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:06:02] "[36mGET /static/img/upper_body/pic_T-shirt.png HTTP/1.1[0m" 304 -
+2023-04-19 17:06:08,839 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:06:08] "GET /main HTTP/1.1" 200 -
+2023-04-19 17:06:08,962 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:06:08] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 17:06:11,784 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:06:11] "GET /clothes/Upper_body/!!!None HTTP/1.1" 200 -
+2023-04-19 17:06:11,898 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:06:11] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 17:06:13,510 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:06:13] "GET /show/Upper_body/3 HTTP/1.1" 200 -
+2023-04-19 17:06:13,619 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:06:13] "GET /show/Upper_body/static/img/data/no_photo.png HTTP/1.1" 200 -
+2023-04-19 17:06:13,641 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:06:13] "GET /static/temp/pictures/map_picture334514.png HTTP/1.1" 200 -
+2023-04-19 17:06:13,657 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:06:13] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 17:07:31,842 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 17:07:31,842 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 17:07:36,156 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:07:36] "GET /show/Upper_body/3 HTTP/1.1" 200 -
+2023-04-19 17:07:36,354 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:07:36] "GET /show/Upper_body/static/img/data/no_photo.png HTTP/1.1" 200 -
+2023-04-19 17:07:36,900 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:07:36] "GET /static/img/pfp/base_png.jpg HTTP/1.1" 200 -
+2023-04-19 17:07:36,980 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:07:36] "GET /static/temp/pictures/map_picture752597.png HTTP/1.1" 200 -
+2023-04-19 17:07:41,553 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:07:41] "GET /clothes/Upper_body/!!!None HTTP/1.1" 200 -
+2023-04-19 17:08:17,083 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+2023-04-19 17:08:17,083 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 17:08:19,548 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-04-19 17:08:19,548 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2023-04-19 17:08:26,886 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:08:26] "GET /show/Upper_body/3 HTTP/1.1" 200 -
+2023-04-19 17:08:27,679 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:08:27] "GET /static/img/data/no_photo.png HTTP/1.1" 200 -
+2023-04-19 17:08:27,724 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:08:27] "GET /static/temp/pictures/map_picture781974.png HTTP/1.1" 200 -
+2023-04-19 17:08:27,784 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:08:27] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 17:08:38,778 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:08:38] "GET /clothes/Upper_body/!!!None HTTP/1.1" 200 -
+2023-04-19 17:08:38,934 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:08:38] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 17:08:40,572 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:08:40] "GET /show/Upper_body/1 HTTP/1.1" 200 -
+2023-04-19 17:08:40,692 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:08:40] "GET /static/temp/pictures/map_picture467938.png HTTP/1.1" 200 -
+2023-04-19 17:08:40,699 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:08:40] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 17:08:40,717 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:08:40] "GET /static/img/upper_body/turtleneck.png HTTP/1.1" 200 -
+2023-04-19 17:08:53,493 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:08:53] "GET /clothes/Upper_body/!!!None HTTP/1.1" 200 -
+2023-04-19 17:08:53,606 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:08:53] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 17:08:56,907 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:08:56] "GET /show/Upper_body/4 HTTP/1.1" 200 -
+2023-04-19 17:08:56,982 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:08:56] "GET /static/temp/pictures/map_picture76472.png HTTP/1.1" 200 -
+2023-04-19 17:08:56,992 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:08:56] "GET /static/img/upper_body/pic_T-shirt.png HTTP/1.1" 200 -
+2023-04-19 17:08:57,034 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:08:57] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 17:09:06,756 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:06] "GET /clothes/Hats/!!!None HTTP/1.1" 200 -
+2023-04-19 17:09:06,885 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:06] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 17:09:09,554 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:09] "GET /show/Hats/2 HTTP/1.1" 200 -
+2023-04-19 17:09:09,660 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:09] "GET /static/temp/pictures/map_picture474338.png HTTP/1.1" 200 -
+2023-04-19 17:09:09,665 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:09] "GET /static/img/hats/bowler.png HTTP/1.1" 200 -
+2023-04-19 17:09:09,676 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:09] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 17:09:15,820 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:15] "GET /clothes/Boots/!!!None HTTP/1.1" 200 -
+2023-04-19 17:09:15,934 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:15] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 17:09:20,180 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:20] "GET /show/Boots/9 HTTP/1.1" 200 -
+2023-04-19 17:09:20,286 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:20] "GET /static/temp/pictures/map_picture297437.png HTTP/1.1" 200 -
+2023-04-19 17:09:20,295 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:20] "GET /static/img/boots/brogue.png HTTP/1.1" 200 -
+2023-04-19 17:09:20,305 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:20] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 17:09:25,545 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:25] "GET /clothes/Lower_body/!!!None HTTP/1.1" 200 -
+2023-04-19 17:09:25,702 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:25] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 17:09:29,295 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:29] "GET /show/Lower_body/1 HTTP/1.1" 200 -
+2023-04-19 17:09:29,453 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:29] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 17:09:29,455 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:29] "GET /static/temp/pictures/map_picture484311.png HTTP/1.1" 200 -
+2023-04-19 17:09:29,481 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:29] "GET /static/img/lower_body/pic_Jeans.png HTTP/1.1" 200 -
+2023-04-19 17:09:41,077 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:41] "GET /main HTTP/1.1" 200 -
+2023-04-19 17:09:41,218 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:41] "[36mGET /static/img/pfp/base_png.jpg HTTP/1.1[0m" 304 -
+2023-04-19 17:09:43,759 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:43] "[32mGET /logout HTTP/1.1[0m" 302 -
+2023-04-19 17:09:43,797 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:43] "GET / HTTP/1.1" 200 -
+2023-04-19 17:09:46,189 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:46] "GET /register HTTP/1.1" 200 -
+2023-04-19 17:09:49,130 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:09:49] "GET /static/files/terms_of_use.pdf HTTP/1.1" 200 -
+2023-04-19 17:10:13,786 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2023 17:10:13] "GET /main HTTP/1.1" 200 -

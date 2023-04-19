@@ -73,9 +73,9 @@ def logout():
 
 
 def main():
-    for i in os.listdir(os.path.join('temp', "pictures")):
+    for i in os.listdir(os.path.join('static/temp', "pictures")):
         if i != "information.txt":
-            os.remove("temp/pictures/" + i)
+            os.remove("static/temp/pictures/" + i)
     db_session.global_init("db/designer_base.db")
     # app.register_blueprint(users_api.blueprint)
     # app.register_blueprint(jobs_api.blueprint)
@@ -172,19 +172,25 @@ def element_information(table, id_):
     for i in fields:
         if i in RELATIONS:
             data[i] = db_sess.query(TABLES_CLASSES[RELATIONS[i]]).filter(TABLES_CLASSES[RELATIONS[i]].id ==
-                                                                         data[i]).first()
+                                                                             data[i]).first()
+            if data[i]:
+                data[i] = data[i].name
+            else:
+                data[i] = ""
     if "picture" in fields:
-        picture = url_for('static', filename=f'img/{obj.picture}')
+        if obj.picture and os.path.exists("static/img/" + str(obj.picture)):
+            picture = url_for('static', filename=f'img/{obj.picture}')
     if table in ["Upper_body", "Lower_body", "Hats", "Boots"]:
         country = db_sess.query(Countries).filter(Countries.id == obj.origin).first()
         ll_span = finder.get_ll_span(country.name)
         coords = finder.get_coords(country.name)
-        map_pic = finder.get_map(*ll_span, (str(coords[0]) + "," + str(coords[1]), "pm2bll"))
+        map_pic = finder.get_map(*ll_span, [(str(coords[0]) + "," + str(coords[1]), "pm2bll")])
         random_int = random.randint(0, 1000000)
-        with open(f"temp/pictures/map_picture{random_int}.png", "wb") as f:
-            f.write(map_pic)
-        map_ = url_for('temp', filename=f'pictures/map_picture{random_int}.png')
-    return render_template("elem_information.html", title="Информация", data=data, map=map_, picture=picture)
+        with open(f"static/temp/pictures/map_picture{random_int}.png", "wb") as f:
+            f.write(map_pic.content)
+        map_ = f'/static/temp/pictures/map_picture{random_int}.png'
+    print(map_, picture)
+    return render_template("clothes_info.html", title="Информация", data=data, map=map_, picture=picture)
 
 
 @app.route("/info")

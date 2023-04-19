@@ -8,4 +8,5 @@ class RegisterForm(FlaskForm):
     email = EmailField('Почта', validators=[DataRequired()])
     password = PasswordField('Пароль', validators=[DataRequired()])
     password_repeat = PasswordField('Повторите пароль', validators=[DataRequired(), EqualTo('password', message="Пароли должны совпадать")])
+    agreed = BooleanField("Прочел и согласен с Условиями пользования", validators=[DataRequired(message="Обязательно поле")])
     submit = SubmitField('Зарегистрироваться')

@@ -127,7 +127,7 @@ def get_map(ll, span, points=None, tp="map"):
         map_params["pt"] = "~".join(ans)
     response = requests.get(map_api_server, params=map_params)
     if not response:
-        print("Ошибка выполнения запроса.")
+        print("Ошибка выполнения запроса.", response.url)
         print("Http статус:", response.status_code, "(", response.reason, ")")
         return None
     else:

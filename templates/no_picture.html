@@ -28,7 +28,7 @@
     <tbody>
     {% for item in range(count_cols) %}
     <tr>
-        <th scope="row"><a href="#"> {{ data[item][0] }} </a></th>
+        <th scope="row"><a href="/show/{{table}}/{{data[item][1]}}"> {{ data[item][0] }} </a></th>
         {% if current_user.is_authenticated and current_user.access >= 2 %}
         <td><a class="btn btn-primary" href="/additional/edit/{{table}}/{{data[item][1]}}" role="button">Изменить</a><br><br>
             <a class="btn btn-primary" href="/additional/del/{{table}}/{{data[item][1]}}" role="button">Удалить</a></td>
